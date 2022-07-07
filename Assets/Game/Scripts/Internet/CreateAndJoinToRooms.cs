@@ -13,7 +13,7 @@ namespace TwoPlayersGame
 
         public void CreateRoom()
         {
-            PhotonNetwork.CreateRoom(creatingRoomInput.text);
+            PhotonNetwork.CreateRoom(creatingRoomInput.text,new Photon.Realtime.RoomOptions { MaxPlayers = 2 },null );
         }
         public void JoinRoom()
         {
@@ -22,6 +22,10 @@ namespace TwoPlayersGame
         public override void OnJoinedRoom()
         {
             PhotonNetwork.LoadLevel("Game");
+        }
+        public override void OnCreateRoomFailed(short returnCode, string message)
+        {
+            print("CreateRoom Failed" + returnCode + " mesagge: " + message);
         }
     }
 }

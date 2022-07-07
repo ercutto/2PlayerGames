@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.SceneManagement;
+using Photon.Realtime;
 
 namespace TwoPlayersGame
 {
@@ -10,6 +11,7 @@ namespace TwoPlayersGame
     {
         private void Start()
         {
+          
             PhotonNetwork.ConnectUsingSettings();
         }
         public override void OnConnectedToMaster()
@@ -21,6 +23,11 @@ namespace TwoPlayersGame
         {
             SceneManager.LoadScene("Lobby");
         }
+        public override void OnDisconnected(DisconnectCause cause)
+        {
+            PhotonNetwork.JoinLobby();
+        }
+       
     }
 }
 

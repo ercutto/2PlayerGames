@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 namespace TwoPlayersGame
 {
-    public class PlayerMovement : MonoBehaviour
+    public class PlayerMovement : MonoBehaviourPun
     {
         public float speed=10f;
         public float turnSpeed=20f;
