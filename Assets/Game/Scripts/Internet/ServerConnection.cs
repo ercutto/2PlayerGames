@@ -23,10 +23,10 @@ namespace TwoPlayersGame
         {
             SceneManager.LoadScene("Lobby");
         }
-        public override void OnDisconnected(DisconnectCause cause)
-        {
-            PhotonNetwork.JoinLobby();
-        }
+        //public override void OnDisconnected(DisconnectCause cause)
+        //{
+        //    PhotonNetwork.JoinLobby();
+        //}
        
     }
 }
