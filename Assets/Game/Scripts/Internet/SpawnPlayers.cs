@@ -16,11 +16,7 @@ namespace TwoPlayersGame
             PhotonNetwork.Instantiate(PlayerPrefab.name, randPos, Quaternion.identity);
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+      
     }
 }
 

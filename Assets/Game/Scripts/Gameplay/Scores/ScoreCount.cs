@@ -3,37 +3,39 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class ScoreCount : MonoBehaviour
+namespace TwoPlayersGame
 {
-    public Text ScoreBoard;
-    public int score;
-    private PhotonView photonView;
-    // Start is called before the first frame update
-    void Start()
+    public class ScoreCount : MonoBehaviour
     {
-        score = 0;
-        photonView = GetComponent<PhotonView>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Ball"))
+        public Text ScoreBoard;
+        public int score;
+        private PhotonView photonView;
+        // Start is called before the first frame update
+        void Start()
         {
-            photonView.RPC("Mes", RpcTarget.All);
+            score = 0;
+            photonView = GetComponent<PhotonView>();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Ball"))
+            {
+                photonView.RPC("Mes", RpcTarget.All);
+                ScoreBoard.text = score++.ToString();
+            }
+        }
+        [PunRPC]
+        void Mes()
+        {
             ScoreBoard.text = score++.ToString();
         }
-    }
-    [PunRPC]
-    void Mes()
-    {
-        ScoreBoard.text = score++.ToString();
-    }
 
+    }
 }
