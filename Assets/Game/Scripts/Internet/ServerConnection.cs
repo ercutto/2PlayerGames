@@ -29,7 +29,7 @@ namespace TwoPlayersGame
         }
         public override void OnConnectedToMaster()
         {
-            Debug.Log("  We coud Connected to <color=yellow>Master! </color>"+ "<color=aqua> gameVersion: </color>"+gameVersion);
+            Debug.LogFormat("<color=orange>{0} : </color> <color=green>We coud Connected to </color> <color=yellow> Master! </color>"+ "<color=aqua> gameVersion: {1} </color>",name,gameVersion);
             PhotonNetwork.JoinRandomRoom();
         }
         public override void OnDisconnected(DisconnectCause cause)
@@ -47,7 +47,12 @@ namespace TwoPlayersGame
         public override void OnJoinedRoom()
         {
 
-            Debug.Log("<color=orange>ServerConnection: </color><color=lime> Player is in Room</color> <color=teal>MaxPlayer: </color>"+ maxPlayer);
+            Debug.LogFormat("<color=orange>ServerConnection: </color><color=lime> Player is in Room</color> <color=teal>MaxPlayer: {0}</color>", maxPlayer);
+            if (PhotonNetwork.CurrentRoom.PlayerCount==1)
+            {
+                Debug.Log("<color=orange> ServerConnection:</color> <color=aqua>We load the Room for 1</color>");
+                PhotonNetwork.LoadLevel("Room for 1");
+            }
         }
     }
 }
