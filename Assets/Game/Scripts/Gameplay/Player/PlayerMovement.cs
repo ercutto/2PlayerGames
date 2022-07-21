@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+
+
 namespace TwoPlayersGame
 {
     public class PlayerMovement : MonoBehaviourPun
     {
-        public float speed=10f;
-        public float turnSpeed=20f;
+        
+        public float speed = 10f;
+        public float turnSpeed = 20f;
         PhotonView pV;
         // Start is called before the first frame update
-        void Start()
+  
+        private void Start()
         {
             pV = GetComponent<PhotonView>();
         }
@@ -25,8 +29,8 @@ namespace TwoPlayersGame
                 transform.Translate(horizontal, 0.0f, vertical);
 
             }
-           
-            
+
+
         }
     }
 }
