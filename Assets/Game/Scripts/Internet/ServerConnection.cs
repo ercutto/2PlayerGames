@@ -6,7 +6,7 @@ namespace TwoPlayersGame
 {
     public class ServerConnection : MonoBehaviourPunCallbacks
     {
-        public bool isConnecting;
+        private bool isConnecting;
         public string gameVersion = "0,0,1";
         [Tooltip("The maximum number of players per room. When a room is full," +
          " it can't be joined by new players, and so new room will be created")]
@@ -22,6 +22,7 @@ namespace TwoPlayersGame
         {
             
         }
+      
         public void Connect()
         {
             playButtonCanvas.gameObject.SetActive(false);
@@ -67,6 +68,7 @@ namespace TwoPlayersGame
                 Debug.Log("<color=orange> ServerConnection:</color> <color=aqua>We load the Room for 1</color>");
                 PhotonNetwork.LoadLevel("Room for 1");
             }
+            
         }
     }
 }

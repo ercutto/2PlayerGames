@@ -1997,8 +1997,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32e5a9e0fc0893489da9757e6cc2e48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isConnecting: 0
   gameVersion: 0,0,1
-  maxPlayer: 2
+  maxPlayer: 4
   playButtonCanvas: {fileID: 1463076426}
 --- !u!4 &1242251202
 Transform:

@@ -12,10 +12,13 @@ namespace TwoPlayersGame
     public class GameManager : MonoBehaviourPunCallbacks
     {
         [Tooltip("For Player prefab")]
+        public static GameManager gameManagerInstance;
         public GameObject playerPrefab;
+        public float xPos, yPos;
         // Start is called before the first frame update
         void Start()
         {
+            gameManagerInstance = this;
             if (playerPrefab==null)
             {
                 Debug.LogErrorFormat("<color=orange>GameManager: </color><color=red> {0} prefab is Missing!", playerPrefab.name);
@@ -24,7 +27,9 @@ namespace TwoPlayersGame
             {
                 if (PlayerManager.localPlayerInstance == null) {
                     Debug.LogFormat("We are instantiating local player form {0}", SceneManagerHelper.ActiveSceneName);
-                    PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 0.5f, 0f), Quaternion.identity);
+                    //PhotonNetwork.Instantiate(playerPrefab.name, new Vector3(0f, 0.5f, 0f), Quaternion.identity,0);
+                    Vector3 randPos = new Vector3(Random.Range(-xPos, xPos), 0.0f, Random.Range(-yPos, yPos));
+                    PhotonNetwork.Instantiate(playerPrefab.name, randPos, Quaternion.identity);
                 }
                 else
                 {
@@ -56,7 +61,8 @@ namespace TwoPlayersGame
                 Debug.LogError("<color=orange> GameManager : </color> You cannot load a level unless you are a master client!");
             }
             Debug.LogFormat("<color=orange>GameManager : </color><color=green>loading Level: {0}</color>" , PhotonNetwork.CurrentRoom.PlayerCount);
-            PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+            //PhotonNetwork.LoadLevel("Room for " + PhotonNetwork.CurrentRoom.PlayerCount);
+            PhotonNetwork.LoadLevel("Room for 1");
         }
         public override void OnPlayerEnteredRoom(Player other)
         {
@@ -65,6 +71,34 @@ namespace TwoPlayersGame
             {
                 Debug.LogFormat("<color=orange>GameManager: </color> <color=aqua>OnPlayerEneteredRoom IsMAsterClient {0}</color>", PhotonNetwork.IsMasterClient);
                 LoadArena();
+               
+            }
+            
+        }
+        public override void OnJoinedRoom()
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                
+                    LoadGameArena();
+                
+                
+            }
+            else
+            {
+                return;
+            }
+        }
+        public void LoadGameArena()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                return;
+            }
+            else
+            {
+                PhotonNetwork.LoadLevel("Game");
+
             }
         }
 
