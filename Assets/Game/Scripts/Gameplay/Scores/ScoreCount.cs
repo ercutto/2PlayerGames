@@ -5,21 +5,31 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace TwoPlayersGame
 {
-    public class ScoreCount : MonoBehaviour
+    public class ScoreCount : MonoBehaviour// IPunObservable
     {
         public Text ScoreBoard;
-        public int score;
+        private int score;
         private PhotonView photonView;
+        private BoxCollider boxCollider;
+        public Vector3 ballStartPos;
+      
         // Start is called before the first frame update
         void Start()
         {
+            boxCollider = GetComponent<BoxCollider>();
+           
             score = 0;
             photonView = GetComponent<PhotonView>();
+            ballStartPos = new Vector3(0, 0.5f, 0);
         }
 
         // Update is called once per frame
         void Update()
         {
+
+
+
+
 
         }
 
@@ -27,15 +37,44 @@ namespace TwoPlayersGame
         {
             if (other.gameObject.CompareTag("Ball"))
             {
-                photonView.RPC("Mes", RpcTarget.All);
-                ScoreBoard.text = score++.ToString();
+                boxCollider.enabled = false;
+
+                //other.gameObject.transform.position = new Vector3(0, 0.5f, 0);
+                photonView.RPC("ScoreChange",RpcTarget.All);
+                
+                StartCoroutine(CollisionCheck());
             }
         }
-        [PunRPC]
-        void Mes()
+     
+        IEnumerator CollisionCheck()
         {
-            ScoreBoard.text = score++.ToString();
+            yield return new WaitForSeconds(2);
+            boxCollider.enabled = true;
         }
 
+        [PunRPC]
+        void ScoreChange()
+        {
+            score++;
+            ScoreBoard.text = score.ToString();
+        }
+
+        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //{
+        //    if (stream.IsWriting)
+        //    {
+        //        //stream.SendNext(score);
+        //        stream.SendNext(ballStartPos);
+
+
+
+        //    }
+        //    else
+        //    {
+        //        //score = (int)stream.ReceiveNext();
+        //        ballStartPos = (Vector3)stream.ReceiveNext();
+
+        //    }
+       // }
     }
 }
