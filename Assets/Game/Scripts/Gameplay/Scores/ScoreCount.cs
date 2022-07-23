@@ -12,12 +12,13 @@ namespace TwoPlayersGame
         private PhotonView photonView;
         private BoxCollider boxCollider;
         public Vector3 ballStartPos;
+        private bool Goal;
       
         // Start is called before the first frame update
         void Start()
         {
             boxCollider = GetComponent<BoxCollider>();
-           
+            Goal = false;
             score = 0;
             photonView = GetComponent<PhotonView>();
             ballStartPos = new Vector3(0, 0.5f, 0);
@@ -28,7 +29,7 @@ namespace TwoPlayersGame
         {
 
 
-
+           
 
 
         }
@@ -37,10 +38,16 @@ namespace TwoPlayersGame
         {
             if (other.gameObject.CompareTag("Ball"))
             {
-                boxCollider.enabled = false;
+                if (Goal==false)
+                {
+                    photonView.RPC("ScoreChange", RpcTarget.All);
+                    Goal = true;
+                }
+                //boxCollider.enabled = false;
+                
 
                 //other.gameObject.transform.position = new Vector3(0, 0.5f, 0);
-                photonView.RPC("ScoreChange",RpcTarget.All);
+               
                 
                 StartCoroutine(CollisionCheck());
             }
@@ -48,8 +55,10 @@ namespace TwoPlayersGame
      
         IEnumerator CollisionCheck()
         {
+           
             yield return new WaitForSeconds(2);
-            boxCollider.enabled = true;
+            //boxCollider.enabled = true;
+            Goal = false;
         }
 
         [PunRPC]

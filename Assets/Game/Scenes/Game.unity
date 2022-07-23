@@ -1278,6 +1278,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 1360140679}
+  - {fileID: 1360140680}
   sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1393,7 +1394,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.2
+  m_fontSize: 52.25
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2207,7 +2208,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 49.4
+  m_fontSize: 57.7
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
