@@ -28,7 +28,10 @@ namespace TwoPlayersGame
         void Update()
         {
 
-
+            //if (Goal)
+            //{
+            //    float count
+            //}
            
 
 
@@ -43,23 +46,12 @@ namespace TwoPlayersGame
                     photonView.RPC("ScoreChange", RpcTarget.All);
                     Goal = true;
                 }
-                //boxCollider.enabled = false;
-                
-
-                //other.gameObject.transform.position = new Vector3(0, 0.5f, 0);
+             
                
-                
-                StartCoroutine(CollisionCheck());
             }
         }
      
-        IEnumerator CollisionCheck()
-        {
-           
-            yield return new WaitForSeconds(2);
-            //boxCollider.enabled = true;
-            Goal = false;
-        }
+      
 
         [PunRPC]
         void ScoreChange()
