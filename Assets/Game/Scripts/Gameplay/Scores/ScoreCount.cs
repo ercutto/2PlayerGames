@@ -12,8 +12,11 @@ namespace TwoPlayersGame
         private PhotonView photonView;
         private BoxCollider boxCollider;
         public Vector3 ballStartPos;
-        private bool Goal;
-      
+        public bool Goal;
+        public bool canGoal;
+        private float count;
+        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -22,60 +25,66 @@ namespace TwoPlayersGame
             score = 0;
             photonView = GetComponent<PhotonView>();
             ballStartPos = new Vector3(0, 0.5f, 0);
+            
         }
 
         // Update is called once per frame
         void Update()
         {
-
-            //if (Goal)
-            //{
-            //    float count
-            //}
-           
-
-
+            count += Time.deltaTime;
+            if (count > 2)
+            {
+                canGoal = true;
+            }
+            else
+            {
+                canGoal = false;
+            }
+            
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Ball"))
             {
-                if (Goal==false)
-                {
-                    photonView.RPC("ScoreChange", RpcTarget.All);
-                    Goal = true;
-                }
-             
+                //boxCollider.enabled = false;
                
+                //photonView.RPC("ScoreChange", RpcTarget.All);
+                ScoreChange();
             }
         }
-     
-      
 
-        [PunRPC]
+       
+
+        //[PunRPC]
         void ScoreChange()
         {
+            if (canGoal == false)
+            {
+                return;
+            }
             score++;
             ScoreBoard.text = score.ToString();
+            count = 0;
         }
 
-        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        //{
-        //    if (stream.IsWriting)
-        //    {
-        //        //stream.SendNext(score);
-        //        stream.SendNext(ballStartPos);
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
 
-
-
-        //    }
-        //    else
-        //    {
-        //        //score = (int)stream.ReceiveNext();
-        //        ballStartPos = (Vector3)stream.ReceiveNext();
-
-        //    }
-       // }
+                stream.SendNext(score);
+                //stream.SendNext(ballStartPos);
+                stream.SendNext(canGoal);
+                
+            }
+            else
+            {
+                score = (int)stream.ReceiveNext();
+                //ballStartPos = (Vector3)stream.ReceiveNext();
+                //Goal = (bool)stream.ReceiveNext();
+                canGoal=(bool)stream.ReceiveNext(); 
+            }
+        }
     }
 }
