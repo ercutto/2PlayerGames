@@ -46,8 +46,9 @@ namespace TwoPlayersGame
         void CalledOnLevelWasLoaded(int level)
         {
             // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
-
-           
+            float randx = Random.Range(0, 3);
+            float randy = Random.Range(0, 3);
+            transform.position = new Vector3(randx, 0, randy);
 
         }
 

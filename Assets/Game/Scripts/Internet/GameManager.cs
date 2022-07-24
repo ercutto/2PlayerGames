@@ -80,7 +80,7 @@ namespace TwoPlayersGame
             if (PhotonNetwork.IsMasterClient)
             {
                 
-                    LoadGameArena();
+                    //LoadGameArena();
                 
                 
             }
@@ -89,19 +89,12 @@ namespace TwoPlayersGame
                 return;
             }
         }
-        public void LoadGameArena()
+        public void LoadGameArena(string GameArenaName)
         {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                return;
-            }
-            else
-            {
-                PhotonNetwork.LoadLevel("Game");
-
-            }
+            if (!PhotonNetwork.IsMasterClient) return; else PhotonNetwork.LoadLevel(GameArenaName);
+            
         }
-
+       
     }
 }
 
