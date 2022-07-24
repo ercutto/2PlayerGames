@@ -70,6 +70,7 @@ namespace TwoPlayersGame
             if (PhotonNetwork.IsMasterClient)
             {
                 Debug.LogFormat("<color=orange>GameManager: </color> <color=aqua>OnPlayerEneteredRoom IsMAsterClient {0}</color>", PhotonNetwork.IsMasterClient);
+               
                 LoadArena();
                
             }
