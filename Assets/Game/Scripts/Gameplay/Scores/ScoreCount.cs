@@ -15,6 +15,9 @@ namespace TwoPlayersGame
         public bool Goal;
         public bool canGoal;
         private float count;
+        public Color newColor;
+        public Color newColorTwo;
+        public GameObject[] ColorsToChange;
         
 
         // Start is called before the first frame update
@@ -25,7 +28,23 @@ namespace TwoPlayersGame
             score = 0;
             photonView = GetComponent<PhotonView>();
             ballStartPos = new Vector3(0, 0.5f, 0);
-            
+            if (PhotonNetwork.IsMasterClient)
+            {
+         
+                foreach(var item in ColorsToChange)
+                {
+                    item.GetComponent<Renderer>().material.color = newColor;
+                }
+                //ScoreBoard.color = newColor;
+            }
+            else
+            {
+                foreach (GameObject item in ColorsToChange)
+                {
+                    item.GetComponent<Renderer>().material.color = newColorTwo;
+                }
+                //ScoreBoard.color = newColorTwo;
+            }
         }
 
         // Update is called once per frame

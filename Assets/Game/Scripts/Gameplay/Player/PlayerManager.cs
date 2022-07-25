@@ -7,17 +7,20 @@ namespace TwoPlayersGame
     public class PlayerManager : MonoBehaviourPunCallbacks
     {
         public static GameObject localPlayerInstance;
+        public  Color myColor;
         // Start is called before the first frame update
         public void Awake()
         {
             if (photonView.IsMine)
             {
                 PlayerManager.localPlayerInstance = this.gameObject;
+                gameObject.GetComponentInChildren<Renderer>().material.color = myColor;
             }
             DontDestroyOnLoad(this.gameObject);
         }
         void Start()
         {
+           
 #if UNITY_5_4_OR_NEWER
             // Unity 5.4 has a new scene management. register a method to call CalledOnLevelWasLoaded.
             UnityEngine.SceneManagement.SceneManager.sceneLoaded += OnSceneLoaded;
@@ -27,7 +30,7 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-
+            
         }
         
 #if !UNITY_5_4_OR_NEWER

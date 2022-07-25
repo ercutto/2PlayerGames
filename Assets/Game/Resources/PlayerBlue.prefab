@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 2254645555636739196}
   - component: {fileID: 2122103004}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerBlue
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a6dba6d32c8f46a60e4e4904b9295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myColor: {r: 0, g: 0.990566, b: 0.95367163, a: 0}
 --- !u!114 &2611653871674588715
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,7 +25,8 @@ namespace TwoPlayersGame
       
         public void Connect()
         {
-            playButtonCanvas.gameObject.SetActive(false);
+            if (playButtonCanvas!=null) { playButtonCanvas.gameObject.SetActive(false); }
+            
             if (PhotonNetwork.IsConnected)
             {
                 PhotonNetwork.JoinRandomRoom();
