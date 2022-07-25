@@ -14,6 +14,7 @@ namespace TwoPlayersGame
         [Tooltip("For Player prefab")]
         public static GameManager gameManagerInstance;
         public GameObject playerPrefab;
+        
        
         public float xPos, yPos;
         // Start is called before the first frame update
@@ -60,7 +61,6 @@ namespace TwoPlayersGame
         {
             if (!PhotonNetwork.IsMasterClient)
             {
-                
                 Debug.LogError("<color=orange> GameManager : </color> You cannot load a level unless you are a master client!");
             }
             Debug.LogFormat("<color=orange>GameManager : </color><color=green>loading Level: {0}</color>" , PhotonNetwork.CurrentRoom.PlayerCount);
@@ -82,16 +82,15 @@ namespace TwoPlayersGame
         public override void OnJoinedRoom()
         {
             if (PhotonNetwork.IsMasterClient)
-            {
-               
-                    //LoadGameArena();
-                
-                
+            {  
+                //LoadGameArena();
+
             }
             else
             {
                 return;
             }
+            
         }
         public void LoadGameArena(string GameArenaName)
         {

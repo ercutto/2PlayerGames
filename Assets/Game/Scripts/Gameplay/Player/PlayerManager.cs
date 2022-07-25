@@ -8,6 +8,7 @@ namespace TwoPlayersGame
     {
         public static GameObject localPlayerInstance;
         public  Color myColor;
+        public int FirstOrSecond;
         // Start is called before the first frame update
         public void Awake()
         {

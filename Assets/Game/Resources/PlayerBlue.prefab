@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2611653871287958962}
   m_Layer: 0
   m_Name: Cylinder
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 2611653871674588714}
   - component: {fileID: 2254645555636739196}
   - component: {fileID: 2122103004}
+  - component: {fileID: 2362877693057072428}
   m_Layer: 0
   m_Name: PlayerBlue
   m_TagString: Player
@@ -243,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myColor: {r: 0, g: 0.990566, b: 0.95367163, a: 0}
+  FirstOrSecond: 0
 --- !u!114 &2611653871674588715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,3 +312,19 @@ CapsuleCollider:
   m_Height: 2.1932058
   m_Direction: 1
   m_Center: {x: 0, y: 1.0852511, z: 0}
+--- !u!114 &2362877693057072428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611653871674588710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cc658a59c1fc484da604a9c77a07a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueScore: {fileID: 0}
+  blueText: {fileID: 0}
+  RedScore: {fileID: 0}
+  redText: {fileID: 0}
