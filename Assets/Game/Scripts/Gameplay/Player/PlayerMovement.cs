@@ -6,13 +6,14 @@ using Photon.Pun;
 
 namespace TwoPlayersGame
 {
-    public class PlayerMovement : MonoBehaviourPun
+    public class PlayerMovement : MonoBehaviourPun     
     {
         
         public float speed = 10f;
-        public float turnSpeed = 20f;
+        private float turnSpeed = 0.1f;
         PhotonView pV;
         private Rigidbody rb;
+        public GameObject PlayerGraphics;
         // Start is called before the first frame update
   
         private void Start()
@@ -46,20 +47,26 @@ namespace TwoPlayersGame
         {
             float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            //transform.Translate(horizontal, 0.0f, vertical);
-            rb.AddForce(horizontal, 0, vertical);
+            
+            rb.AddForce(horizontal, 0, vertical,ForceMode.Force);
+            Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
+            if(movement!=Vector3.zero)
+            PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
         }
         void Game2()
         {
             float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             //float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             //transform.Translate(horizontal, 0.0f, vertical);
-            rb.AddForce(horizontal, 0, 0);
+            rb.AddForce(horizontal, 0, 0,ForceMode.Force);
+            
         }
         void WaitingRoom()
         {
 
         }
+
+       
     }
 }
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2611653871287958988}
   - component: {fileID: 2611653871287958961}
   - component: {fileID: 2611653871287958962}
+  - component: {fileID: 9196079577342798600}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -82,6 +83,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9196079577342798600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2611653871287958989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &2611653871533850466
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +209,6 @@ GameObject:
   - component: {fileID: 2611653871674588714}
   - component: {fileID: 2254645555636739196}
   - component: {fileID: 2122103004}
-  - component: {fileID: 2362877693057072428}
   m_Layer: 0
   m_Name: PlayerBlue
   m_TagString: Player
@@ -257,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24ba60d680fdf504a93c53d0f3164e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5000
-  turnSpeed: 300
+  speed: 8000
+  PlayerGraphics: {fileID: 2611653871287958989}
 --- !u!114 &2611653871674588714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,6 +295,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2254645555636739196}
+  - {fileID: 9196079577342798600}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -312,19 +329,3 @@ CapsuleCollider:
   m_Height: 2.1932058
   m_Direction: 1
   m_Center: {x: 0, y: 1.0852511, z: 0}
---- !u!114 &2362877693057072428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2611653871674588710}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8cc658a59c1fc484da604a9c77a07a97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blueScore: {fileID: 0}
-  blueText: {fileID: 0}
-  RedScore: {fileID: 0}
-  redText: {fileID: 0}
