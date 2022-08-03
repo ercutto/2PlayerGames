@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBoard: {fileID: 1438181646}
+  WinMessage: {fileID: 7078066375724828673}
   ballStartPos: {x: 0, y: 0, z: 0}
   Goal: 0
   canGoal: 0
@@ -262,6 +263,9 @@ MonoBehaviour:
   - {fileID: 1805871068}
   - {fileID: 1805871067}
   - {fileID: 1805871071}
+  MasterPlayer: {fileID: 0}
+  GuestPlayer: {fileID: 0}
+  Side: 1
 --- !u!54 &311611783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1066,6 +1070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBoard: {fileID: 1792538499}
+  WinMessage: {fileID: 7078066375724828673}
   ballStartPos: {x: 0, y: 0, z: 0}
   Goal: 0
   canGoal: 0
@@ -1075,6 +1080,9 @@ MonoBehaviour:
   - {fileID: 2048951909}
   - {fileID: 2048951908}
   - {fileID: 2048951912}
+  MasterPlayer: {fileID: 0}
+  GuestPlayer: {fileID: 0}
+  Side: 2
 --- !u!54 &1504900297
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1836,3 +1844,14 @@ PrefabInstance:
       objectReference: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a471b44925136a439608a47c0058119, type: 3}
+--- !u!114 &7078066375724828673 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3130425134687169511, guid: 9a471b44925136a439608a47c0058119, type: 3}
+  m_PrefabInstance: {fileID: 7078066375724828672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

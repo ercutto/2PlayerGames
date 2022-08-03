@@ -465,8 +465,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 514294326}
+  ObservedComponents: []
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1020,6 +1019,7 @@ MonoBehaviour:
   blueText: {fileID: 393770345}
   RedScore: {fileID: 1891793619}
   redText: {fileID: 1646183270}
+  WinMessage: {fileID: 1891793622}
 --- !u!114 &1725650628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,8 +1038,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 1725650627}
+  ObservedComponents: []
   sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1050,6 +1049,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1725650626}
     m_Modifications:
+    - target: {fileID: 5047407012618766864, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7078066376030100413, guid: 9a471b44925136a439608a47c0058119, type: 3}
       propertyPath: m_Name
       value: Score
@@ -1207,6 +1210,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7078066376030100417, guid: 9a471b44925136a439608a47c0058119, type: 3}
   m_PrefabInstance: {fileID: 1891793618}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1891793622 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3130425134687169511, guid: 9a471b44925136a439608a47c0058119, type: 3}
+  m_PrefabInstance: {fileID: 1891793618}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2055164917
 PrefabInstance:
   m_ObjectHideFlags: 0

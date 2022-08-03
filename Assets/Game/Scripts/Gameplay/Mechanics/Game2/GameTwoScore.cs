@@ -13,6 +13,9 @@ namespace TwoPlayersGame
         public Text RedScore,redText;
         private string bluePlayerName;
         private string redPlayerName;
+        
+        
+        public Text WinMessage;
         private int score;
         int BScore;
         int RScore;
@@ -21,16 +24,19 @@ namespace TwoPlayersGame
             Pv = GetComponent<PhotonView>();
             BScore = 0;
             RScore = 0;
+            WinMessage.text = "Start";
         }
 
         public void AddScoreBlue(int addscore)
         {
             BScore += addscore;
             blueScore.text = BScore.ToString();
-
+            WinMessage.text = bluePlayerName + "Scores";
             if (BScore > 10)
             {
                 Debug.Log("Winer is ");
+                WinMessage.text = bluePlayerName + "Is winner";
+
             }
         }
         
@@ -38,9 +44,12 @@ namespace TwoPlayersGame
         {
             RScore += addscore;
             RedScore.text = RScore.ToString();
+            WinMessage.text = redPlayerName + "Scores";
             if (RScore > 10)
             {
-                Debug.Log("Winer is Red");
+                
+                Debug.Log("Winer is Red + ");
+                WinMessage.text = redPlayerName + "Is winner";
             }
 
         }
@@ -54,29 +63,7 @@ namespace TwoPlayersGame
             redPlayerName = Red;
             redText.text = redPlayerName;
         }
-       
-        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        //{
-        //    if (stream.IsWriting)
-        //    {
-
-        //        stream.SendNext(BScore);
-        //        stream.SendNext(RScore);
-        //        stream.SendNext(bluePlayerName);
-        //        stream.SendNext(redPlayerName);
-
-
-
-        //    }
-        //    else
-        //    {
-        //        //RScore = (int)stream.ReceiveNext();
-        //        //BScore = (int)stream.ReceiveNext();
-        //        bluePlayerName = (string)stream.ReceiveNext();
-        //        redPlayerName = (string)stream.ReceiveNext();
-
-        //    }
-        //}
+      
 
     }
 
