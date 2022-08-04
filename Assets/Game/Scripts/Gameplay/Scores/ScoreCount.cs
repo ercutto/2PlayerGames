@@ -16,6 +16,9 @@ namespace TwoPlayersGame
         public bool Goal;
         public bool canGoal;
         private float count;
+        private float startTime;
+        private float startTimeCount=5;
+        private bool gameBegins;
         public Color newColor;
         public Color newColorTwo;
         public GameObject[] ColorsToChange;
@@ -23,14 +26,19 @@ namespace TwoPlayersGame
         public GameObject MasterPlayer;
         public GameObject GuestPlayer;
         public int Side;
+        public Button ContinueButton;
+        public string LevelName;
 
 
         // Start is called before the first frame update
         void Start()
         {
+            startTime = startTimeCount;
+            gameBegins = false;
             boxCollider = GetComponent<BoxCollider>();
             Goal = false;
             score = 0;
+            //ScoreReset();
             pView = GetComponent<PhotonView>();
             ballStartPos = new Vector3(0, 0.5f, 0);
             if (PhotonNetwork.IsMasterClient)
@@ -77,6 +85,27 @@ namespace TwoPlayersGame
             {
                 canGoal = false;
             }
+            if (!gameBegins)
+            {
+                return;
+            }
+            else
+            {
+                if (startTime >= 0) {
+                    startTime-=1 * Time.deltaTime;
+                    WinMessage.text = "Will Begin after  Seconds!" + ((int)startTime).ToString();
+                    if (startTime <= 0)
+                    {
+                        WinMessage.text = "";
+                        startTime = startTimeCount;
+                        gameBegins = false;
+
+                    }
+                    
+                }
+                
+              
+            }
             
         }
 
@@ -84,16 +113,10 @@ namespace TwoPlayersGame
         {
             if (other.gameObject.CompareTag("Ball"))
             {
-                //boxCollider.enabled = false;
-               
-                //photonView.RPC("ScoreChange", RpcTarget.All);
                 ScoreChange();
             }
         }
 
-       
-
-        //[PunRPC]
         void ScoreChange()
         {
             if (canGoal == false)
@@ -103,7 +126,7 @@ namespace TwoPlayersGame
             score++;
             ScoreBoard.text = score.ToString();
             count = 0;
-            if (score > 3)
+            if (score > 0)
             {
                 WinMessage.gameObject.SetActive(true);
 
@@ -112,12 +135,16 @@ namespace TwoPlayersGame
                     if (PhotonNetwork.IsMasterClient)
                     {
                         WinMessage.text = MasterPlayer.GetComponent<PhotonView>().Owner.NickName + " You Lose!";
+                        
                     }
                     else
                     {
                         WinMessage.text = GuestPlayer.GetComponent<PhotonView>().Owner.NickName + " You Win!";
                     }
-                }else if (Side == 2)
+
+                   
+                }
+                else if (Side == 2)
                 {
                     if (PhotonNetwork.IsMasterClient)
                     {
@@ -128,31 +155,49 @@ namespace TwoPlayersGame
                         WinMessage.text = GuestPlayer.GetComponent<PhotonView>().Owner.NickName + " You Lose!";
                     }
                 }
-               
-
+                ContinueGame();
             }
             else if(score<3)
             {
-                WinMessage.gameObject.SetActive(false);
+                //WinMessage.gameObject.SetActive(false);
+               
             }
         }
-
+       
+        void ScoreReset()
+        {
+            WinMessage.gameObject.SetActive(true);
+            score = 0;
+            ScoreBoard.text = score.ToString();
+            gameBegins = true;
+        }
+        public void ContinueGame()
+        {
+            
+            Invoke(nameof(ScoreReset),3);
+   
+        }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
             if (stream.IsWriting)
             {
-
+                stream.SendNext(startTime);
                 stream.SendNext(score);
                 //stream.SendNext(ballStartPos);
                 stream.SendNext(canGoal);
-                
+                stream.SendNext(gameBegins);
+                stream.SendNext(ContinueButton.gameObject.activeInHierarchy);
             }
             else
             {
                 score = (int)stream.ReceiveNext();
+                startTime = (float)stream.ReceiveNext();
                 //ballStartPos = (Vector3)stream.ReceiveNext();
                 //Goal = (bool)stream.ReceiveNext();
-                canGoal=(bool)stream.ReceiveNext(); 
+                canGoal =(bool)stream.ReceiveNext();
+                gameBegins =(bool)stream.ReceiveNext();
+
+
             }
         }
     }
