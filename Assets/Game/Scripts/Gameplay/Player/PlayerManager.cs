@@ -8,6 +8,8 @@ namespace TwoPlayersGame
     {
         public static GameObject localPlayerInstance;
         public  Color myColor;
+        private int playerLayer=15;
+        private int ignoreLayer=20;
         public int FirstOrSecond;
         // Start is called before the first frame update
         public void Awake()
@@ -50,10 +52,10 @@ namespace TwoPlayersGame
         void CalledOnLevelWasLoaded(int level)
         {
             // check if we are outside the Arena and if it's the case, spawn around the center of the arena in a safe zone
-            float randx = Random.Range(0, 3);
-            float randy = Random.Range(0, 3);
-            transform.position = new Vector3(randx, 0, randy);
-
+            //float randx = Random.Range(0, 3);
+            //float randy = Random.Range(0, 3);
+            //transform.position = new Vector3(randx, 0, randy);
+            SwitchPosForGame(level);
         }
 
 #if UNITY_5_4_OR_NEWER
@@ -63,8 +65,37 @@ namespace TwoPlayersGame
             base.OnDisable();
             UnityEngine.SceneManagement.SceneManager.sceneLoaded -= OnSceneLoaded;
         }
+        void SwitchPosForGame(int SceneNumber)
+        {
+            switch (SceneNumber)
+            {
+                case 1:
+                    gameObject.layer = playerLayer;
+                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
+                    else PosTransform(-2, 0, 0);
+                    break;
+                case 5:
+                    gameObject.layer = playerLayer;
+                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
+                    else PosTransform(-2, 0, 0);
+                    break;
+                case 6:
+                    gameObject.layer = ignoreLayer;
+                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
+                    else PosTransform(-2, 0, 0);
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        private void PosTransform(float xT, float yT,float zT)
+        {
+            transform.position = new Vector3(xT, yT, zT);
+        }
 #endif
     }
+   
 
 
 

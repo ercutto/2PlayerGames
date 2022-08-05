@@ -9,11 +9,11 @@ namespace TwoPlayersGame
         private PhotonView Pv;
         public int scoreValue = 10;
         private GameTwoScore gameTwoScore;
-
+        private Rigidbody rb;
         // Start is called before the first frame update
         void Start()
         {
-
+            rb = GetComponent<Rigidbody>();
             Pv = GetComponent<PhotonView>();
             gameTwoScore = GameObject.Find("GamesPrivateSystem").GetComponent<GameTwoScore>();
         }
@@ -21,7 +21,7 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-
+            rb.AddForce(transform.forward * Time.deltaTime * 100f);
         }
         private void OnTriggerEnter(Collider other)
         {
