@@ -15,10 +15,14 @@ namespace TwoPlayersGame
         {
             spawnObjectPhotonView = GetComponent<PhotonView>();
             begin = true;
-            if (begin)
+            if (PhotonNetwork.IsMasterClient)
             {
-                StartCoroutine(SpawnCount());
+                if (begin)
+                {
+                    StartCoroutine(SpawnCount());
+                }
             }
+            
         }
 
         // Update is called once per frame
@@ -38,6 +42,7 @@ namespace TwoPlayersGame
         }
         void SpawnObjects(int Pos, float speed)
         {
+            if(PhotonNetwork.IsMasterClient)
             PhotonNetwork.Instantiate(obstacleOrCoin.name, SpawnPos[Pos].transform.position, SpawnPos[Pos].transform.rotation);
         }
     }
