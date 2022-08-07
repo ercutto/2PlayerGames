@@ -5,8 +5,8 @@ using Photon.Pun;
 using UnityEngine.UI;
 namespace TwoPlayersGame
 {
-    
-    public class GameTwoScore : MonoBehaviourPunCallbacks//,IPunObservable
+
+    public class GameTwoScore : MonoBehaviourPunCallbacks, IPunObservable
     {
         private PhotonView Pv;
         public Text blueScore,blueText;
@@ -16,7 +16,7 @@ namespace TwoPlayersGame
         
         
         public Text WinMessage;
-        private int score;
+  
         int BScore;
         int RScore;
         private void Start()
@@ -26,7 +26,7 @@ namespace TwoPlayersGame
             RScore = 0;
             WinMessage.text = "Start";
         }
-
+       
         public void AddScoreBlue(int addscore)
         {
             BScore += addscore;
@@ -39,7 +39,7 @@ namespace TwoPlayersGame
 
             }
         }
-        
+      
         public void AddScoreRed(int addscore)
         {
             RScore += addscore;
@@ -53,17 +53,36 @@ namespace TwoPlayersGame
             }
 
         }
+       
         public void BlueName(string blue)
         {
             bluePlayerName = blue;
             blueText.text = bluePlayerName;
         }
+    
         public void RedName(string Red)
         {
             redPlayerName = Red;
             redText.text = redPlayerName;
         }
-      
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+
+                stream.SendNext(BScore);
+                stream.SendNext(RScore);
+
+
+
+            }
+            else
+            {
+                BScore = (int)stream.ReceiveNext();
+                RScore = (int)stream.ReceiveNext();
+
+            }
+        }
 
     }
 

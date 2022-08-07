@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace TwoPlayersGame
 {
-    public class Coins : MonoBehaviour//IPunObservable
+    public class Coins : MonoBehaviour,IPunObservable
     {
         private PhotonView Pv;
         public int scoreValue = 10;
@@ -25,42 +25,51 @@ namespace TwoPlayersGame
         }
         private void OnTriggerEnter(Collider other)
         {
+
             if (other.gameObject.CompareTag("Player"))
             {
-                if (other.gameObject.GetPhotonView().ViewID == 1001)
+                if (other.gameObject.GetComponent<PlayerManager>().FirstOrSecond == 1)
                 {
                     string PlayerName = other.gameObject.GetPhotonView().Owner.NickName;
+
                     gameTwoScore.BlueName(PlayerName);
-                    gameTwoScore.AddScoreBlue(10);
+                    gameTwoScore.AddScoreBlue(scoreValue);
+                    if (Pv.IsMine) PhotonNetwork.Destroy(gameObject);
 
                 }
-                else if (other.gameObject.GetPhotonView().ViewID == 2001)
+                else if (other.gameObject.GetComponent<PlayerManager>().FirstOrSecond == 2)
                 {
                     string PlayerNameOther = other.gameObject.GetPhotonView().Owner.NickName;
-                   
-                    gameTwoScore.AddScoreRed(10);
+
+                    gameTwoScore.AddScoreRed(scoreValue);
                     gameTwoScore.RedName(PlayerNameOther);
+                    if (Pv.IsMine) PhotonNetwork.Destroy(gameObject);
                 }
                 else { return; }
-            }
-        }
-        
-        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        //{
-        //    if (stream.IsWriting)
-        //    {
-
-        //        stream.SendNext(scoreValue);
-                
                
 
-        //    }
-        //    else
-        //    {
-        //        scoreValue = (int)stream.ReceiveNext();
+            }
             
-        //    }
-        //}
+            
+           
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+
+                stream.SendNext(scoreValue);
+
+
+
+            }
+            else
+            {
+                scoreValue = (int)stream.ReceiveNext();
+
+            }
+        }
     }
    
 }

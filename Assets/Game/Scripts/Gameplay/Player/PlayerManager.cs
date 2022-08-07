@@ -2,22 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
 namespace TwoPlayersGame
 {
-    public class PlayerManager : MonoBehaviourPunCallbacks
+    public class PlayerManager : MonoBehaviourPunCallbacks,IPunObservable
     {
         public static GameObject localPlayerInstance;
         public  Color myColor;
+        public Text Indicator;
         private int playerLayer=15;
         private int ignoreLayer=20;
         public int FirstOrSecond;
+        public GameObject[] myGarphics;
+
         // Start is called before the first frame update
         public void Awake()
         {
             if (photonView.IsMine)
             {
                 PlayerManager.localPlayerInstance = this.gameObject;
-                gameObject.GetComponentInChildren<Renderer>().material.color = myColor;
+               // gameObject.GetComponentInChildren<Renderer>().material.color = myColor;
+                foreach (var item in myGarphics)
+                {
+                    item.GetComponent<Renderer>().material.color = myColor;
+                }
             }
             DontDestroyOnLoad(this.gameObject);
         }
@@ -33,7 +41,15 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-            
+            if (photonView.IsMine && PhotonNetwork.IsMasterClient)
+            {
+                FirstOrSecond = 1;
+                
+            }else if (photonView.IsMine && !PhotonNetwork.IsMasterClient)
+            {
+                FirstOrSecond = 2;
+            }
+            Indicator.text = FirstOrSecond.ToString();
         }
         
 #if !UNITY_5_4_OR_NEWER
@@ -80,9 +96,9 @@ namespace TwoPlayersGame
                     else PosTransform(-2, 0, 0);
                     break;
                 case 6:
-                    gameObject.layer = ignoreLayer;
-                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
-                    else PosTransform(-2, 0, 0);
+
+                    if (PhotonNetwork.IsMasterClient) { PosTransform(2, 0, 0); gameObject.layer = ignoreLayer; }
+                    else { PosTransform(-2, 0, 0); gameObject.layer = ignoreLayer; }
                     break;
                 default:
                     break;
@@ -93,6 +109,21 @@ namespace TwoPlayersGame
         {
             transform.position = new Vector3(xT, yT, zT);
         }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(FirstOrSecond);
+
+            }
+            else
+            {
+                FirstOrSecond = (int)stream.ReceiveNext();
+            }
+        }
+
+
 #endif
     }
    
