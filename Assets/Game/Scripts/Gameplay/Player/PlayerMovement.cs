@@ -55,7 +55,7 @@ namespace TwoPlayersGame
         }
         void Game2()
         {
-            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            float horizontal = Input.GetAxis("Horizontal") * speed* 2 * Time.deltaTime;
             //float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             //transform.Translate(horizontal, 0.0f, vertical);
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);

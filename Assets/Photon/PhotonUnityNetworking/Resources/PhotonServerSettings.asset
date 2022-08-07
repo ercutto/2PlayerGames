@@ -46,6 +46,11 @@ MonoBehaviour:
   - AddScoreBlue
   - AddScoreRed
   - ScoreReset
+  - DispLay
+  - Display
+  - BlueName
+  - RedName
+  - DisplayValues
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

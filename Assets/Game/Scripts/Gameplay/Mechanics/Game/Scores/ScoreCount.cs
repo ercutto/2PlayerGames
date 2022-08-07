@@ -61,11 +61,11 @@ namespace TwoPlayersGame
             PlayerOnGame= GameObject.FindGameObjectsWithTag("Player");
             foreach (var curPlayer in PlayerOnGame)
             {
-                if (curPlayer.GetComponent<PhotonView>().ViewID == 1001)
+                if (curPlayer.GetComponent<PlayerManager>().FirstOrSecond==1)
                 {
                     MasterPlayer = curPlayer;
                 }
-                if (curPlayer.GetComponent<PhotonView>().ViewID == 2001)
+                if (curPlayer.GetComponent<PlayerManager>().FirstOrSecond == 2)
                 {
                     GuestPlayer = curPlayer;
                 }
