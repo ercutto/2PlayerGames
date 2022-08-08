@@ -14,6 +14,7 @@ namespace TwoPlayersGame
         [Tooltip("For Player prefab")]
         public static GameManager gameManagerInstance;
         public GameObject playerPrefab;
+        public GameObject[] buttons;
         
        
         public float xPos, yPos;
@@ -82,12 +83,20 @@ namespace TwoPlayersGame
         public override void OnJoinedRoom()
         {
             if (PhotonNetwork.IsMasterClient)
-            {  
+            {
                 //LoadGameArena();
-
+                foreach (var item in buttons)
+                {
+                    item.SetActive(true);
+                }
             }
             else
             {
+                foreach (var item in buttons)
+                {
+                    item.SetActive(false);
+                }
+
                 return;
             }
             

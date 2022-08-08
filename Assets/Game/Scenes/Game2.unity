@@ -2145,6 +2145,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 5.462036
       objectReference: {fileID: 0}
+    - target: {fileID: 3415525229278899134, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
+      propertyPath: buttons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415525229278899134, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
+      propertyPath: buttons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2055164918}
     - target: {fileID: 3415525229398636061, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -1.8669434
@@ -2219,3 +2227,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
+--- !u!1 &2055164918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3415525229153319114, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
+  m_PrefabInstance: {fileID: 2055164917}
+  m_PrefabAsset: {fileID: 0}

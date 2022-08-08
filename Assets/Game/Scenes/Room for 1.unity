@@ -636,6 +636,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 2611653871674588710, guid: 7df3249d3fe63fe478fd6d513f2f68a3, type: 3}
+  buttons:
+  - {fileID: 1997871990}
+  - {fileID: 496729185}
   xPos: 4
   yPos: 3
 --- !u!4 &1254173807

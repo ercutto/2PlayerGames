@@ -40,14 +40,15 @@ namespace TwoPlayersGame {
             score += addscore;
             scoreText.text = score.ToString();
             //WinMessage.text = playerNick + " Scores";
-            //if (score > 10)
-            //{
+            if (score > 100)
+            {
 
-            //    Debug.Log("Winer is Red + ");
-            //    WinMessage.text = playerNick + " Is winner :)";
-            //}
+                Debug.Log("Winer is Red + ");
+                WinMessage.text = playerNick + " Is winner :)";
+                
+            }
 
-                PView.RPC("DisplayValues", RpcTarget.All, score);
+            PView.RPC("DisplayValues", RpcTarget.All, score);
             
         }
         [PunRPC]
