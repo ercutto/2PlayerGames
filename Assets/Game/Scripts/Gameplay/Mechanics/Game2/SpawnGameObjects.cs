@@ -10,7 +10,6 @@ namespace TwoPlayersGame
         public GameObject obstacleOrCoin;
         public GameObject[] SpawnPos;
         private PhotonView spawnObjectPhotonView;
-      
         // Start is called before the first frame update
         void Start()
         {
@@ -49,6 +48,7 @@ namespace TwoPlayersGame
             if(PhotonNetwork.IsMasterClient)
             PhotonNetwork.Instantiate(obstacleOrCoin.name, SpawnPos[Pos].transform.position, SpawnPos[Pos].transform.rotation);
         }
+       
     }
 }
 

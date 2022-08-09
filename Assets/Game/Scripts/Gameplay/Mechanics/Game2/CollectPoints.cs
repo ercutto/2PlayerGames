@@ -13,11 +13,16 @@ namespace TwoPlayersGame {
         public Text WinMessage;
         public int OnGameSide;
         private PhotonView PView;
+        //For restart
+        public SpawnGameObjects spawnGameObjects;
+        public bool restart;
+        
         // Start is called before the first frame update
         void Start()
         {
             PView = GetComponent<PhotonView>();
             Players = GameObject.FindGameObjectsWithTag("Player");
+            restart = false;
             foreach (var item in Players)
             {
                int pNumber= item.GetComponent<PlayerManager>().FirstOrSecond;
@@ -27,6 +32,7 @@ namespace TwoPlayersGame {
                    
                 }
             }
+           
 
         }
 
@@ -37,19 +43,22 @@ namespace TwoPlayersGame {
         }
         public void AddScore(int addscore)
         {
+            if (spawnGameObjects.begin) {
+                score += addscore;
+                scoreText.text = score.ToString();
+                //WinMessage.text = playerNick + " Scores";
+                if (score > 100)
+                {
 
-            score += addscore;
-            scoreText.text = score.ToString();
-            //WinMessage.text = playerNick + " Scores";
-            if (score > 100)
-            {
+                    Debug.Log("Winer is Red + ");
+                    spawnGameObjects.begin = false;
+                    PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
+                    
+                }
 
-                Debug.Log("Winer is Red + ");
-               
-                PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
+                PView.RPC("DisplayValues", RpcTarget.All, score);
             }
-
-            PView.RPC("DisplayValues", RpcTarget.All, score);
+            
             
         }
         [PunRPC]
@@ -62,6 +71,8 @@ namespace TwoPlayersGame {
         void WinnerMessage(string playername)
         {
             WinMessage.text = playername + ": "+OnGameSide+" Is winner :)";
+            
+
         }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -78,6 +89,7 @@ namespace TwoPlayersGame {
                 score = (int)stream.ReceiveNext();
             }
         }
+       
     }
 }
 
