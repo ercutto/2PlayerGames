@@ -24,6 +24,7 @@ namespace TwoPlayersGame {
                 if (pNumber==OnGameSide)
                 {
                     playerNick= item.GetComponent<PhotonView>().Owner.NickName;
+                   
                 }
             }
 
@@ -44,8 +45,8 @@ namespace TwoPlayersGame {
             {
 
                 Debug.Log("Winer is Red + ");
-                WinMessage.text = playerNick + " Is winner :)";
-                
+               
+                PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
             }
 
             PView.RPC("DisplayValues", RpcTarget.All, score);
@@ -56,6 +57,11 @@ namespace TwoPlayersGame {
         {
             score = scores;
             scoreText.text = score.ToString();
+        }
+        [PunRPC]
+        void WinnerMessage(string playername)
+        {
+            WinMessage.text = playername + ": "+OnGameSide+" Is winner :)";
         }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {

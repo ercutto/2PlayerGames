@@ -10,18 +10,22 @@ namespace TwoPlayersGame
         public GameObject obstacleOrCoin;
         public GameObject[] SpawnPos;
         private PhotonView spawnObjectPhotonView;
+      
         // Start is called before the first frame update
         void Start()
         {
             spawnObjectPhotonView = GetComponent<PhotonView>();
             begin = true;
+
             if (PhotonNetwork.IsMasterClient)
             {
                 if (begin)
-                {
-                    StartCoroutine(SpawnCount());
-                }
+                    {
+                        StartCoroutine(SpawnCount());
+                    }
             }
+      
+            
             
         }
 

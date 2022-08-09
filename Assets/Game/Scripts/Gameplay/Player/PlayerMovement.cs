@@ -26,11 +26,11 @@ namespace TwoPlayersGame
         void Update()
         {
             if (pV.IsMine)
-                if (SceneManagerHelper.ActiveSceneName == "Game")
+                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3")
                 {
                     Game1();
                 }
-                else if(SceneManagerHelper.ActiveSceneName == "Game2")
+                else if(SceneManagerHelper.ActiveSceneName == "Game2" )
                 {
                     Game2();
                 }

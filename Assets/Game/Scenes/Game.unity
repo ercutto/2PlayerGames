@@ -1634,6 +1634,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5047407012618766864, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.3250122
+      objectReference: {fileID: 0}
     - target: {fileID: 6207055605730742568, guid: 9a471b44925136a439608a47c0058119, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -1773,6 +1777,34 @@ PrefabInstance:
     - target: {fileID: 7078066376030100417, guid: 9a471b44925136a439608a47c0058119, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.69329846
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.6673465
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.9100037
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 2.0400085
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.9600067
+      objectReference: {fileID: 0}
+    - target: {fileID: 7078066376435294477, guid: 9a471b44925136a439608a47c0058119, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.019989
       objectReference: {fileID: 0}
     - target: {fileID: 7078066376435294478, guid: 9a471b44925136a439608a47c0058119, type: 3}
       propertyPath: m_Color.b
