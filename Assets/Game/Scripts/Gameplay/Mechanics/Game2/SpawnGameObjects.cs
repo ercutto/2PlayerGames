@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 namespace TwoPlayersGame
 {
     public class SpawnGameObjects : MonoBehaviourPun
@@ -10,6 +11,10 @@ namespace TwoPlayersGame
         public GameObject obstacleOrCoin;
         public GameObject[] SpawnPos;
         private PhotonView spawnObjectPhotonView;
+        //for restart
+        public GameObject restartButton;
+        public GameObject scoreBoardBlue,scoreBoardRed;
+ 
         // Start is called before the first frame update
         void Start()
         {
@@ -22,16 +27,19 @@ namespace TwoPlayersGame
                     {
                         StartCoroutine(SpawnCount());
                     }
-            }
+
       
-            
-            
+                
+            }
+
+            restartButton.SetActive(false);
+
         }
 
-        // Update is called once per frame
+
         void Update()
         {
-
+   
         }
         IEnumerator SpawnCount()
         {
@@ -47,6 +55,12 @@ namespace TwoPlayersGame
         {
             if(PhotonNetwork.IsMasterClient)
             PhotonNetwork.Instantiate(obstacleOrCoin.name, SpawnPos[Pos].transform.position, SpawnPos[Pos].transform.rotation);
+        }
+        public void RestartGame()
+        {
+      
+            begin = true;
+            StartCoroutine(SpawnCount());
         }
        
     }

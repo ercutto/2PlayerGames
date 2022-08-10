@@ -16,6 +16,7 @@ namespace TwoPlayersGame {
         //For restart
         public SpawnGameObjects spawnGameObjects;
         public bool restart;
+        public GameObject OthersScoreBoard;
         
         // Start is called before the first frame update
         void Start()
@@ -47,19 +48,38 @@ namespace TwoPlayersGame {
                 score += addscore;
                 scoreText.text = score.ToString();
                 //WinMessage.text = playerNick + " Scores";
-                if (score > 100)
+                if (score >= 100)
                 {
 
                     Debug.Log("Winer is Red + ");
                     spawnGameObjects.begin = false;
                     PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
-                    
+                    restart = true;
+
+                    WakeResetMethod();
+                    OthersScoreBoard.GetComponent<CollectPoints>().WakeResetMethod();
+                }
+                else
+                {
+                    restart = false;
                 }
 
                 PView.RPC("DisplayValues", RpcTarget.All, score);
+                
             }
             
             
+        }
+        public void WakeResetMethod()
+        {
+            Invoke(nameof(ResetScore), 2);
+        }
+        void ResetScore()
+        {
+            score -= score;
+            PView.RPC("DisplayValues", RpcTarget.All, score);
+            restart = true;
+            spawnGameObjects.restartButton.SetActive(true);
         }
         [PunRPC]
         void DisplayValues(int scores)
