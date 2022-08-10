@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 namespace TwoPlayersGame
 {
     public class Coins : MonoBehaviour//,IPunObservable
@@ -10,9 +11,12 @@ namespace TwoPlayersGame
         public int scoreValue = 10;
         private GameTwoScore gameTwoScore;
         private Rigidbody rb;
+        public bool rotate;
+        public byte sceneName;
         // Start is called before the first frame update
         void Start()
         {
+            
             rb = GetComponent<Rigidbody>();
             Pv = GetComponent<PhotonView>();
             //gameTwoScore = GameObject.Find("GamesPrivateSystem").GetComponent<GameTwoScore>();
@@ -21,7 +25,12 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-            rb.AddForce(100f * Time.deltaTime * transform.forward);
+            if(!rotate)rb.AddForce(100f * Time.deltaTime * transform.forward);
+
+            if (SceneManagerHelper.ActiveSceneBuildIndex!=sceneName)
+            {
+                Destroy(gameObject);
+            }
         }
         private void OnTriggerEnter(Collider other)
         {
@@ -33,7 +42,7 @@ namespace TwoPlayersGame
                     if (other.gameObject.GetComponent<PlayerManager>().FirstOrSecond == 1)
                     {
                         GameObject.Find("BlueScore").GetComponent<CollectPoints>().AddScore(scoreValue);
-                        if (Pv.IsMine) PhotonNetwork.Destroy(gameObject);
+                        if (Pv.IsMine&&!rotate) PhotonNetwork.Destroy(gameObject);
                         //Destroy(gameObject);
                         //string PlayerName = other.gameObject.GetPhotonView().Owner.NickName;
 
@@ -45,7 +54,7 @@ namespace TwoPlayersGame
                     else if (other.gameObject.GetComponent<PlayerManager>().FirstOrSecond == 2)
                     {
                         GameObject.Find("RedScore").GetComponent<CollectPoints>().AddScore(scoreValue);
-                        if (Pv.IsMine) PhotonNetwork.Destroy(gameObject);
+                        if (Pv.IsMine&&!rotate) PhotonNetwork.Destroy(gameObject);
                         //string PlayerNameOther = other.gameObject.GetPhotonView().Owner.NickName;
                         //Destroy(gameObject);
                         //gameTwoScore.AddScoreRed(scoreValue);

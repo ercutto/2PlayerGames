@@ -46,7 +46,7 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-            
+            Activate();
         }
         public override void OnLeftRoom()
         {
@@ -76,11 +76,25 @@ namespace TwoPlayersGame
                 Debug.LogFormat("<color=orange>GameManager: </color> <color=aqua>OnPlayerEneteredRoom IsMAsterClient {0}</color>", PhotonNetwork.IsMasterClient);
                 
                 LoadArena();
-               
+                
+            }
+            else
+            {
+                return;
             }
             
         }
         public override void OnJoinedRoom()
+        {
+
+            Activate();
+        }
+        public void LoadGameArena(string GameArenaName)
+        {
+            if (!PhotonNetwork.IsMasterClient) return; else PhotonNetwork.LoadLevel(GameArenaName);
+            
+        }
+        void Activate()
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -99,12 +113,6 @@ namespace TwoPlayersGame
 
                 return;
             }
-            
-        }
-        public void LoadGameArena(string GameArenaName)
-        {
-            if (!PhotonNetwork.IsMasterClient) return; else PhotonNetwork.LoadLevel(GameArenaName);
-            
         }
        
     }

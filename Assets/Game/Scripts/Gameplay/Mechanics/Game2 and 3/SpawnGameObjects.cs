@@ -12,9 +12,8 @@ namespace TwoPlayersGame
         public GameObject[] SpawnPos;
         private PhotonView spawnObjectPhotonView;
         //for restart
-        public GameObject restartButton;
+        public GameObject restartButton,leaveGameModbutton;
         public GameObject scoreBoardBlue,scoreBoardRed;
- 
         // Start is called before the first frame update
         void Start()
         {
@@ -28,8 +27,12 @@ namespace TwoPlayersGame
                         StartCoroutine(SpawnCount());
                     }
 
-      
-                
+                leaveGameModbutton.SetActive(true);
+
+            }
+            else
+            {
+                leaveGameModbutton.SetActive(false);
             }
 
             restartButton.SetActive(false);
@@ -39,7 +42,7 @@ namespace TwoPlayersGame
 
         void Update()
         {
-   
+           
         }
         IEnumerator SpawnCount()
         {
@@ -54,7 +57,7 @@ namespace TwoPlayersGame
         void SpawnObjects(int Pos, float speed)
         {
             if(PhotonNetwork.IsMasterClient)
-            PhotonNetwork.Instantiate(obstacleOrCoin.name, SpawnPos[Pos].transform.position, SpawnPos[Pos].transform.rotation);
+             PhotonNetwork.Instantiate(obstacleOrCoin.name, SpawnPos[Pos].transform.position, SpawnPos[Pos].transform.rotation);
         }
         public void RestartGame()
         {

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4253940247732501695}
   - component: {fileID: 4887407262511018731}
   m_Layer: 0
-  m_Name: Coin
+  m_Name: Coin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 10
   rotate: 0
-  sceneName: 7
+  sceneName: 8
 --- !u!54 &4253940247732501695
 Rigidbody:
   m_ObjectHideFlags: 0
