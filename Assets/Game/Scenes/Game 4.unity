@@ -1015,7 +1015,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 10
   rotate: 1
-  sceneName: 0
+  sceneName: 8
 --- !u!65 &1025637305
 BoxCollider:
   m_ObjectHideFlags: 0

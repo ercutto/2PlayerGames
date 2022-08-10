@@ -437,6 +437,7 @@ MonoBehaviour:
   - {fileID: 1208129979}
   - {fileID: 1888118119}
   restartButton: {fileID: 1103252965}
+  leaveGameModbutton: {fileID: 2055164918}
   scoreBoardBlue: {fileID: 1891793624}
   scoreBoardRed: {fileID: 1891793623}
 --- !u!4 &353773506

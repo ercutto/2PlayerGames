@@ -28,22 +28,20 @@ namespace TwoPlayersGame
             if (pV.IsMine)
                 if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3"|| SceneManagerHelper.ActiveSceneName == "Game 4")
                 {
-                    Game1();
+                    GameOne();
                 }
                 else if(SceneManagerHelper.ActiveSceneName == "Game2" )
                 {
-                    Game2();
+                    GameTwo();
                 }
                 else
                 {
                     WaitingRoom();
                 }
-            
-           
-
 
         }
-        void Game1()
+        #region Movements
+        void GameOne()
         {
             float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -53,7 +51,7 @@ namespace TwoPlayersGame
             if(movement!=Vector3.zero)
             PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
         }
-        void Game2()
+        void GameTwo()
         {
             float horizontal = Input.GetAxis("Horizontal") * speed* 2 * Time.deltaTime;
             //float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
@@ -65,8 +63,8 @@ namespace TwoPlayersGame
         {
 
         }
+        #endregion
 
-       
     }
 }
 
