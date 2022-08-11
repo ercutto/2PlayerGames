@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Boundry
+  - Assemble
   layers:
   - Default
   - TransparentFX

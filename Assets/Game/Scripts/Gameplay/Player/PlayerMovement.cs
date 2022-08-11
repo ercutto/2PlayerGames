@@ -10,7 +10,7 @@ namespace TwoPlayersGame
     {
         
         public float speed = 10f;
-        private float turnSpeed = 0.1f;
+        public float turnSpeed = 0.1f;
         PhotonView pV;
         private Rigidbody rb;
         public GameObject PlayerGraphics;
@@ -26,7 +26,8 @@ namespace TwoPlayersGame
         void Update()
         {
             if (pV.IsMine)
-                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3"|| SceneManagerHelper.ActiveSceneName == "Game 4")
+                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3"||
+                    SceneManagerHelper.ActiveSceneName == "Game 4"||SceneManagerHelper.ActiveSceneName == "Game 5")
                 {
                     GameOne();
                 }
