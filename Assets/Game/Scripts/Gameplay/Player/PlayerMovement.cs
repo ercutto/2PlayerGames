@@ -14,6 +14,7 @@ namespace TwoPlayersGame
         PhotonView pV;
         private Rigidbody rb;
         public GameObject PlayerGraphics;
+        public GameObject hand;
         // Start is called before the first frame update
   
         private void Start()
@@ -50,7 +51,10 @@ namespace TwoPlayersGame
             rb.AddForce(horizontal, 0, vertical,ForceMode.Force);
             Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
             if(movement!=Vector3.zero)
-            PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
+                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);
+            hand.transform.RotateAround(transform.position,new Vector3(0, 2, 0), 0);
+            //PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
+
         }
         void GameTwo()
         {

@@ -7,6 +7,8 @@ TagManager:
   - Ball
   - Boundry
   - Assemble
+  - TurnObject
+  - EndObject
   layers:
   - Default
   - TransparentFX

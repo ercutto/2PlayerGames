@@ -41,15 +41,17 @@ namespace TwoPlayersGame
                     {
 
                         //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 3);
-                        transform.position = player.transform.GetChild(0).transform.position;
-                        transform.rotation = player.transform.GetChild(0).transform.rotation;
+                        transform.SetPositionAndRotation(player.transform.GetChild(1).transform.position, player.transform.GetChild(1).transform.rotation);
+                        //transform.position = player.transform.GetChild(1).transform.position;
+                        //transform.rotation = player.transform.GetChild(1).transform.rotation;
                         transform.localScale = new Vector3(1f, 1f, 1f);
 
                     }
                     else if (assembled)
                     {
-                        transform.position = AssemblePlace.position;
-                        transform.rotation = AssemblePlace.rotation;
+                        //transform.position = AssemblePlace.position;
+                        //transform.rotation = AssemblePlace.rotation;
+                        transform.SetPositionAndRotation(AssemblePlace.position, AssemblePlace.rotation);
                         transform.localScale = new Vector3(3f, 3f, 3f);
                     }
                     else
@@ -65,6 +67,11 @@ namespace TwoPlayersGame
             if(PhotonNetwork.IsMasterClient)
                 if (Pview.IsMine)
                 {
+                    if (other.gameObject.CompareTag("EndObject"))
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+
                     if (!onHand && !assembled)
                     {
                         if (other.gameObject.CompareTag("Player"))
@@ -92,10 +99,9 @@ namespace TwoPlayersGame
                         AssemblePlace = assemble.transform.GetChild(objectCount).GetComponent<Transform>().transform;
                         //OnOwnershipRequest(assemble);
                     }
-                    else
-                    {
-                        return;
-                    }
+                   
+
+                    
                 }
                 else
                 {
