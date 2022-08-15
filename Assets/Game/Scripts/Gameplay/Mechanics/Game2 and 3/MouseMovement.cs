@@ -20,16 +20,17 @@ namespace TwoPlayersGame
         {
 
      
-                Pv = GetComponent<PhotonView>();
-                if (Pv.IsMine)
-                {
+            Pv = GetComponent<PhotonView>();
+           
+            //if (Pv.IsMine)
+            //    {
                     rb = GetComponent<Rigidbody>();
                     animator = transform.GetChild(0).GetChild(0).GetComponent<Animator>();
                     ratOnIdle = true;
                     float rand = Random.Range(1, 3);
                     InvokeRepeating(nameof(BoolChange), rand, rand);
 
-                }
+              //  }
             
             
             
@@ -38,26 +39,25 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
- 
-                if (Pv.IsMine)
+
+            //if (Pv.IsMine)
+            //{
+        
+                if (!rotate)
                 {
-                    if (!rotate)
-                    {
                  
-                        
-                        Move();
-                    }
-
-
-
-
-
-
-                    if (SceneManagerHelper.ActiveSceneBuildIndex != sceneName)
-                    {
-                        Destroy(gameObject);
-                    }
+                    Move();
+                    
+                    
                 }
+                else { return; }
+
+
+                if (SceneManagerHelper.ActiveSceneBuildIndex != sceneName)
+                {
+                    Destroy(gameObject);
+                }
+           // }
             
 
             
@@ -71,9 +71,58 @@ namespace TwoPlayersGame
             }
             else if(ratOnIdle){ ratOnIdle = false; }
         }
+        void Move()
+        {
+            if (ratOnIdle)
+            {
+                AnimRun(false);
+                AnimIdle(true);
+                MovementAction(-30f);
+            }
+            else if (!ratOnIdle)
+            {
+                AnimRun(true);
+                AnimIdle(false);
+                MovementAction(700f);
+
+            }
+
+        }
+       
+        void MovementAction(float speed)
+        {
+            rb.AddForce(speed * Time.deltaTime * transform.forward);
+        }
+        void AnimRun(bool moves)
+        {
+            moving = moves;
+            if (moving)
+            {
+                animator.SetBool("Run", true);
+            }
+            else
+            {
+                animator.SetBool("Run", false);
+            }
+
+        }
+        void AnimIdle(bool stand)
+        {
+            standing = stand;
+            if (standing)
+            {
+                animator.SetBool("Idle", true);
+            }
+            else
+            {
+                animator.SetBool("Idle", false);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-
+            if (PhotonNetwork.IsMasterClient)
+            {
                 if (other.gameObject.CompareTag("Player"))
                 {
 
@@ -101,64 +150,13 @@ namespace TwoPlayersGame
                     }
                     else { return; }
                 }
-
-                else if (other.gameObject.CompareTag("Boundry")) Destroy(gameObject);
-
-
-
-            
-           
-
-
-
-
+                else if (other.gameObject.CompareTag("Boundry")) PhotonNetwork.Destroy(gameObject);
+            }
+            else { return; }
 
         }
     
-        void Move()
-        {
-            if (ratOnIdle)
-            {
-                standing = true;
-                moving = false;
-                rb.AddForce(-30f * Time.deltaTime * transform.forward);
-               
-            }
-            else if (!ratOnIdle)
-            {
-                rb.AddForce(700f * Time.deltaTime * transform.forward);
-                moving = true;
-                standing = false;
-           
-            }
-
-        }
-        void AnimRun(bool moves)
-        {
-            moving = moves;
-            if (moving)
-            {
-                animator.SetBool("Run", true);
-            }
-            else
-            {
-                animator.SetBool("Run", false);
-            }
-
-        }
-        void AnimIdle(bool stand)
-        {
-            standing = stand;
-            if (standing)
-            {
-                animator.SetBool("Idle", true);
-            }
-            else
-            {
-                animator.SetBool("Idle", false);
-            }
-
-        }
+        
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -168,6 +166,8 @@ namespace TwoPlayersGame
                 stream.SendNext(ratOnIdle);
                 stream.SendNext(moving);
                 stream.SendNext(standing);
+               
+
 
 
             }
@@ -175,8 +175,9 @@ namespace TwoPlayersGame
             {
 
                 ratOnIdle = (bool)stream.ReceiveNext();
-                moving = (bool)stream.ReceiveNext();
+                moving = (bool)stream.ReceiveNext(); 
                 standing = (bool)stream.ReceiveNext();
+                
 
             }
         }
