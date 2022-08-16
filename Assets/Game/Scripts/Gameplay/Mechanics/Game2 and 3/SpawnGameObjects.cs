@@ -8,6 +8,7 @@ namespace TwoPlayersGame
     public class SpawnGameObjects : MonoBehaviourPun
     {
         public bool begin;
+        public int spawnRate = 1;
         public GameObject obstacleOrCoin;
         public GameObject[] SpawnPos;
         private PhotonView spawnObjectPhotonView;
@@ -47,7 +48,7 @@ namespace TwoPlayersGame
         IEnumerator SpawnCount()
         {
             while(begin)
-            { yield return new WaitForSeconds(1);
+            { yield return new WaitForSeconds(spawnRate);
                 
                 int SpawnFrom = Random.Range(0,SpawnPos.Length);
                 SpawnObjects(SpawnFrom, 5);
