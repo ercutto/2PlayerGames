@@ -9,6 +9,7 @@ TagManager:
   - Assemble
   - TurnObject
   - EndObject
+  - 'CollectableParts '
   layers:
   - Default
   - TransparentFX

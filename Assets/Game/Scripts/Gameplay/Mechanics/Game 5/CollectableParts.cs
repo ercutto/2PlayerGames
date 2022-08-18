@@ -71,8 +71,7 @@ namespace TwoPlayersGame
                     {
                         PhotonNetwork.Destroy(gameObject);
                     }
-
-                    if (!onHand && !assembled)
+                    else if (!onHand && !assembled)
                     {
                         if (other.gameObject.CompareTag("Player"))
                         {
@@ -89,8 +88,7 @@ namespace TwoPlayersGame
                         }
 
                     }
-
-                    if (other.gameObject.CompareTag("Assemble"))
+                    else if (other.gameObject.CompareTag("Assemble"))
                     {
                         assemble = other.gameObject;
                         onHand = false;
@@ -99,6 +97,7 @@ namespace TwoPlayersGame
                         AssemblePlace = assemble.transform.GetChild(objectCount).GetComponent<Transform>().transform;
                         //OnOwnershipRequest(assemble);
                     }
+                    else { return; }
                    
 
                     

@@ -6,31 +6,47 @@ namespace TwoPlayersGame
 {
     public class PuzzlePiecesSpawn : MonoBehaviour
     {
-        public Transform[] spawnPosArray;
+        public GameObject[] spawnPosArray;
         public bool[] isEmpty;
         public GameObject CollectableObjects;
         
         // Start is called before the first frame update
         void Start()
         {
-            if(PhotonNetwork.IsMasterClient)
+            //if (PhotonNetwork.IsMasterClient)
+            //{
+            //    SpawnPuzzleParts();
+            //}
+        }
+
+        void Update()
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                SpawnPuzzleParts();
+            }
+
+        }
+        void SpawnPuzzleParts()
+        {
             foreach (var spawnposition in spawnPosArray)
             {
-               bool isEmpty= spawnposition.GetComponent<IsEmptyOrFull>().IsEmpty;
-                if (isEmpty)
+                //bool isEmpty = spawnposition.GetComponent<IsEmptyOrFull>().IsEmpty;
+                if (spawnposition.GetComponent<IsEmptyOrFull>().IsEmpty==false)
                 {
-                   GameObject spawnedPart= PhotonNetwork.Instantiate(CollectableObjects.name, spawnposition.position, Quaternion.identity);
+                    return;
+                   
+                }
+                else
+                {
+                    GameObject spawnedPart = PhotonNetwork.Instantiate(CollectableObjects.name, spawnposition.transform.position, spawnposition.transform.rotation);
                     spawnedPart.GetComponent<CollectableParts>().objectCount = spawnposition.GetComponent<IsEmptyOrFull>().PuzzlesNumber;
-                    isEmpty = false;
+                    spawnposition.GetComponent<IsEmptyOrFull>().IsEmpty = false;
                 }
             }
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
+        
     }
 }
 
