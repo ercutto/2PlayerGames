@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 696131600055136992}
   m_Layer: 0
   m_Name: 'CollectableParts '
-  m_TagString: Untagged
+  m_TagString: 'CollectableParts '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

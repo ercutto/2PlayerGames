@@ -522,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   begin: 0
+  spawnRate: 1
   obstacleOrCoin: {fileID: 4253940247732501694, guid: 543366b6a1d450849b2f1f53bb90a3b0, type: 3}
   SpawnPos:
   - {fileID: 47735450}
@@ -1221,7 +1222,7 @@ GameObject:
   - component: {fileID: 1007395834}
   - component: {fileID: 1007395833}
   - component: {fileID: 1007395832}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,7 +1413,7 @@ GameObject:
   - component: {fileID: 1089715460}
   - component: {fileID: 1089715459}
   - component: {fileID: 1089715458}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3366,7 +3367,7 @@ GameObject:
   - component: {fileID: 1942679814}
   - component: {fileID: 1942679813}
   - component: {fileID: 1942679812}
-  m_Layer: 20
+  m_Layer: 25
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
