@@ -8,21 +8,36 @@ namespace TwoPlayersGame
     {
         public bool IsEmpty;
         public int PuzzlesNumber;
+        private PhotonView photonView;
+        [SerializeField]
+        private float RepeateRate;
+        public float _repeateRate//protecttion
+        {
+            
+            get { return RepeateRate; }
+            set
+            {
+               RepeateRate = value;
+               
+            }
+        }
         private void Start()
         {
-            IsEmpty = true;
+            photonView = GetComponent<PhotonView>();
+            if (photonView.IsMine)
+            {
+                IsEmpty = true;
+            }
+            
         }
-        //private void OnTriggerEnter(Collider other)
-        //{
-        //    if (other.gameObject.CompareTag("CollectableParts ")) { IsEmpty = false; }
-        //}
-        //private void OnTriggerStay(Collider other)
-        //{
-        //    if (other.gameObject.CompareTag("CollectableParts ")) { IsEmpty = false; }
-        //}
+
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.CompareTag("CollectableParts ")) { Invoke(nameof(SayImEmpty), 3); }
+            if (photonView.IsMine)
+            {
+                if (other.gameObject.CompareTag("CollectableParts ")) { Invoke(nameof(SayImEmpty),RepeateRate); }
+            }
+            
         }
         void SayImEmpty()
         {
