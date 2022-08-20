@@ -9,6 +9,7 @@ namespace TwoPlayersGame
         public bool IsEmpty;
         public int PuzzlesNumber;
         private PhotonView photonView;
+        
         [SerializeField]
         private float RepeateRate;
         public float _repeateRate//protecttion

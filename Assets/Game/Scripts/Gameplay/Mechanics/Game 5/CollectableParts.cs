@@ -25,7 +25,7 @@ namespace TwoPlayersGame
                 rb = GetComponent<Rigidbody>();
                 onHand = false;
                 assembled = false;
-                
+               
             }
         }
 
@@ -110,6 +110,8 @@ namespace TwoPlayersGame
             
 
         }
+ 
+
         //public void OnOwnershipRequest(GameObject viewAndPlayer)
         //{
 

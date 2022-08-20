@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 696131600055136995}
   - component: {fileID: 696131600055136992}
   m_Layer: 0
-  m_Name: 'CollectableParts '
+  m_Name: CollectableParts  7
   m_TagString: 'CollectableParts '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c80f521e0db74c8650ad1b8caf1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCount: 7
+  objectCount: 6
 --- !u!114 &696131600055136995
 MonoBehaviour:
   m_ObjectHideFlags: 0

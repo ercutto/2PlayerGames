@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 696131600055136995}
   - component: {fileID: 696131600055136992}
   m_Layer: 0
-  m_Name: 'CollectableParts '
+  m_Name: CollectableParts  5
   m_TagString: 'CollectableParts '
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,7 +44,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696131600055136998}
-  m_Mesh: {fileID: 1959244861544533517, guid: 7ec1235c655761149b229b01c3607456, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
 --- !u!23 &696131600055137020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e26c80f521e0db74c8650ad1b8caf1a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectCount: 7
+  objectCount: 4
 --- !u!114 &696131600055136995
 MonoBehaviour:
   m_ObjectHideFlags: 0
