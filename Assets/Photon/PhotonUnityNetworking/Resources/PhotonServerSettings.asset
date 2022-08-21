@@ -59,6 +59,11 @@ MonoBehaviour:
   - ChangeMesh
   - SpawnPuzzleParts
   - Changed
+  - Score
+  - AddScore
+  - ShowChangesToOther
+  - ShowWinMessage
+  - SetWinmessageBack
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1
