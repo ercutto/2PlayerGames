@@ -9,6 +9,7 @@ namespace TwoPlayersGame
     public class TogetherWinScore : MonoBehaviour,IPunObservable
     {
         public Text score,WinMessageText,ClockText;
+        public GameObject restartButton, leaveGameModbutton;
         private int scoreValue=0;
         private string winMessage = "Awesome teamwork!";
         private string winMessageReset = "";
@@ -23,7 +24,20 @@ namespace TwoPlayersGame
         void Start()
         {
             pv = GetComponent<PhotonView>();
-            begin = true;
+            
+            if (PhotonNetwork.IsMasterClient)
+            {
+                begin = true;
+                leaveGameModbutton.SetActive(true);
+                
+                
+            }
+            else
+            {
+                leaveGameModbutton.SetActive(false);
+            }
+
+            restartButton.SetActive(false);
         }
 
         // Update is called once per frame
@@ -35,11 +49,17 @@ namespace TwoPlayersGame
             //}
             //else
            // {
-                if (begin)
-                {
+            if (begin)
+            {
+                    
+                Clock();
+            }
+            else
+            {
+                if (!PhotonNetwork.IsMasterClient) return;
+                else restartButton.SetActive(true);
 
-                    Clock();
-                }
+            }
                 
            // }
 
@@ -56,18 +76,35 @@ namespace TwoPlayersGame
                 if (seconds >= 60)
                 {
                     Minutes++;
+                    seconds = 0.0f;
                     if (Minutes >= GameTime)
                     {
-                        Debug.Log("Time is over!");
+                        
                         begin = false;
+                        ClockTime = "Time is over!";
                         
                     }
                 }
             }
             ClockTime = Minutes.ToString() + ":" + seconds.ToString() + ":" + timeCount.ToString("0,0");
         }
-      
-
+        public void OnRestartButtonClicked()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                return;
+                
+            }
+            pv.RPC("Restart", RpcTarget.All);
+        }
+        [PunRPC]
+        void Restart()
+        {
+            timeCount = 0;
+            seconds = 0;
+            Minutes = 0;
+            begin = true;
+        }
         public void AddScore(int add)
         {
             if (!PhotonNetwork.IsMasterClient)
@@ -100,11 +137,11 @@ namespace TwoPlayersGame
         }
         void ResetMessage()
         {
-            pv.RPC("SetWinmessageBack", RpcTarget.All);
+            pv.RPC("SetWinmessageEmpty", RpcTarget.All);
 
         }
         [PunRPC]
-        void SetWinmessageBack()
+        void SetWinmessageEmpty()
         {
             WinMessageText.text = winMessageReset;
         }
@@ -117,12 +154,14 @@ namespace TwoPlayersGame
                 stream.SendNext(scoreValue);
                 stream.SendNext(winMessage);
                 stream.SendNext(ClockTime);
+                stream.SendNext(begin);
             }
             else
             {
                 scoreValue = (int)stream.ReceiveNext();
                 winMessage = (string)stream.ReceiveNext();
                 ClockTime = (string)stream.ReceiveNext();
+                begin = (bool)stream.ReceiveNext();
             }
         }
     }

@@ -25,19 +25,25 @@ namespace TwoPlayersGame
         private void Start()
         {
             photonView = GetComponent<PhotonView>();
-            if (photonView.IsMine)
-            {
-                IsEmpty = true;
-            }
+       
+                if (photonView.IsMine)
+                {
+                    IsEmpty = true;
+                }
+            
+            
             
         }
-
+       
         private void OnTriggerExit(Collider other)
         {
-            if (photonView.IsMine)
-            {
-                if (other.gameObject.CompareTag("CollectableParts ")) { Invoke(nameof(SayImEmpty),RepeateRate); }
-            }
+         
+                if (photonView.IsMine)
+                {
+                    if (other.gameObject.CompareTag("CollectableParts ")) { Invoke(nameof(SayImEmpty), RepeateRate); }
+                }
+            
+          
             
         }
         void SayImEmpty()

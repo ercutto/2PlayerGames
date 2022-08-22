@@ -67,6 +67,8 @@ MonoBehaviour:
   - Clock
   - Write
   - WiteIt
+  - Restart
+  - SetWinmessageEmpty
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

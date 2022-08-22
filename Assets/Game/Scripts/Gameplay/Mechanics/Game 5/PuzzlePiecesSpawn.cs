@@ -12,17 +12,24 @@ namespace TwoPlayersGame
         public bool[] isEmpty;
         public GameObject[] CollectableObjects;
         private PhotonView pv;
-
         private GameObject spawnedPart;
-        
+        public TogetherWinScore togetherWinScore;
+        public float spawnRate = 50;
+        public GameObject[] spawnPos;
+        public GameObject PuzzleObject;
+        private bool canSpawn;
         // Start is called before the first frame update
         void Start()
         {
             pv = GetComponent<PhotonView>();
-            //if (PhotonNetwork.IsMasterClient)
-            //{
-            //    SpawnPuzzleParts();
-            //}
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (togetherWinScore.begin)
+                {
+                    StartCoroutine(nameof(SpawnCount));
+                }
+            }
+
         }
 
         void Update()
@@ -40,8 +47,8 @@ namespace TwoPlayersGame
                 }
                 else
                 {
-                    pv.RPC("SpawnPuzzleParts", RpcTarget.All);
-
+                   
+                        pv.RPC("SpawnPuzzleParts", RpcTarget.All);
                     //SpawnPuzzleParts();
                 }
             }
@@ -57,14 +64,25 @@ namespace TwoPlayersGame
                 for (int i = 0; i < spawnPosArray.Length; i++)
                 {
                     bool isEmpty = spawnPosArray[i].GetComponent<IsEmptyOrFull>().IsEmpty;
-                    if (isEmpty)
+                    if (isEmpty)              
                     {
-                        spawnedPart = PhotonNetwork.Instantiate(CollectableObjects[i].name, spawnPosArray[i].transform.position, spawnPosArray[i].transform.rotation);
-                        spawnedPart.GetComponent<CollectableParts>().objectCount = spawnPosArray[i].GetComponent<IsEmptyOrFull>().PuzzlesNumber;
-                        //pv.RPC("ChangeMesh", RpcTarget.All, i);
-                        spawnPosArray[i].GetComponent<IsEmptyOrFull>().IsEmpty = false;
+                        canSpawn = true;
 
+                        //spawnPosArray[i].GetComponent<IsEmptyOrFull>().IsEmpty = false;
+                        if (canSpawn)
+                        {
+                            spawnedPart = PhotonNetwork.Instantiate(CollectableObjects[i].name, spawnPosArray[i].transform.position, spawnPosArray[i].transform.rotation);
+                            spawnedPart.GetComponent<CollectableParts>().objectCount = spawnPosArray[i].GetComponent<IsEmptyOrFull>().PuzzlesNumber;
+                            //pv.RPC("ChangeMesh", RpcTarget.All, i);
+                            canSpawn = false;
+                            spawnPosArray[i].GetComponent<IsEmptyOrFull>().IsEmpty=false;
+                        }
+                        else
+                        {
+                            return;
+                        }
                     }
+                    
                 }
                
             }
@@ -75,7 +93,28 @@ namespace TwoPlayersGame
         //{
         //    spawnedPart.GetComponent<MeshFilter>().mesh = PuzzlesRealMeshes[whichMesh];
         //}
+        IEnumerator SpawnCount()
+        {
+            while (togetherWinScore.begin)
+            {
+                yield return new WaitForSeconds(spawnRate);
 
+                int SpawnFrom = Random.Range(0, spawnPos.Length);
+                SpawnObjects(SpawnFrom, 5);
+            }
+
+        }
+        void SpawnObjects(int Pos, float speed)
+        {
+            if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.Instantiate(PuzzleObject.name, spawnPos[Pos].transform.position, spawnPos[Pos].transform.rotation);
+        }
+        //public void RestartGame()
+        //{
+
+        //    //togetherWinScore.begin = true;
+        //    StartCoroutine(SpawnCount());
+        //}
 
 
     }
