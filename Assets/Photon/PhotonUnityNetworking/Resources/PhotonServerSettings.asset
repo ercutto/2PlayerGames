@@ -69,6 +69,8 @@ MonoBehaviour:
   - WiteIt
   - Restart
   - SetWinmessageEmpty
+  - ResetScore
+  - ShowStartMessage
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 1

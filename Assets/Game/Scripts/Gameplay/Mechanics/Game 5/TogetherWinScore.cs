@@ -12,6 +12,7 @@ namespace TwoPlayersGame
         public GameObject restartButton, leaveGameModbutton;
         private int scoreValue=0;
         private string winMessage = "Awesome teamwork!";
+        private string StartMessage = "Together Build Cars!";
         private string winMessageReset = "";
         public string ClockTime;
         public float timeCount = 0.0f;
@@ -29,8 +30,9 @@ namespace TwoPlayersGame
             {
                 begin = true;
                 leaveGameModbutton.SetActive(true);
-                
-                
+                StartMessageSend();
+
+
             }
             else
             {
@@ -119,7 +121,21 @@ namespace TwoPlayersGame
             scoreValue += toAdd;
             score.text = scoreValue.ToString();
         }
-
+        public void StartMessageSend()
+        {
+            if (!PhotonNetwork.IsMasterClient)
+            {
+                return;
+            }
+            pv.RPC("ShowStartMessage", RpcTarget.All);
+        }
+        [PunRPC]
+        void ShowStartMessage()
+        {
+            WinMessageText.text = StartMessage;
+            if (!PhotonNetwork.IsMasterClient) return;
+            else Invoke(nameof(ResetMessage), 3);
+        }
         public void WinMessage()
         {
             if (!PhotonNetwork.IsMasterClient)
@@ -145,7 +161,16 @@ namespace TwoPlayersGame
         {
             WinMessageText.text = winMessageReset;
         }
-        
+        public void ResetScoreOnClick()
+        {
+            pv.RPC("ResetScore", RpcTarget.All);
+        }
+        [PunRPC]
+        public void ResetScore()
+        {
+            scoreValue = 0;
+            score.text = scoreValue.ToString();
+        }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {
@@ -155,6 +180,7 @@ namespace TwoPlayersGame
                 stream.SendNext(winMessage);
                 stream.SendNext(ClockTime);
                 stream.SendNext(begin);
+                stream.SendNext(StartMessage);
             }
             else
             {
@@ -162,6 +188,7 @@ namespace TwoPlayersGame
                 winMessage = (string)stream.ReceiveNext();
                 ClockTime = (string)stream.ReceiveNext();
                 begin = (bool)stream.ReceiveNext();
+                StartMessage = (string)stream.ReceiveNext();
             }
         }
     }

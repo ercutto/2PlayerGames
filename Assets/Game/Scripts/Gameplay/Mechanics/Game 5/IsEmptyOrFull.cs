@@ -4,7 +4,7 @@ using UnityEngine;
 using Photon.Pun;
 namespace TwoPlayersGame
 {
-    public class IsEmptyOrFull : MonoBehaviour,IPunObservable
+    public class IsEmptyOrFull : MonoBehaviour//,IPunObservable
     {
         public bool IsEmpty;
         public int PuzzlesNumber;
@@ -25,20 +25,25 @@ namespace TwoPlayersGame
         private void Start()
         {
             photonView = GetComponent<PhotonView>();
-       
-                if (photonView.IsMine)
-                {
-                    IsEmpty = true;
-                }
-            
-            
-            
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+            if (photonView.IsMine)
+            {
+                IsEmpty = true;
+            }
+
+
+
+
+
         }
        
         private void OnTriggerExit(Collider other)
         {
-         
-                if (photonView.IsMine)
+            if (!PhotonNetwork.IsMasterClient)
+                return;
+
+            if (photonView.IsMine)
                 {
                     if (other.gameObject.CompareTag("CollectableParts ")) { Invoke(nameof(SayImEmpty), RepeateRate); }
                 }
@@ -51,17 +56,17 @@ namespace TwoPlayersGame
             IsEmpty = true;
         }
 
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-            if (stream.IsWriting)
-            {
-                stream.SendNext(IsEmpty);
-            }
-            else
-            {
-                IsEmpty = (bool)stream.ReceiveNext();
-            }
-        }
+        //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        //{
+        //    if (stream.IsWriting)
+        //    {
+        //        stream.SendNext(IsEmpty);
+        //    }
+        //    else
+        //    {
+        //        IsEmpty = (bool)stream.ReceiveNext();
+        //    }
+        //}
     }
     
 }
