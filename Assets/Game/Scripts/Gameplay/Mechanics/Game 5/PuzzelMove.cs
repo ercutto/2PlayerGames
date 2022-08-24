@@ -42,6 +42,14 @@ namespace TwoPlayersGame
 
             if (pv.IsMine)
             {
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    if (!togetherWinScore.begin)
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+                }
+
                 if (!stop)
                     rb.AddForce(speed * Time.deltaTime * transform.forward);
 
@@ -73,7 +81,7 @@ namespace TwoPlayersGame
                 turn = true;
             }
             else if (other.gameObject.CompareTag("CollectableParts "))
-            {   if (!PhotonNetwork.IsMasterClient) return;
+            {   if (!PhotonNetwork.IsMasterClient) { return; }
                 else
                 {
                     objectNumber = other.gameObject.GetComponent<CollectableParts>().objectCount;

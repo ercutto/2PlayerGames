@@ -15,6 +15,7 @@ namespace TwoPlayersGame
         private Rigidbody rb;
         public GameObject PlayerGraphics;
         public GameObject hand;
+       
         // Start is called before the first frame update
   
         private void Start()
@@ -27,12 +28,13 @@ namespace TwoPlayersGame
         void Update()
         {
             if (pV.IsMine)
-                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3"||
-                    SceneManagerHelper.ActiveSceneName == "Game 4"||SceneManagerHelper.ActiveSceneName == "Game 5")
+            {
+                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3" ||
+                       SceneManagerHelper.ActiveSceneName == "Game 4" || SceneManagerHelper.ActiveSceneName == "Game 5")
                 {
                     GameOne();
                 }
-                else if(SceneManagerHelper.ActiveSceneName == "Game2" )
+                else if (SceneManagerHelper.ActiveSceneName == "Game2")
                 {
                     GameTwo();
                 }
@@ -41,6 +43,14 @@ namespace TwoPlayersGame
                     WaitingRoom();
                 }
 
+
+            
+
+
+            }
+                
+
+            
         }
         #region Movements
         void GameOne()

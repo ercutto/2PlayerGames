@@ -14,6 +14,7 @@ namespace TwoPlayersGame
         private Quaternion syncRot;
         private Transform CaryObject,AssemblePlace,playerTransform;
         GameObject player, assemble;
+       
       
 
         // Start is called before the first frame update
@@ -25,7 +26,7 @@ namespace TwoPlayersGame
                 rb = GetComponent<Rigidbody>();
                 onHand = false;
                 assembled = false;
-               
+              
             }
         }
 
@@ -37,27 +38,45 @@ namespace TwoPlayersGame
             {
                 if (Pview.IsMine)
                 {
-                    if (onHand)
+                    if (!GameObject.Find("Score").GetComponent<TogetherWinScore>().begin)
                     {
-
-                        //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 3);
-                        transform.SetPositionAndRotation(player.transform.GetChild(1).transform.position, player.transform.GetChild(1).transform.rotation);
-                        //transform.position = player.transform.GetChild(1).transform.position;
-                        //transform.rotation = player.transform.GetChild(1).transform.rotation;
-                        transform.localScale = new Vector3(1f, 1f, 1f);
-
-                    }
-                    else if (assembled)
-                    {
-                        //transform.position = AssemblePlace.position;
-                        //transform.rotation = AssemblePlace.rotation;
-                        transform.SetPositionAndRotation(AssemblePlace.position, AssemblePlace.rotation);
-                        transform.localScale = new Vector3(3f, 3f, 3f);
+                        PhotonNetwork.Destroy(gameObject);
+                        return;
                     }
                     else
                     {
-                        return;
-                    }
+                        if (onHand)
+                        {
+                            if (player != null)
+                            {  //transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z + 3);
+                                transform.SetPositionAndRotation(player.transform.GetChild(1).transform.position, player.transform.GetChild(1).transform.rotation);
+                                //transform.position = player.transform.GetChild(1).transform.position;
+                                //transform.rotation = player.transform.GetChild(1).transform.rotation;
+                                transform.localScale = new Vector3(1f, 1f, 1f);
+                            }
+                            else
+                            {
+                                onHand = false;
+                                transform.position = transform.position;
+                                transform.localScale = new Vector3(3, 3, 3);
+                            }
+                           
+                           
+                           
+                        }
+                        else if (assembled)
+                        {
+                            //transform.position = AssemblePlace.position;
+                            //transform.rotation = AssemblePlace.rotation;
+                            transform.SetPositionAndRotation(AssemblePlace.position, AssemblePlace.rotation);
+                            transform.localScale = new Vector3(3f, 3f, 3f);
+                        }
+                        else
+                        {
+                            return;
+                        }
+                    }   
+                    
                 }
 
             }
@@ -76,15 +95,22 @@ namespace TwoPlayersGame
                         if (other.gameObject.CompareTag("Player"))
                         {
                             player = other.gameObject;
-                            if(player.GetComponent<PlayersBools>().isFull == false) {
+                           
+                           
+                            if (player.GetComponent<PlayersBools>().isFull == false && player.GetComponent<PlayersBools>().interacting)
+                            {
                                 onHand = true;
                                 //transform.root.networkView.RPC("CarController", RPCMode.AllBuffered, true, id);
 
                                 player.GetComponent<PlayersBools>().isFull = true;
                                 //OnOwnershipRequest(player);
                                 CaryObject = other.gameObject.transform.GetChild(0).GetComponent<Transform>().transform;
+                            
                             }
-
+                            else
+                            {
+                                transform.position = transform.position;
+                            }
                         }
 
                     }
@@ -98,19 +124,81 @@ namespace TwoPlayersGame
                         //OnOwnershipRequest(assemble);
                     }
                     else { return; }
-                   
 
-                    
+
+
+            }
+            else
+            {
+                return;
+            }
+
+
+
+        }
+
+        private void OnTriggerStay(Collider other)
+        {
+            if (PhotonNetwork.IsMasterClient)
+                if (Pview.IsMine)
+                {
+                    if (other.gameObject.CompareTag("EndObject"))
+                    {
+                        PhotonNetwork.Destroy(gameObject);
+                    }
+                    else if (!onHand && !assembled)
+                    {
+                        if (other.gameObject.CompareTag("Player"))
+                        {
+                            player = other.gameObject;
+                            if (player != null)
+                            {
+
+                                if (player.GetComponent<PlayersBools>().isFull == false && player.GetComponent<PlayersBools>().interacting)
+                                {
+                                    onHand = true;
+                                    //transform.root.networkView.RPC("CarController", RPCMode.AllBuffered, true, id);
+
+                                    player.GetComponent<PlayersBools>().isFull = true;
+                                    //OnOwnershipRequest(player);
+                                    CaryObject = other.gameObject.transform.GetChild(0).GetComponent<Transform>().transform;
+
+                                }
+
+                                else
+                                {
+                                    transform.position = transform.position;
+                                }
+                            }
+                           
+                        }
+
+                    }
+                    else if (other.gameObject.CompareTag("Assemble"))
+                    {
+                        if (player != null)
+                        {
+                            assemble = other.gameObject;
+                            onHand = false;
+                            assembled = true;
+                            player.GetComponent<PlayersBools>().isFull = false;
+                            AssemblePlace = assemble.transform.GetChild(objectCount).GetComponent<Transform>().transform;
+                            //OnOwnershipRequest(assemble);
+                        }
+                    }
+                    else { return; }
+
+
+
                 }
                 else
                 {
                     return;
                 }
 
-            
+
 
         }
- 
 
         //public void OnOwnershipRequest(GameObject viewAndPlayer)
         //{
@@ -121,7 +209,7 @@ namespace TwoPlayersGame
         //    //{
         //    //    view.TransferOwnership(requestingPlayer.ID);
         //    //}
-        //}
+        
 
 
     }
