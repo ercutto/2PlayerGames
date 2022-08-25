@@ -75,9 +75,10 @@ namespace TwoPlayersGame
         {
             if (ratOnIdle)
             {
+                MovementAction(-300f);
                 AnimRun(false);
                 AnimIdle(true);
-                MovementAction(-30f);
+                
             }
             else if (!ratOnIdle)
             {
@@ -153,6 +154,8 @@ namespace TwoPlayersGame
                 else if (other.gameObject.CompareTag("Boundry")) PhotonNetwork.Destroy(gameObject);
             }
             else { return; }
+
+          
 
         }
     

@@ -91,8 +91,12 @@ namespace TwoPlayersGame {
         void WinnerMessage(string playername)
         {
             WinMessage.text = playername + ": "+OnGameSide+" Is winner :)";
-            
+            Invoke(nameof(WinMessageReset),3);
 
+        }
+        void WinMessageReset()
+        {
+            WinMessage.text = "";
         }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         {

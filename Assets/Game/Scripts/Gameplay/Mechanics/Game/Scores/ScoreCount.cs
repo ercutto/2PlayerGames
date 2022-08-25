@@ -126,7 +126,7 @@ namespace TwoPlayersGame
             score++;
             ScoreBoard.text = score.ToString();
             count = 0;
-            if (score > 0)
+            if (score > 4)
             {
                 WinMessage.gameObject.SetActive(true);
 
