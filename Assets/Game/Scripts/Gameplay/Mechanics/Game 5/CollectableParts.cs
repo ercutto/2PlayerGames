@@ -69,7 +69,7 @@ namespace TwoPlayersGame
                             //transform.position = AssemblePlace.position;
                             //transform.rotation = AssemblePlace.rotation;
                             transform.SetPositionAndRotation(AssemblePlace.position, AssemblePlace.rotation);
-                            transform.localScale = new Vector3(3f, 3f, 3f);
+                            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                         }
                         else
                         {
