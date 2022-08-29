@@ -37,6 +37,9 @@ namespace TwoPlayersGame
                 else if (SceneManagerHelper.ActiveSceneName == "Game2")
                 {
                     GameTwo();
+                }else if(SceneManagerHelper.ActiveSceneName == "Game 6")
+                {
+                    GameSix();
                 }
                 else
                 {
@@ -73,6 +76,18 @@ namespace TwoPlayersGame
             //transform.Translate(horizontal, 0.0f, vertical);
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);
             
+        }
+        void GameSix()
+        {
+            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+            float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+
+            rb.AddForce(0, vertical, horizontal, ForceMode.Force);
+            //Vector3 movement = new Vector3(horizontal, vertical, 0);
+            //if (movement != Vector3.zero)
+            //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);
+            //hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
+
         }
         void WaitingRoom()
         {

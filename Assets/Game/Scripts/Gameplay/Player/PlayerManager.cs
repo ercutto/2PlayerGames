@@ -13,14 +13,18 @@ namespace TwoPlayersGame
         private int playerLayer=15;
         private int ignoreLayer=20;
         public int FirstOrSecond;
+        private Rigidbody rb;
         public GameObject[] myGarphics;
         public GameObject[] ToSetActiveOrFalse;
 
         // Start is called before the first frame update
         public void Awake()
         {
+            rb = GetComponent<Rigidbody>();
+            rb.useGravity = true;
             if (photonView.IsMine)
             {
+               
                 PlayerManager.localPlayerInstance = this.gameObject;
                // gameObject.GetComponentInChildren<Renderer>().material.color = myColor;
                 foreach (var item in myGarphics)
@@ -93,21 +97,38 @@ namespace TwoPlayersGame
                 case 1:
                     gameObject.layer = playerLayer;
                     ToSetActiveOrFalse[0].SetActive(false);
+                    ToSetActiveOrFalse[1].SetActive(false);
+                    rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 5:
                     gameObject.layer = playerLayer;
                     ToSetActiveOrFalse[0].SetActive(false);
+                    ToSetActiveOrFalse[1].SetActive(false);
+                    rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 6:
-
-                    if (PhotonNetwork.IsMasterClient) { PosTransform(2, 0, 0); transform.eulerAngles=new Vector3(0,0,0).normalized; gameObject.layer = ignoreLayer;
+                    ToSetActiveOrFalse[1].SetActive(false);
+                    rb.useGravity = true;
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        PosTransform(2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
                         ToSetActiveOrFalse[0].SetActive(true);
                     }
                     else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[0].SetActive(true); }
+                    break;
+                case 10:
+                    rb.useGravity = false;
+                    ToSetActiveOrFalse[0].SetActive(false);
+                    if (PhotonNetwork.IsMasterClient)
+                    {   
+                        PosTransform(0, 2, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+                        ToSetActiveOrFalse[1].SetActive(true);
+                    }
+                    else { PosTransform(0, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[1].SetActive(true);  }
                     break;
                 default:
                     break;
