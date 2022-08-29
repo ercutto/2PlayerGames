@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   begin: 1
+  spawnRate: 1
   obstacleOrCoin: {fileID: 4253940247732501694, guid: 0d90cac01d804bf48816dde262e4b46b, type: 3}
   SpawnPos:
   - {fileID: 47735450}

@@ -14,6 +14,7 @@ namespace TwoPlayersGame
         private int ignoreLayer=20;
         public int FirstOrSecond;
         public GameObject[] myGarphics;
+        public GameObject[] ToSetActiveOrFalse;
 
         // Start is called before the first frame update
         public void Awake()
@@ -25,6 +26,10 @@ namespace TwoPlayersGame
                 foreach (var item in myGarphics)
                 {
                     item.GetComponent<Renderer>().material.color = myColor;
+                }
+                foreach (var obj in ToSetActiveOrFalse)
+                {
+                    obj.SetActive(false);
                 }
             }
             DontDestroyOnLoad(this.gameObject);
@@ -87,18 +92,22 @@ namespace TwoPlayersGame
             {
                 case 1:
                     gameObject.layer = playerLayer;
+                    ToSetActiveOrFalse[0].SetActive(false);
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 5:
                     gameObject.layer = playerLayer;
+                    ToSetActiveOrFalse[0].SetActive(false);
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 6:
 
-                    if (PhotonNetwork.IsMasterClient) { PosTransform(2, 0, 0); gameObject.layer = ignoreLayer; }
-                    else { PosTransform(-2, 0, 0); gameObject.layer = ignoreLayer; }
+                    if (PhotonNetwork.IsMasterClient) { PosTransform(2, 0, 0); transform.eulerAngles=new Vector3(0,0,0).normalized; gameObject.layer = ignoreLayer;
+                        ToSetActiveOrFalse[0].SetActive(true);
+                    }
+                    else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[0].SetActive(true); }
                     break;
                 default:
                     break;
@@ -115,11 +124,18 @@ namespace TwoPlayersGame
             if (stream.IsWriting)
             {
                 stream.SendNext(FirstOrSecond);
-
+                foreach (GameObject obj in ToSetActiveOrFalse)
+                {
+                    stream.SendNext(obj.activeSelf);
+                }
             }
             else
             {
                 FirstOrSecond = (int)stream.ReceiveNext();
+                foreach (GameObject obj in ToSetActiveOrFalse)
+                {
+                    obj.SetActive((bool)stream.ReceiveNext());
+                }
             }
         }
 
