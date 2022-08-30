@@ -16,8 +16,10 @@ namespace TwoPlayersGame
         public GameObject PlayerGraphics;
         public GameObject hand;
        
+        private float smallTilt = 0.1f;
+
         // Start is called before the first frame update
-  
+
         private void Start()
         {
             pV = GetComponent<PhotonView>();
@@ -25,7 +27,7 @@ namespace TwoPlayersGame
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
             if (pV.IsMine)
             {
@@ -75,7 +77,8 @@ namespace TwoPlayersGame
             //float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
             //transform.Translate(horizontal, 0.0f, vertical);
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);
-            
+            //Quaternion newEulerAngle = Quaternion.Euler(0, 0 + 0, 20 + 10);
+            transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
         }
         void GameSix()
         {
@@ -83,6 +86,8 @@ namespace TwoPlayersGame
             float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
 
             rb.AddForce(0, vertical, horizontal, ForceMode.Force);
+            Quaternion newEulerAngle = Quaternion.Euler(0, 0, 20 + 10);
+            transform.rotation = Quaternion.Euler(0,0, vertical * smallTilt).normalized;
             //Vector3 movement = new Vector3(horizontal, vertical, 0);
             //if (movement != Vector3.zero)
             //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);
@@ -95,6 +100,7 @@ namespace TwoPlayersGame
         }
         #endregion
 
+        
     }
 }
 
