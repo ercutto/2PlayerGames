@@ -42,16 +42,9 @@ namespace TwoPlayersGame
 
             restartButton.SetActive(false);
         }
-
-        // Update is called once per frame
         void Update()
         {
-            //if (!PhotonNetwork.IsMasterClient)
-            //{
-            //    return;
-            //}
-            //else
-           // {
+
             if (begin)
             {
                     
@@ -63,9 +56,7 @@ namespace TwoPlayersGame
                 else restartButton.SetActive(true);
 
             }
-                
-           // }
-
+ 
             ClockText.text = ClockTime;
         }
        
@@ -108,7 +99,6 @@ namespace TwoPlayersGame
             Minutes = 0;
             begin = true;
             AddScore(-scoreValue);
-            //puzzlePiecesSpawn.SpawnMethod();
 
         }
         public void AddScore(int add)

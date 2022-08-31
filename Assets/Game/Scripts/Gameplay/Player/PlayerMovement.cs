@@ -19,7 +19,7 @@ namespace TwoPlayersGame
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
 
-        // Start is called before the first frame update
+  
 
         private void Start()
         {
@@ -27,7 +27,7 @@ namespace TwoPlayersGame
             rb = GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame
+    
         void FixedUpdate()
         {
             if (pV.IsMine)
@@ -75,10 +75,9 @@ namespace TwoPlayersGame
         void GameTwo()
         {
             float horizontal = Input.GetAxis("Horizontal") * speed* 2 * Time.deltaTime;
-            //float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            //transform.Translate(horizontal, 0.0f, vertical);
+ 
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);
-            //Quaternion newEulerAngle = Quaternion.Euler(0, 0 + 0, 20 + 10);
+
             transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
         }
         void GameSix()

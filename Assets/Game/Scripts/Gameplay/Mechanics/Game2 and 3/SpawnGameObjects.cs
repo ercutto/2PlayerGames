@@ -15,7 +15,7 @@ namespace TwoPlayersGame
         //for restart
         public GameObject restartButton,leaveGameModbutton;
         public GameObject scoreBoardBlue,scoreBoardRed;
-        // Start is called before the first frame update
+
         void Start()
         {
             spawnObjectPhotonView = GetComponent<PhotonView>();

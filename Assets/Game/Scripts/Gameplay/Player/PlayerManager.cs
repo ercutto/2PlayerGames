@@ -98,6 +98,7 @@ namespace TwoPlayersGame
                     gameObject.layer = playerLayer;
                     ToSetActiveOrFalse[0].SetActive(false);
                     ToSetActiveOrFalse[1].SetActive(false);
+                    ToSetActiveOrFalse[2].SetActive(false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
@@ -106,12 +107,14 @@ namespace TwoPlayersGame
                     gameObject.layer = playerLayer;
                     ToSetActiveOrFalse[0].SetActive(false);
                     ToSetActiveOrFalse[1].SetActive(false);
+                    ToSetActiveOrFalse[2].SetActive(false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 6:
                     ToSetActiveOrFalse[1].SetActive(false);
+                    ToSetActiveOrFalse[2].SetActive(false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient)
                     {
@@ -120,9 +123,24 @@ namespace TwoPlayersGame
                     }
                     else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[0].SetActive(true); }
                     break;
+                case 8:
+                    rb.useGravity = true;
+                    ToSetActiveOrFalse[0].SetActive(false);
+                    ToSetActiveOrFalse[1].SetActive(false);
+                    ToSetActiveOrFalse[2].SetActive(true);
+                    if (PhotonNetwork.IsMasterClient)
+                    {
+                        PosTransform(2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+                      
+                    }
+                    else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+                       
+                    }
+                    break;
                 case 10:
                     rb.useGravity = false;
-                    ToSetActiveOrFalse[0].SetActive(false);
+                    ToSetActiveOrFalse[1].SetActive(false);
+                    ToSetActiveOrFalse[2].SetActive(false);
                     if (PhotonNetwork.IsMasterClient)
                     {   
                         PosTransform(0, 2, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
