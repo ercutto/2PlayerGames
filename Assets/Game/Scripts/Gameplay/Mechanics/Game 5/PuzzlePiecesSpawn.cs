@@ -17,43 +17,54 @@ namespace TwoPlayersGame
         public float spawnRate = 50;
         public GameObject[] spawnPos;
         public GameObject PuzzleObject;
-        private bool canSpawn;
+        private bool canSpawn,firstone;
         // Start is called before the first frame update
-        void Start()
+        public void Start()
         {
             pv = GetComponent<PhotonView>();
             if (PhotonNetwork.IsMasterClient)
             {
+                firstone = false;
                 if (togetherWinScore.begin)
                 {
-                    StartCoroutine(nameof(SpawnCount));
+                    if (!firstone) {
+                        int spawnFrom = Random.Range(0, spawnPos.Length);
+                        SpawnObjects(spawnFrom, 5);
+                    }
+                    
+                    
+
+
+                    SpawnMethod();
+
                 }
+
+
             }
 
         }
 
         void Update()
         {
-            if (!PhotonNetwork.IsMasterClient)
-            {
-                return;
-            }
-            else
-            {
-                if (!pv.IsMine)
-                {
-
-                    return;
-                }
-                else
-                {
-                   
-                        pv.RPC("SpawnPuzzleParts", RpcTarget.All);
-                    //SpawnPuzzleParts();
-                }
-            }
+            if (!PhotonNetwork.IsMasterClient) { return; }
+            else { if (!pv.IsMine) { return; } else { pv.RPC("SpawnPuzzleParts", RpcTarget.All); } }
 
         }
+        public void SetBackTofalse()
+        {
+            foreach (var spawnpos in spawnPosArray)
+            {
+                spawnpos.GetComponent<IsEmptyOrFull>().IsEmpty = true;
+            }
+        }
+      
+
+
+        public void SpawnMethod()
+        {
+            StartCoroutine(nameof(SpawnCount));
+        }
+        #region PuzzelPiecessSpawn
         [PunRPC]
         void SpawnPuzzleParts()
         {
@@ -88,15 +99,18 @@ namespace TwoPlayersGame
             }
             
         }
+        #endregion spawn
         //[PunRPC]
         //public void ChangeMesh(int whichMesh)
         //{
         //    spawnedPart.GetComponent<MeshFilter>().mesh = PuzzlesRealMeshes[whichMesh];
         //}
+ 
         IEnumerator SpawnCount()
         {
             while (togetherWinScore.begin)
             {
+               
                 yield return new WaitForSeconds(spawnRate);
 
                 int SpawnFrom = Random.Range(0, spawnPos.Length);
@@ -108,6 +122,7 @@ namespace TwoPlayersGame
         {
             if (PhotonNetwork.IsMasterClient)
                 PhotonNetwork.Instantiate(PuzzleObject.name, spawnPos[Pos].transform.position, spawnPos[Pos].transform.rotation);
+                firstone = true;
         }
         //public void RestartGame()
         //{

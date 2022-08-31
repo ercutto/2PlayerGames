@@ -241,7 +241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2354225, y: 0.6952039}
   m_AnchorMax: {x: 0.79257756, y: 0.82400006}
-  m_AnchoredPosition: {x: 3.9960022, y: 8.47699}
+  m_AnchoredPosition: {x: 3.9959717, y: 8.47699}
   m_SizeDelta: {x: 3.9089966, y: -11.524002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &176726498
@@ -362,6 +362,10 @@ PrefabInstance:
     - target: {fileID: 6790443595381335332, guid: 3b1c640fc9a1ba5448a4d6b448905638, type: 3}
       propertyPath: m_Name
       value: CarContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 6790443595381335332, guid: 3b1c640fc9a1ba5448a4d6b448905638, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6790443595381335334, guid: 3b1c640fc9a1ba5448a4d6b448905638, type: 3}
       propertyPath: sceneViewId
@@ -1024,6 +1028,7 @@ MonoBehaviour:
   GameTime: 3
   seconds: 0
   begin: 0
+  puzzlePiecesSpawn: {fileID: 1786914247}
 --- !u!114 &542282567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1321,7 +1326,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -1381,7 +1386,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -1431,17 +1436,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 1
---- !u!114 &813849312 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
-  m_PrefabInstance: {fileID: 813849307}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813849308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb832c65d2a2b6040a561892c45e06a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &813849313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1460,8 +1454,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 813849312}
+  ObservedComponents: []
   sceneViewId: 11
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1483,22 +1476,10 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 813849315}
+  ObservedComponents: []
   sceneViewId: 6
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &813849315 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
-  m_PrefabInstance: {fileID: 813849307}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813849309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb832c65d2a2b6040a561892c45e06a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &813849316 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3775961803388081334, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
@@ -2266,9 +2247,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 542282566}
-        m_TargetAssemblyTypeName: TwoPlayersGame.TogetherWinScore, Assembly-CSharp
-        m_MethodName: OnRestartButtonClicked
+      - m_Target: {fileID: 1786914247}
+        m_TargetAssemblyTypeName: TwoPlayersGame.PuzzlePiecesSpawn, Assembly-CSharp
+        m_MethodName: SetBackTofalse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1786914247}
+        m_TargetAssemblyTypeName: TwoPlayersGame.PuzzlePiecesSpawn, Assembly-CSharp
+        m_MethodName: Start
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2406,7 +2399,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -2466,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -3868,7 +3861,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -3924,7 +3917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -3992,8 +3985,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 1812687305}
+  ObservedComponents: []
   sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4015,33 +4007,10 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 1812687306}
+  ObservedComponents: []
   sceneViewId: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &1812687305 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
-  m_PrefabInstance: {fileID: 1812687298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812687299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb832c65d2a2b6040a561892c45e06a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1812687306 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
-  m_PrefabInstance: {fileID: 1812687298}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1812687300}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb832c65d2a2b6040a561892c45e06a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1812687307 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3775961803388081334, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
@@ -4458,7 +4427,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: PuzzlesNumber
@@ -4514,7 +4483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4837711338010615020, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
       propertyPath: RepeateRate
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
@@ -4578,8 +4547,7 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents:
-  - {fileID: 6241030365086906545}
+  ObservedComponents: []
   sceneViewId: 9
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -4605,17 +4573,6 @@ MonoBehaviour:
   sceneViewId: 10
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &6241030365086906545 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2558573805690089010, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}
-  m_PrefabInstance: {fileID: 6241030365086906538}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6241030365086906539}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb832c65d2a2b6040a561892c45e06a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6241030365086906547 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3775961803388081334, guid: 49dbf57616647f941a91bf103788cfe2, type: 3}

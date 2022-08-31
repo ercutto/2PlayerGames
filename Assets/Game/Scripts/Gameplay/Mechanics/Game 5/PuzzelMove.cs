@@ -18,8 +18,8 @@ namespace TwoPlayersGame
         private int objectNumber;
         public int score;
         private TogetherWinScore togetherWinScore;
-        [SerializeField] 
-        bool[] allbools = new bool[] { false,false,false,false,false,false,false,false };
+         
+        public bool[] allbools = new bool[] { false,false,false,false,false,false,false,false };
         // Start is called before the first frame update
         void Start()
         {
@@ -99,19 +99,29 @@ namespace TwoPlayersGame
         }
         void ChangeBool(int boolToChange)
         {
-            allbools[boolToChange] = true;
-            togetherWinScore.AddScore(10);
-            Debug.Log(allbools[boolToChange].ToString());
-            if(allbools[0]&& allbools[1]&& allbools[2] && allbools[3] && allbools[4] && allbools[5] && allbools[6] && allbools[7])
+            if (!Ended)
             {
-                Debug.Log("Mission Complated");
-                togetherWinScore.AddScore(100);
-                togetherWinScore.WinMessage();
+                if (allbools[boolToChange] == false)
+                {
+                    allbools[boolToChange] = true;
+                    togetherWinScore.AddScore(10);
+                    Debug.Log(allbools[boolToChange].ToString());
+                    if (allbools[0] && allbools[1] && allbools[2] && allbools[3] && allbools[4] && allbools[5] && allbools[6] && allbools[7])
+                    {
+                        Ended = true;
+                        Debug.Log("Mission Complated");
+                        togetherWinScore.AddScore(100);
+                        togetherWinScore.WinMessage();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                
+
             }
-            else
-            {
-                return;
-            }
+           
             //foreach (bool arraysBool in allbools)
             //{
             //   if(arraysBool==true)

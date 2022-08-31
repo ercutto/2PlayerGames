@@ -20,6 +20,7 @@ namespace TwoPlayersGame
         public float GameTime = 3f;
         public float seconds;
         public bool begin;
+        public PuzzlePiecesSpawn puzzlePiecesSpawn;
         private PhotonView pv;
         // Start is called before the first frame update
         void Start()
@@ -106,6 +107,9 @@ namespace TwoPlayersGame
             seconds = 0;
             Minutes = 0;
             begin = true;
+            AddScore(-scoreValue);
+            //puzzlePiecesSpawn.SpawnMethod();
+
         }
         public void AddScore(int add)
         {

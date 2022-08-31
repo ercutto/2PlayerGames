@@ -13,6 +13,7 @@ namespace TwoPlayersGame {
         public Text WinMessage;
         public int OnGameSide;
         private PhotonView PView;
+        public int maxScore = 100;
         //For restart
         public SpawnGameObjects spawnGameObjects;
         public bool restart;
@@ -48,7 +49,7 @@ namespace TwoPlayersGame {
                 score += addscore;
                 scoreText.text = score.ToString();
                 //WinMessage.text = playerNick + " Scores";
-                if (score >= 100)
+                if (score >= maxScore)
                 {
 
                     Debug.Log("Winer is Red + ");

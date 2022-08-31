@@ -15,8 +15,9 @@ namespace TwoPlayersGame
         private Rigidbody rb;
         public GameObject PlayerGraphics;
         public GameObject hand;
-       
-        private float smallTilt = 0.1f;
+        
+        private float smallTilt = 0.02f;
+        private float tilt = 0.1f;
 
         // Start is called before the first frame update
 
@@ -87,7 +88,7 @@ namespace TwoPlayersGame
 
             rb.AddForce(0, vertical, horizontal, ForceMode.Force);
             Quaternion newEulerAngle = Quaternion.Euler(0, 0, 20 + 10);
-            transform.rotation = Quaternion.Euler(0,0, vertical * smallTilt).normalized;
+            transform.rotation = Quaternion.Euler(0,0, vertical * tilt).normalized;
             //Vector3 movement = new Vector3(horizontal, vertical, 0);
             //if (movement != Vector3.zero)
             //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);

@@ -178,11 +178,16 @@ namespace TwoPlayersGame
                     {
                         if (player != null)
                         {
+                            
                             assemble = other.gameObject;
-                            onHand = false;
-                            assembled = true;
-                            player.GetComponent<PlayersBools>().isFull = false;
-                            AssemblePlace = assemble.transform.GetChild(objectCount).GetComponent<Transform>().transform;
+                            if(assemble.GetComponent<PuzzelMove>().allbools[objectCount] == false)
+                            {
+                                onHand = false;
+                                assembled = true;
+                                player.GetComponent<PlayersBools>().isFull = false;
+                                AssemblePlace = assemble.transform.GetChild(objectCount).GetComponent<Transform>().transform;
+                            }
+                            
                             //OnOwnershipRequest(assemble);
                         }
                     }
