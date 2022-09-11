@@ -7,7 +7,7 @@ namespace TwoPlayersGame
 {
     public class ScoreCount : MonoBehaviourPun// IPunObservable
     {
-        public Text ScoreBoard;
+        public Text ScoreBoard,OtherScoreBoard;
         private int score;
         public Text WinMessage;
         private PhotonView pView;
@@ -28,7 +28,7 @@ namespace TwoPlayersGame
         public int Side;
         public Button ContinueButton;
         public string LevelName;
-
+        public GameObject OtherScore;
 
         // Start is called before the first frame update
         void Start()
@@ -113,19 +113,29 @@ namespace TwoPlayersGame
         {
             if (other.gameObject.CompareTag("Ball"))
             {
-                ScoreChange();
+                if (pView.IsMine)
+                {
+                    if (PhotonNetwork.IsMasterClient)
+                        pView.RPC("ScoreChange", RpcTarget.All);
+                        //ScoreChange();
+                    
+                }
             }
         }
-
+        [PunRPC]
         void ScoreChange()
         {
-            if (canGoal == false)
+            if (PhotonNetwork.IsMasterClient)
             {
-                return;
+                if (canGoal == false)
+                {
+                    return;
+                }
+                //score++;
+                pView.RPC("ToScore", RpcTarget.All);
+                count = 0;
             }
-            score++;
-            ScoreBoard.text = score.ToString();
-            count = 0;
+            
             if (score > 4)
             {
                 WinMessage.gameObject.SetActive(true);
@@ -163,18 +173,30 @@ namespace TwoPlayersGame
                
             }
         }
-       
+        [PunRPC]
+        void ToScore()
+        {
+            score++;
+            ScoreBoard.text = score.ToString();
+        }
+        void CallReset()
+        {
+            pView.RPC("ScoreReset", RpcTarget.All);
+        }
+        [PunRPC]
         void ScoreReset()
         {
             WinMessage.gameObject.SetActive(true);
             score = 0;
             ScoreBoard.text = score.ToString();
+            OtherScore.GetComponent<ScoreCount>().score = 0;
+            OtherScoreBoard.text = score.ToString();
             gameBegins = true;
         }
         public void ContinueGame()
         {
-            
-            Invoke(nameof(ScoreReset),3);
+            if(PhotonNetwork.IsMasterClient)
+            Invoke(nameof(CallReset),3);
    
         }
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

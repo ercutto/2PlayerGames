@@ -26,8 +26,12 @@ namespace TwoPlayersGame
         {
             if (!photonView.IsMine)
             {
-                _rb.position = Vector3.MoveTowards(_rb.position, _networkPosition, Time.deltaTime);
-                _rb.rotation = Quaternion.RotateTowards(_rb.rotation, _networkRotation, Time.deltaTime * 100.0f);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    _rb.position = Vector3.MoveTowards(_rb.position, _networkPosition, Time.deltaTime);
+                    _rb.rotation = Quaternion.RotateTowards(_rb.rotation, _networkRotation, Time.deltaTime * 100.0f);
+                }
+               
             }
         }
         
@@ -36,8 +40,12 @@ namespace TwoPlayersGame
         {
             if (other.transform.CompareTag("Player"))
             {
-                Vector3 direction = (other.transform.position - transform.position).normalized;
-                _rb.AddForce(-direction * kickForce, ForceMode.Impulse);
+                if (PhotonNetwork.IsMasterClient)
+                {
+                    Vector3 direction = (other.transform.position - transform.position).normalized;
+                    _rb.AddForce(-direction * kickForce, ForceMode.Impulse);
+                }
+                
             }
         }
         //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

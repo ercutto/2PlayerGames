@@ -253,6 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBoard: {fileID: 1438181646}
+  OtherScoreBoard: {fileID: 1792538499}
   WinMessage: {fileID: 7078066375724828673}
   ballStartPos: {x: 0, y: 0, z: 0}
   Goal: 0
@@ -268,6 +269,7 @@ MonoBehaviour:
   Side: 1
   ContinueButton: {fileID: 7078066375724828674}
   LevelName: Game
+  OtherScore: {fileID: 1504900295}
 --- !u!54 &311611783
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1108,6 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScoreBoard: {fileID: 1792538499}
+  OtherScoreBoard: {fileID: 1438181646}
   WinMessage: {fileID: 7078066375724828673}
   ballStartPos: {x: 0, y: 0, z: 0}
   Goal: 0
@@ -1123,6 +1126,7 @@ MonoBehaviour:
   Side: 2
   ContinueButton: {fileID: 7078066375724828674}
   LevelName: Game
+  OtherScore: {fileID: 311611781}
 --- !u!54 &1504900297
 Rigidbody:
   m_ObjectHideFlags: 0
