@@ -12,7 +12,7 @@ namespace TwoPlayersGame
         public float speed = 1f;
         private Rigidbody rb;
         private PhotonView pv;
-        private bool turn, Ended, stop, missionComplated;
+        private bool turn, Ended, stop/*, missionComplated*/;
         private float yAngle;
         public GameObject Hold;
         private int objectNumber;
@@ -32,7 +32,7 @@ namespace TwoPlayersGame
             if (pv.IsMine)
             {
                 yAngle = rb.transform.eulerAngles.y;
-                missionComplated = false;
+               /* missionComplated = false;*/
                 togetherWinScore = GameObject.Find("Score").GetComponent<TogetherWinScore>();
             }
         }

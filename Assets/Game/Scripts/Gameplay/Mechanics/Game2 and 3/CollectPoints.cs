@@ -45,28 +45,36 @@ namespace TwoPlayersGame {
         }
         public void AddScore(int addscore)
         {
-            if (spawnGameObjects.begin) {
-                score += addscore;
-                scoreText.text = score.ToString();
-                //WinMessage.text = playerNick + " Scores";
-                if (score >= maxScore)
+            if (spawnGameObjects.begin)
+            {
+                if (score >= 0)
                 {
 
-                    Debug.Log("Winer is Red + ");
-                    spawnGameObjects.begin = false;
-                    PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
-                    restart = true;
+                    score += addscore;
+                    if (score < 0) score = 0;
 
-                    WakeResetMethod();
-                    OthersScoreBoard.GetComponent<CollectPoints>().WakeResetMethod();
-                }
-                else
-                {
-                    restart = false;
-                }
 
-                PView.RPC("DisplayValues", RpcTarget.All, score);
-                
+                    scoreText.text = score.ToString();
+                    //WinMessage.text = playerNick + " Scores";
+                    if (score >= maxScore)
+                    {
+
+                        Debug.Log("Winer is Red + ");
+                        spawnGameObjects.begin = false;
+                        PView.RPC("WinnerMessage", RpcTarget.All, playerNick);
+                        restart = true;
+
+                        WakeResetMethod();
+                        OthersScoreBoard.GetComponent<CollectPoints>().WakeResetMethod();
+                    }
+                    else
+                    {
+                        restart = false;
+                    }
+
+                    PView.RPC("DisplayValues", RpcTarget.All, score);
+
+                }
             }
             
             

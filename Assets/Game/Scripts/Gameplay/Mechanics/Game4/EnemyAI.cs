@@ -10,7 +10,7 @@ namespace TwoPlayersGame {
         private NavMeshAgent nav;
         private PhotonView pv;
         bool cooldown;
-        private Collider collider;
+        private Collider enemyCollider;
         private GameObject[] player;
         float FirstPlayersDistance, SecondPlayersDistance;
 
@@ -27,7 +27,7 @@ namespace TwoPlayersGame {
                     cooldown = false;
                     nav = GetComponent<NavMeshAgent>();
                     player = GameObject.FindGameObjectsWithTag("Player");
-                    collider = GetComponent<BoxCollider>();
+                    enemyCollider = GetComponent<BoxCollider>();
                 }
                
                
@@ -92,7 +92,7 @@ namespace TwoPlayersGame {
             {
                 if (other.gameObject.CompareTag("Player"))
                 {
-                    collider.enabled = false;
+                    enemyCollider.enabled = false;
                     nav.isStopped = true;
                     cooldown = true;
 
@@ -113,7 +113,7 @@ namespace TwoPlayersGame {
         }
         void CooldownFinished()
         {
-            collider.enabled = true;
+            enemyCollider.enabled = true;
             cooldown = false;
         }
     }
