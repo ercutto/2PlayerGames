@@ -18,6 +18,7 @@ namespace TwoPlayersGame
         
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
+        public Animator anim;
 
   
 
@@ -25,6 +26,7 @@ namespace TwoPlayersGame
         {
             pV = GetComponent<PhotonView>();
             rb = GetComponent<Rigidbody>();
+            
         }
 
     
@@ -69,9 +71,18 @@ namespace TwoPlayersGame
             rb.AddForce(horizontal, 0, vertical,ForceMode.Force);
             
             Vector3 movement = new Vector3(horizontal, 0.0f, vertical).normalized;
-            if (movement!=Vector3.zero)
+            if (movement != Vector3.zero)
+            {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);
-               hand.transform.RotateAround(transform.position,new Vector3(0, 2, 0), 0);
+                hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
+               // anim.SetBool("isWalking", true);
+                pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
+            }
+            else
+            {
+                pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
+               // anim.SetBool("isWalking", false);
+            }
             
             //PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
 
@@ -110,7 +121,11 @@ namespace TwoPlayersGame
         }
         #endregion
 
-        
+        [PunRPC]
+        void AnimMod(string boolName,bool TrueOrFalse)
+        {
+            anim.SetBool(boolName, TrueOrFalse);
+        }
     }
 }
 
