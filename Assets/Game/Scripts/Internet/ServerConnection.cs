@@ -71,6 +71,12 @@ namespace TwoPlayersGame
             }
             
         }
+        public void Onclick()
+        { PlaySound("event:/GameSounds/ButtonClick"); }
+        void PlaySound(string Path)
+        {
+            FMODUnity.RuntimeManager.PlayOneShot(Path,GetComponent<Transform>().position);
+        }
     }
 }
 

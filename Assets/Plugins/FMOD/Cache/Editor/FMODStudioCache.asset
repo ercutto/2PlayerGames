@@ -22,7 +22,7 @@ MonoBehaviour:
   - {fileID: 2623998790441751012}
   StringsBanks:
   - {fileID: 6372558322929851574}
-  cacheTime: 637991039694093147
+  cacheTime: 637991095685681715
   cacheVersion: 131592
 --- !u!114 &2623998790441751012
 MonoBehaviour:
@@ -39,10 +39,10 @@ MonoBehaviour:
   Path: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD Studio/TwoPlayersGameSounds/Build/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637991039694073188
+  lastModified: 637991095685651755
   FileSizes:
   - Name: Desktop
-    Value: 3936
+    Value: 3840
   Exists: 1
 --- !u!114 &6372558322929851574
 MonoBehaviour:
@@ -59,7 +59,7 @@ MonoBehaviour:
   Path: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD Studio/TwoPlayersGameSounds/Build/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637991039694093147
+  lastModified: 637991095685681715
   FileSizes:
   - Name: Desktop
     Value: 772
