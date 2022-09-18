@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 6372558322929851574}
+  - {fileID: 2623998790441751012}
+  EditorEvents:
+  - {fileID: 9164588037386406208}
+  EditorParameters: []
+  MasterBanks:
+  - {fileID: 2623998790441751012}
+  StringsBanks:
+  - {fileID: 6372558322929851574}
+  cacheTime: 637991039694093147
+  cacheVersion: 131592
+--- !u!114 &2623998790441751012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD Studio/TwoPlayersGameSounds/Build/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637991039694073188
+  FileSizes:
+  - Name: Desktop
+    Value: 3936
+  Exists: 1
+--- !u!114 &6372558322929851574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD Studio/TwoPlayersGameSounds/Build/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637991039694093147
+  FileSizes:
+  - Name: Desktop
+    Value: 772
+  Exists: 1
+--- !u!114 &9164588037386406208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/ButtonClick
+  m_EditorClassIdentifier: 
+  Path: event:/GameSounds/ButtonClick
+  Guid:
+    Data1: -186938292
+    Data2: 1271703077
+    Data3: -1901576049
+    Data4: -664505466
+  Banks:
+  - {fileID: 2623998790441751012}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
