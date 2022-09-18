@@ -715,6 +715,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: AirplaneContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 7696288914337772090, guid: 377170ab5c20c7e458f3b1870334399b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7696288914337772093, guid: 377170ab5c20c7e458f3b1870334399b, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -855,6 +859,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7122617807850499108, guid: 2ea3893b9adeb17408f016495d84c450, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -5442184258478041484, guid: 7ec1235c655761149b229b01c3607456, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ea3893b9adeb17408f016495d84c450, type: 3}
 --- !u!4 &7618409236676642991 stripped
@@ -908,6 +916,10 @@ PrefabInstance:
     - target: {fileID: 6460637597814398362, guid: 393c9c628607c80488805c4bcab9c248, type: 3}
       propertyPath: m_Name
       value: CarBlue
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460637597814398362, guid: 393c9c628607c80488805c4bcab9c248, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6460637597814398364, guid: 393c9c628607c80488805c4bcab9c248, type: 3}
       propertyPath: m_RootOrder
