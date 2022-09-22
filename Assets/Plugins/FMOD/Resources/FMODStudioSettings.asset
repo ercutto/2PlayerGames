@@ -348,12 +348,11 @@ MonoBehaviour:
   m_Name: FMODStudioSettings
   m_EditorClassIdentifier: 
   SwitchSettingsMigration: 1
-  HasSourceProject: 1
+  HasSourceProject: 0
   HasPlatforms: 1
   sourceProjectPath: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD
     Studio/TwoPlayersGameSounds/TwoPlayersGameSounds.fspro
-  sourceBankPath: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD
-    Studio/TwoPlayersGameSounds/Build
+  sourceBankPath: C:\Users\digir\Unityders\2PlayerGames\Assets\FmodBankers
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
