@@ -42,7 +42,7 @@ MonoBehaviour:
   Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637994585347604692
+  lastModified: 637996328012036162
   FileSizes:
   - Name: Desktop
     Value: 928
@@ -95,7 +95,7 @@ MonoBehaviour:
   - {fileID: 3320720117041556385}
   StringsBanks:
   - {fileID: -3629101896511991420}
-  cacheTime: 637994585347604692
+  cacheTime: 637996328012036162
   cacheVersion: 131592
 --- !u!114 &3320720117041556385
 MonoBehaviour:
@@ -112,7 +112,7 @@ MonoBehaviour:
   Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637994585347574779
+  lastModified: 637996328011976344
   FileSizes:
   - Name: Desktop
     Value: 209760
