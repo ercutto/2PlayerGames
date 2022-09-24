@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 793965978
     Data4: 1427219700
   Banks:
-  - {fileID: 3320720117041556385}
+  - {fileID: -1014539632992269137}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 15157
---- !u!114 &-3629101896511991420
+--- !u!114 &-3042270674102719012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -36,17 +36,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/test 01
   m_EditorClassIdentifier: 
-  Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 637996412320870495
-  FileSizes:
-  - Name: Desktop
-    Value: 964
-  Exists: 1
+  Path: event:/GameSounds/test 01
+  Guid:
+    Data1: -583673399
+    Data2: 1227009724
+    Data3: -377586011
+    Data4: 461338739
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1323
 --- !u!114 &-2378160908420397481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +78,46 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
+--- !u!114 &-1014539632992269137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodBankers/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 637996440136824981
+  FileSizes:
+  - Name: Desktop
+    Value: 228864
+  Exists: 1
+--- !u!114 &-271014277091827022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodBankers/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 637996440136844929
+  FileSizes:
+  - Name: Desktop
+    Value: 1048
+  Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,19 +131,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -3629101896511991420}
-  - {fileID: 3320720117041556385}
+  - {fileID: -271014277091827022}
+  - {fileID: -1014539632992269137}
   EditorEvents:
   - {fileID: 9164588037386406208}
   - {fileID: 5880456265353696291}
   - {fileID: -7871844016227291587}
   - {fileID: 316384134396775407}
+  - {fileID: 1276074931582136390}
+  - {fileID: -3042270674102719012}
   EditorParameters: []
   MasterBanks:
-  - {fileID: 3320720117041556385}
+  - {fileID: -1014539632992269137}
   StringsBanks:
-  - {fileID: -3629101896511991420}
-  cacheTime: 637996412320870495
+  - {fileID: -271014277091827022}
+  cacheTime: 637996440136844929
   cacheVersion: 131592
 --- !u!114 &316384134396775407
 MonoBehaviour:
@@ -112,20 +161,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Path: event:/GameSounds/Claps
   Guid:
-    Data1: -1938375873
-    Data2: 1222313629
-    Data3: 1129200054
-    Data4: -1341056220
+    Data1: 592494785
+    Data2: 1197484335
+    Data3: -1528614721
+    Data4: 1296760983
   Banks:
-  - {fileID: 3320720117041556385}
+  - {fileID: -1014539632992269137}
   IsStream: 0
   Is3D: 0
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
---- !u!114 &3320720117041556385
+  Length: 960
+--- !u!114 &1276074931582136390
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,17 +183,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/test02
   m_EditorClassIdentifier: 
-  Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637996412320860540
-  FileSizes:
-  - Name: Desktop
-    Value: 210272
-  Exists: 1
+  Path: event:/GameSounds/test02
+  Guid:
+    Data1: 1182482727
+    Data2: 1127992504
+    Data3: -1778036037
+    Data4: -1717511683
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1323
 --- !u!114 &5880456265353696291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +220,7 @@ MonoBehaviour:
     Data3: -853173092
     Data4: 1597591144
   Banks:
-  - {fileID: 3320720117041556385}
+  - {fileID: -1014539632992269137}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -192,7 +248,7 @@ MonoBehaviour:
     Data3: -1901576049
     Data4: -664505466
   Banks:
-  - {fileID: 3320720117041556385}
+  - {fileID: -1014539632992269137}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0

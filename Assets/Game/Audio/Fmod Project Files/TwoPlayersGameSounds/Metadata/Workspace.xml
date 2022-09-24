@@ -2,9 +2,8 @@
 <objects serializationModel="Studio.02.02.00">
 	<object class="Workspace" id="{a1cefe53-903e-4955-b060-3c83b2d84318}">
 		<property name="builtBanksOutputDirectory">
-			<value>../../../../../../Unityders/2PlayerGames/Assets/FmodBankers</value>
+			<value>../../../../FmodBankers</value>
 		</property>
-		<property name="builtBanksEncryptionKey" />
 		<relationship name="masterEventFolder">
 			<destination>{3e257d42-0ff7-4ee5-b69f-ea573ecc0bea}</destination>
 		</relationship>
