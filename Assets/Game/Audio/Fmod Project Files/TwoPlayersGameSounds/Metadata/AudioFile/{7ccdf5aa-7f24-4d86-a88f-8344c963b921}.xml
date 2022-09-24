@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{7ccdf5aa-7f24-4d86-a88f-8344c963b921}">
+		<property name="assetPath">
+			<value>StartSceneAs.flac</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>15.157891156462584</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{838cccb6-facd-466a-a1f5-01aa2b05ce01}</destination>
+		</relationship>
+	</object>
+</objects>

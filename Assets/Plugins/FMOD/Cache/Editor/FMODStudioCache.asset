@@ -42,10 +42,10 @@ MonoBehaviour:
   Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637996328012036162
+  lastModified: 637996412320870495
   FileSizes:
   - Name: Desktop
-    Value: 928
+    Value: 964
   Exists: 1
 --- !u!114 &-2378160908420397481
 MonoBehaviour:
@@ -90,13 +90,41 @@ MonoBehaviour:
   - {fileID: 9164588037386406208}
   - {fileID: 5880456265353696291}
   - {fileID: -7871844016227291587}
+  - {fileID: 316384134396775407}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3320720117041556385}
   StringsBanks:
   - {fileID: -3629101896511991420}
-  cacheTime: 637996328012036162
+  cacheTime: 637996412320870495
   cacheVersion: 131592
+--- !u!114 &316384134396775407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/Claps
+  m_EditorClassIdentifier: 
+  Path: event:/GameSounds/Claps
+  Guid:
+    Data1: -1938375873
+    Data2: 1222313629
+    Data3: 1129200054
+    Data4: -1341056220
+  Banks:
+  - {fileID: 3320720117041556385}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
 --- !u!114 &3320720117041556385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,10 +140,10 @@ MonoBehaviour:
   Path: C:/Users/digir/Unityders/2PlayerGames/Assets/FmodBankers/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637996328011976344
+  lastModified: 637996412320860540
   FileSizes:
   - Name: Desktop
-    Value: 209760
+    Value: 210272
   Exists: 1
 --- !u!114 &5880456265353696291
 MonoBehaviour:
