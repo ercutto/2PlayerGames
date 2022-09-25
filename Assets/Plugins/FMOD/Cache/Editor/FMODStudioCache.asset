@@ -27,33 +27,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 15157
---- !u!114 &-3042270674102719012
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GameSounds/test 01
-  m_EditorClassIdentifier: 
-  Path: event:/GameSounds/test 01
-  Guid:
-    Data1: -583673399
-    Data2: 1227009724
-    Data3: -377586011
-    Data4: 461338739
-  Banks:
-  - {fileID: -1014539632992269137}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1323
 --- !u!114 &-2378160908420397481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,10 +66,10 @@ MonoBehaviour:
   Path: Assets/FmodBankers/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 637997229071608730
+  lastModified: 637997230789582773
   FileSizes:
   - Name: Desktop
-    Value: 229600
+    Value: 217920
   Exists: 1
 --- !u!114 &-271014277091827022
 MonoBehaviour:
@@ -113,10 +86,10 @@ MonoBehaviour:
   Path: Assets/FmodBankers/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637997229071618683
+  lastModified: 637997230789592729
   FileSizes:
   - Name: Desktop
-    Value: 1092
+    Value: 964
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -138,15 +111,12 @@ MonoBehaviour:
   - {fileID: 5880456265353696291}
   - {fileID: -7871844016227291587}
   - {fileID: 316384134396775407}
-  - {fileID: 1276074931582136390}
-  - {fileID: -3042270674102719012}
-  - {fileID: 3251280769189604824}
   EditorParameters: []
   MasterBanks:
   - {fileID: -1014539632992269137}
   StringsBanks:
   - {fileID: -271014277091827022}
-  cacheTime: 637997229071618683
+  cacheTime: 637997230789592729
   cacheVersion: 131592
 --- !u!114 &316384134396775407
 MonoBehaviour:
@@ -175,60 +145,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 960
---- !u!114 &1276074931582136390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GameSounds/test02
-  m_EditorClassIdentifier: 
-  Path: event:/GameSounds/test02
-  Guid:
-    Data1: 1182482727
-    Data2: 1127992504
-    Data3: -1778036037
-    Data4: -1717511683
-  Banks:
-  - {fileID: -1014539632992269137}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1323
---- !u!114 &3251280769189604824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/GameSounds/test03
-  m_EditorClassIdentifier: 
-  Path: event:/GameSounds/test03
-  Guid:
-    Data1: 1309463497
-    Data2: 1224046652
-    Data3: -2122870632
-    Data4: -1115603546
-  Banks:
-  - {fileID: -1014539632992269137}
-  IsStream: 0
-  Is3D: 0
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 1541
 --- !u!114 &5880456265353696291
 MonoBehaviour:
   m_ObjectHideFlags: 0
