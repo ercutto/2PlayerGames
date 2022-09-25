@@ -15,19 +15,29 @@ namespace TwoPlayersGame
         private Rigidbody rb;
         public GameObject PlayerGraphics;
         public GameObject hand;
-        
+        //ForMoveWithCam
+        private Camera cam;
+        private Transform myPos;
+
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
         public Animator anim;
         bool playWalking;
+        Vector3 offset = new Vector3(0, 1.5f, 0.3f);
 
   
 
         private void Start()
         {
             pV = GetComponent<PhotonView>();
-            rb = GetComponent<Rigidbody>();
+            if (pV.IsMine)
+            {
+                rb = GetComponent<Rigidbody>();
+                myPos = this.transform;
+                cam = Camera.main;
+            }
             
+
         }
 
     
@@ -37,14 +47,19 @@ namespace TwoPlayersGame
             {
 
                 if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3" ||
-                       SceneManagerHelper.ActiveSceneName == "Game 4" || SceneManagerHelper.ActiveSceneName == "Game 5")
+                        SceneManagerHelper.ActiveSceneName == "Game 5")
                 {
                     GameOne();
                 }
                 else if (SceneManagerHelper.ActiveSceneName == "Game2")
                 {
                     GameTwo();
-                }else if(SceneManagerHelper.ActiveSceneName == "Game 6")
+                }
+                else if (SceneManagerHelper.ActiveSceneName == "Game 4")
+                {
+                    MoveWithCamera();
+                }
+                else if(SceneManagerHelper.ActiveSceneName == "Game 6")
                 {
                     GameSix();
                 }
@@ -117,9 +132,35 @@ namespace TwoPlayersGame
             //hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
 
         }
+        void MoveWithCamera()
+        {
+            if (pV.IsMine)
+            {
+                if (cam) { cam.transform.SetPositionAndRotation(myPos.position+offset, myPos.transform.rotation); }
+                else { cam = Camera.main; }
+
+
+                float horizontal = Input.GetAxis("Horizontal") * 150f * Time.deltaTime;
+                float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+                Vector3 movement = new Vector3(0.0f, 0.0f, vertical).normalized;
+                if (movement != Vector3.zero) {
+                    rb.AddForce(transform.forward * vertical, ForceMode.Force);
+                   
+                    pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
+                    SoundToPlay("event:/GameSounds/StepSound");
+                }
+                else
+                {
+                    pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
+                }
+                //Vector3 movePos=(rb.transform.forward*vertical)*Time.deltaTime;
+                //rb.MovePosition(movePos);
+                transform.Rotate(0, horizontal, 0);
+            }
+        }
         void WaitingRoom()
         {
-
+          
         }
         #endregion
 
@@ -133,5 +174,6 @@ namespace TwoPlayersGame
         }
 
     }
+    
 }
 
