@@ -19,6 +19,7 @@ namespace TwoPlayersGame
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
         public Animator anim;
+        bool playWalking;
 
   
 
@@ -77,6 +78,7 @@ namespace TwoPlayersGame
                 hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
                // anim.SetBool("isWalking", true);
                 pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
+                SoundToPlay("event:/GameSounds/StepSound");
             }
             else
             {
@@ -126,6 +128,10 @@ namespace TwoPlayersGame
         {
             anim.SetBool(boolName, TrueOrFalse);
         }
+        void SoundToPlay(string Path) {
+            FMODUnity.RuntimeManager.PlayOneShot(Path, GetComponent<Transform>().position);
+        }
+
     }
 }
 
