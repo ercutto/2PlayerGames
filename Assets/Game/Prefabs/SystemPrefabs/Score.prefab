@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 7078066376030100416}
   - component: {fileID: 7078066376030100415}
   - component: {fileID: 7078066376030100414}
+  - component: {fileID: 962454635115680539}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -303,6 +304,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &962454635115680539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7078066376030100413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e44c57f7b79e6e4fbcbd7cd1082a0cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorRed: {fileID: 2100000, guid: 39bf6ac8fac92dc4781c63e294642ab6, type: 2}
+  colorblue: {fileID: 2100000, guid: be9c3b31eae53d94bb85577227ab37ce, type: 2}
+  blueText: {fileID: 7078066377497575299}
+  RedText: {fileID: 7078066376435294478}
 --- !u!1 &7078066376435294476
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,8 +377,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.8962264, g: 0.25787643, b: 0.25787643, a: 1}
+  m_Material: {fileID: 2100000, guid: be9c3b31eae53d94bb85577227ab37ce, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -439,8 +456,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7530308, b: 1, a: 1}
+  m_Material: {fileID: 2100000, guid: be9c3b31eae53d94bb85577227ab37ce, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

@@ -9,6 +9,7 @@ namespace TwoPlayersGame
     {
         public static GameObject localPlayerInstance;
         public  Color myColor;
+        public  Color HisColor;
         public Text Indicator;
         private int playerLayer=15;
         private int ignoreLayer=20;
@@ -24,18 +25,57 @@ namespace TwoPlayersGame
             rb.useGravity = true;
             if (photonView.IsMine)
             {
-               
+
                 PlayerManager.localPlayerInstance = this.gameObject;
-               // gameObject.GetComponentInChildren<Renderer>().material.color = myColor;
-                foreach (var item in myGarphics)
-                {
-                    item.GetComponent<Renderer>().material.color = myColor;
-                }
+
                 foreach (var obj in ToSetActiveOrFalse)
                 {
                     obj.SetActive(false);
                 }
             }
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                if (photonView.IsMine)
+                {
+                    MyColors(myColor);
+                    //foreach (var item in myGarphics)
+                    //{
+                        
+                    //    item.GetComponent<Renderer>().material.color = myColor;
+                    //}
+                }
+                else
+                {
+                    MyColors(HisColor);
+                    //foreach (var item in myGarphics)
+                    //{
+                    //    item.GetComponent<Renderer>().material.color = HisColor;
+                    //}
+                }
+                
+            }
+            else
+            {
+                if (photonView.IsMine)
+                {
+                    MyColors(myColor);
+                    //foreach (var item in myGarphics)
+                    //{
+                    //    item.GetComponent<Renderer>().material.color = myColor;
+                    //}
+                }
+                else
+                {
+                    MyColors(HisColor);
+                    //foreach (var item in myGarphics)
+                    //{
+                    //    item.GetComponent<Renderer>().material.color = HisColor;
+                    //}
+
+                }
+            }
+
             DontDestroyOnLoad(this.gameObject);
         }
         void Start()
@@ -152,6 +192,14 @@ namespace TwoPlayersGame
                     break;
 
             }
+        }
+        private void MyColors(Color whatColor)
+        {
+            foreach (var item in myGarphics)
+            {
+                item.GetComponent<Renderer>().material.color = whatColor;
+            }
+
         }
         private void PosTransform(float xT, float yT,float zT)
         {
