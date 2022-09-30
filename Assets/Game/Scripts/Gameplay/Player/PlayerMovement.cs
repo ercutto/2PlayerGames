@@ -10,6 +10,7 @@ namespace TwoPlayersGame
     {
         
         public float speed = 10f;
+        public float speedMultiplier = 50f;
         public float turnSpeed = 0.1f;
         PhotonView pV;
         private Rigidbody rb;
@@ -18,12 +19,12 @@ namespace TwoPlayersGame
         //ForMoveWithCam
         private Camera cam;
         private Transform myPos;
-
+      
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
         public Animator anim;
         bool playWalking;
-        Vector3 offset = new Vector3(0, 1.5f, 0.3f);
+        Vector3 offset = new Vector3(0, 2.3f, 0f);
 
   
 
@@ -35,6 +36,7 @@ namespace TwoPlayersGame
                 rb = GetComponent<Rigidbody>();
                 myPos = this.transform;
                 cam = Camera.main;
+
             }
             
 
@@ -82,10 +84,10 @@ namespace TwoPlayersGame
         {
          
 
-            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-            rb.AddForce(horizontal, 0, vertical,ForceMode.Force);
-            
+            float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
+            float vertical = Input.GetAxis("Vertical") * speed *speedMultiplier* Time.deltaTime;
+            rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
+            //rb.velocity = new Vector3(horizontal, 0.0f, vertical).normalized;
             Vector3 movement = new Vector3(horizontal, 0.0f, vertical).normalized;
             if (movement != Vector3.zero)
             {
@@ -108,9 +110,9 @@ namespace TwoPlayersGame
         {
             rb.transform.position = rb.transform.position;
 
-            float horizontal = Input.GetAxis("Horizontal") * speed* 2 * Time.deltaTime;
- 
-            rb.AddForce(horizontal, 0, 0,ForceMode.Force);
+            float horizontal = Input.GetAxis("Horizontal") * speed* speedMultiplier* Time.deltaTime;
+            rb.velocity = new Vector3(horizontal, 0.0f, 0.0f).normalized;
+            rb.AddForce(horizontal, 0, 0,ForceMode.Force);// Player is sliding if we use
             Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f).normalized;
 
             transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
@@ -118,10 +120,10 @@ namespace TwoPlayersGame
         void GameSix()
         {
             rb.transform.position = rb.transform.position;
-            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
-            float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-
-            rb.AddForce(0, vertical, horizontal, ForceMode.Force);
+            float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
+            float vertical = Input.GetAxis("Vertical") * speed * speedMultiplier* Time.deltaTime;
+            //rb.velocity = new Vector3(0.0f,vertical,horizontal).normalized;
+            rb.AddForce(0, vertical, horizontal, ForceMode.Force);// Sliding if we use
             Vector3 movement = new Vector3(0.0f,vertical,horizontal).normalized;
             
             Quaternion newEulerAngle = Quaternion.Euler(0, 0, 20 + 10);
@@ -139,13 +141,13 @@ namespace TwoPlayersGame
                 if (cam) { cam.transform.SetPositionAndRotation(myPos.position+offset, myPos.transform.rotation); }
                 else { cam = Camera.main; }
 
-
+                
                 float horizontal = Input.GetAxis("Horizontal") * 150f * Time.deltaTime;
                 float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
                 Vector3 movement = new Vector3(0.0f, 0.0f, vertical).normalized;
                 if (movement != Vector3.zero) {
-                    rb.AddForce(transform.forward * vertical, ForceMode.Force);
-                   
+                    //rb.AddForce(transform.forward * vertical, ForceMode.Force);
+                    rb.velocity = transform.forward * vertical;
                     pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
                     SoundToPlay("event:/GameSounds/StepSound");
                 }

@@ -9,6 +9,7 @@ namespace TwoPlayersGame
         private Camera cam;
         private Transform myPos;
         private PhotonView pV;
+        private Transform Offset;
         private void Start()
         {
             pV = GetComponent<PhotonView>();
@@ -16,6 +17,7 @@ namespace TwoPlayersGame
             {
                 myPos = this.transform;
                 cam = Camera.main;
+               
             }
           
 
