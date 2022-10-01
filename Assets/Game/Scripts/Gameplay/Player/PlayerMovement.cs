@@ -8,7 +8,7 @@ namespace TwoPlayersGame
 {
     public class PlayerMovement : MonoBehaviourPun     
     {
-        
+  
         public float speed = 10f;
         public float speedMultiplier = 50f;
         public float turnSpeed = 0.1f;
@@ -70,24 +70,17 @@ namespace TwoPlayersGame
                     WaitingRoom();
                 }
 
-
-            
-
-
             }
-                
 
-            
         }
         #region Movements
-        void GameOne()
+        void GameOne()//Game(futboll),Game3(MouseCatch),game5(Factory)
         {
          
-
-            float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
-            float vertical = Input.GetAxis("Vertical") * speed *speedMultiplier* Time.deltaTime;
-            rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
-            //rb.velocity = new Vector3(horizontal, 0.0f, vertical).normalized;
+            float horizontal = Input.GetAxis("Horizontal") * speed* Time.deltaTime;
+            float vertical = Input.GetAxis("Vertical") * speed *Time.deltaTime;
+            //rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
+            rb.velocity = new Vector3(horizontal, 0.0f, vertical);
             Vector3 movement = new Vector3(horizontal, 0.0f, vertical).normalized;
             if (movement != Vector3.zero)
             {
@@ -106,15 +99,12 @@ namespace TwoPlayersGame
             //PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
 
         }
-        void GameTwo()
+        void GameTwo()//CarRace
         {
             rb.transform.position = rb.transform.position;
-
             float horizontal = Input.GetAxis("Horizontal") * speed* speedMultiplier* Time.deltaTime;
-            rb.velocity = new Vector3(horizontal, 0.0f, 0.0f).normalized;
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);// Player is sliding if we use
             Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f).normalized;
-
             transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
         }
         void GameSix()
@@ -134,7 +124,7 @@ namespace TwoPlayersGame
             //hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
 
         }
-        void MoveWithCamera()
+        void MoveWithCamera()//Dark Game With camera follow
         {
             if (pV.IsMine)
             {
@@ -162,7 +152,7 @@ namespace TwoPlayersGame
         }
         void WaitingRoom()
         {
-          
+          //Player is in waiting room and Can not move yet
         }
         #endregion
 

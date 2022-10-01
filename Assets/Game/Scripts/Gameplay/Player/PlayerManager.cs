@@ -136,57 +136,57 @@ namespace TwoPlayersGame
             {
                 case 1:
                     gameObject.layer = playerLayer;
-                    ToSetActiveOrFalse[0].SetActive(false);
-                    ToSetActiveOrFalse[1].SetActive(false);
-                    ToSetActiveOrFalse[2].SetActive(false);
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 5:
                     gameObject.layer = playerLayer;
-                    ToSetActiveOrFalse[0].SetActive(false);
-                    ToSetActiveOrFalse[1].SetActive(false);
-                    ToSetActiveOrFalse[2].SetActive(false);
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
                 case 6:
-                    ToSetActiveOrFalse[1].SetActive(false);
-                    ToSetActiveOrFalse[2].SetActive(false);
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        PosTransform(2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+                        PosTransform(2, 0, 0); ObjectRotAndIgnoreLayer();
                         ToSetActiveOrFalse[0].SetActive(true);
                     }
-                    else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[0].SetActive(true); }
+                    else { PosTransform(-2, 0, 0); ObjectRotAndIgnoreLayer(); ToSetActiveOrFalse[0].SetActive(true); }
                     break;
                 case 8:
-                    rb.useGravity = true;
-                    ToSetActiveOrFalse[0].SetActive(false);
-                    ToSetActiveOrFalse[1].SetActive(false);
-                    ToSetActiveOrFalse[2].SetActive(true);
+                    rb.useGravity = true;             
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, true);
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        PosTransform(2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
-                      
+                        PosTransform(2, 0, 0); ObjectRotAndIgnoreLayer();
+
                     }
-                    else { PosTransform(-2, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
-                       
+                    else { PosTransform(-2, 0, 0); ObjectRotAndIgnoreLayer();
+
                     }
                     break;
                 case 10:
                     rb.useGravity = false;
-                    ToSetActiveOrFalse[1].SetActive(false);
-                    ToSetActiveOrFalse[2].SetActive(false);
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);               
                     if (PhotonNetwork.IsMasterClient)
                     {   
-                        PosTransform(0, 2, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+                        PosTransform(0, 2, 0); ObjectRotAndIgnoreLayer();
                         ToSetActiveOrFalse[1].SetActive(true);
                     }
-                    else { PosTransform(0, 0, 0); transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer; ToSetActiveOrFalse[1].SetActive(true);  }
+                    else { PosTransform(0, 0, 0); ObjectRotAndIgnoreLayer(); ToSetActiveOrFalse[1].SetActive(true);  }
                     break;
                 default:
                     break;
@@ -225,7 +225,14 @@ namespace TwoPlayersGame
                 }
             }
         }
-
+        void VisibleOBjects(int obj,bool FirstObj)//Seting Players Equipments active or false
+        {
+            ToSetActiveOrFalse[obj].SetActive(FirstObj);   
+        }
+        void ObjectRotAndIgnoreLayer()
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0).normalized; gameObject.layer = ignoreLayer;
+        }
 
 #endif
     }
