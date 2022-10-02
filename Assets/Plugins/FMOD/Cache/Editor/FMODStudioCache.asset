@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 793965978
     Data4: 1427219700
   Banks:
-  - {fileID: -5426967386850119988}
+  - {fileID: -476743386265787374}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 15157
---- !u!114 &-5426967386850119988
+--- !u!114 &-6784282485592361146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -37,15 +37,35 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Joni.strings.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../FmodBankers/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 638003107151450463
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni.strings.bank
+  Name: Joni.strings
+  StudioPath: bank:/Joni.strings
+  lastModified: 638003169716699703
   FileSizes:
   - Name: Desktop
-    Value: 217920
+    Value: 1148
+  Exists: 1
+--- !u!114 &-2943788304606686380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TestA.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/TestA.bank
+  Name: TestA
+  StudioPath: bank:/TestA
+  lastModified: 638003169716755660
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
   Exists: 1
 --- !u!114 &-2378160908420397481
 MonoBehaviour:
@@ -71,7 +91,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-1798923481050736187
+--- !u!114 &-476743386265787374
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,35 +101,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Joni.bank
+  m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: ../../../../FmodBankers/Desktop/Joni.bank
-  Name: Joni
-  StudioPath: bank:/Joni
-  lastModified: 638003107149677165
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638003169716725692
   FileSizes:
   - Name: Desktop
-    Value: 494
-  Exists: 1
---- !u!114 &-169309186576204032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.strings.bank
-  m_EditorClassIdentifier: 
-  Path: ../../../../FmodBankers/Desktop/Master.strings.bank
-  Name: Master.strings
-  StudioPath: bank:/Master.strings
-  lastModified: 638003107151460647
-  FileSizes:
-  - Name: Desktop
-    Value: 1012
+    Value: 217920
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -124,9 +124,12 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -169309186576204032}
-  - {fileID: -1798923481050736187}
-  - {fileID: -5426967386850119988}
+  - {fileID: -6784282485592361146}
+  - {fileID: 1983686453007119981}
+  - {fileID: 6017445267397981438}
+  - {fileID: 778423588285278568}
+  - {fileID: -476743386265787374}
+  - {fileID: -2943788304606686380}
   EditorEvents:
   - {fileID: 9164588037386406208}
   - {fileID: 5880456265353696291}
@@ -134,10 +137,14 @@ MonoBehaviour:
   - {fileID: 316384134396775407}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -5426967386850119988}
+  - {fileID: 778423588285278568}
+  - {fileID: -476743386265787374}
+  - {fileID: -2943788304606686380}
   StringsBanks:
-  - {fileID: -169309186576204032}
-  cacheTime: 638003107151460647
+  - {fileID: -6784282485592361146}
+  - {fileID: 1983686453007119981}
+  - {fileID: 6017445267397981438}
+  cacheTime: 638003169716765613
   cacheVersion: 131592
 --- !u!114 &316384134396775407
 MonoBehaviour:
@@ -158,14 +165,54 @@ MonoBehaviour:
     Data3: -1528614721
     Data4: 1296760983
   Banks:
-  - {fileID: -5426967386850119988}
+  - {fileID: -476743386265787374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 960
+  Length: 940
+--- !u!114 &778423588285278568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Joni.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni.bank
+  Name: Joni
+  StudioPath: bank:/Joni
+  lastModified: 638003169716679768
+  FileSizes:
+  - Name: Desktop
+    Value: 1036
+  Exists: 1
+--- !u!114 &1983686453007119981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638003169716745668
+  FileSizes:
+  - Name: Desktop
+    Value: 1148
+  Exists: 1
 --- !u!114 &5880456265353696291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +232,7 @@ MonoBehaviour:
     Data3: -853173092
     Data4: 1597591144
   Banks:
-  - {fileID: -5426967386850119988}
+  - {fileID: -476743386265787374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -194,6 +241,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 400
+--- !u!114 &6017445267397981438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/TestA.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/Game/Audio/FMOD Banks/Desktop/TestA.strings.bank
+  Name: TestA.strings
+  StudioPath: bank:/TestA.strings
+  lastModified: 638003169716765613
+  FileSizes:
+  - Name: Desktop
+    Value: 1148
+  Exists: 1
 --- !u!114 &9164588037386406208
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +280,7 @@ MonoBehaviour:
     Data3: -1901576049
     Data4: -664505466
   Banks:
-  - {fileID: -5426967386850119988}
+  - {fileID: -476743386265787374}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0

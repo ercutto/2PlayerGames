@@ -352,7 +352,7 @@ MonoBehaviour:
   HasPlatforms: 1
   sourceProjectPath: ../../Dropbox/My PC (LAPTOP-3IOV2O23)/Downloads/Documents/FMOD
     Studio/TwoPlayersGameSounds/TwoPlayersGameSounds.fspro
-  sourceBankPath: ../../../../FmodBankers
+  sourceBankPath: Assets/Game/Audio/FMOD Banks
   SourceBankPathUnformatted: 
   BankRefreshCooldown: 1
   ShowBankRefreshWindow: 1
@@ -375,9 +375,10 @@ MonoBehaviour:
   RealChannelSettings: []
   Plugins: []
   MasterBanks:
-  - Master
-  Banks:
   - Joni
+  - Master
+  - TestA
+  Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
   EnableMemoryTracking: 0
