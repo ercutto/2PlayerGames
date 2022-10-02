@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1317689610331778061
+--- !u!114 &-7871844016227291587
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9,18 +9,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Joni test fmod.strings.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/StartSceneMusic
   m_EditorClassIdentifier: 
-  Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni test fmod.strings.bank
-  Name: Joni test fmod.strings
-  StudioPath: bank:/Joni test fmod.strings
-  lastModified: 638003196065210137
-  FileSizes:
-  - Name: 
-    Value: 768
+  Path: event:/GameSounds/StartSceneMusic
+  Guid:
+    Data1: 154522985
+    Data2: 1303751018
+    Data3: 793965978
+    Data4: 1427219700
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 15157
+--- !u!114 &-2378160908420397481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb8ef7f94ca804a8ab72049b86782e, type: 3}
+  m_Name: parameter:/StepSound/Walking
+  m_EditorClassIdentifier: 
+  Name: Walking
+  StudioPath: 
+  Min: 0
+  Max: 1
+  Default: 0
+  ID:
+    data1: 446637745
+    data2: 3784548753
+  Type: 0
+  IsGlobal: 0
+  Labels: []
   Exists: 1
---- !u!114 &-476743386265787374
+--- !u!114 &-1014539632992269137
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -32,11 +63,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.bank
   m_EditorClassIdentifier: 
-  Path: Assets/Game/Audio/FMOD Banks/Desktop/Master.bank
+  Path: Assets/FmodBankers/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 638003196065230131
-  FileSizes: []
+  lastModified: 638003222137753048
+  FileSizes:
+  - Name: Desktop
+    Value: 217920
+  Exists: 1
+--- !u!114 &-271014277091827022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.strings.bank
+  m_EditorClassIdentifier: 
+  Path: Assets/FmodBankers/Desktop/Master.strings.bank
+  Name: Master.strings
+  StudioPath: bank:/Master.strings
+  lastModified: 638003222137786886
+  FileSizes:
+  - Name: Desktop
+    Value: 964
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -51,19 +104,21 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -476743386265787374}
-  - {fileID: -1317689610331778061}
-  - {fileID: 4546222588170657885}
-  EditorEvents: []
+  - {fileID: -271014277091827022}
+  - {fileID: -1014539632992269137}
+  EditorEvents:
+  - {fileID: 9164588037386406208}
+  - {fileID: 5880456265353696291}
+  - {fileID: -7871844016227291587}
+  - {fileID: 316384134396775407}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -476743386265787374}
-  - {fileID: 4546222588170657885}
+  - {fileID: -1014539632992269137}
   StringsBanks:
-  - {fileID: -1317689610331778061}
-  cacheTime: 638003196065230131
+  - {fileID: -271014277091827022}
+  cacheTime: 638003222137786886
   cacheVersion: 131592
---- !u!114 &4546222588170657885
+--- !u!114 &316384134396775407
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,12 +127,76 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Joni test fmod.bank
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/Claps
   m_EditorClassIdentifier: 
-  Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni test fmod.bank
-  Name: Joni test fmod
-  StudioPath: bank:/Joni test fmod
-  lastModified: 638003196065200024
-  FileSizes: []
-  Exists: 1
+  Path: event:/GameSounds/Claps
+  Guid:
+    Data1: 592494785
+    Data2: 1197484335
+    Data3: -1528614721
+    Data4: 1296760983
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 960
+--- !u!114 &5880456265353696291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/StepSound
+  m_EditorClassIdentifier: 
+  Path: event:/GameSounds/StepSound
+  Guid:
+    Data1: -345754960
+    Data2: 1185671685
+    Data3: -853173092
+    Data4: 1597591144
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters:
+  - {fileID: -2378160908420397481}
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 400
+--- !u!114 &9164588037386406208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/GameSounds/ButtonClick
+  m_EditorClassIdentifier: 
+  Path: event:/GameSounds/ButtonClick
+  Guid:
+    Data1: -186938292
+    Data2: 1271703077
+    Data3: -1901576049
+    Data4: -664505466
+  Banks:
+  - {fileID: -1014539632992269137}
+  IsStream: 0
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 1000
