@@ -15,7 +15,11 @@ MonoBehaviour:
   Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni test fmod.strings.bank
   Name: Joni test fmod.strings
   StudioPath: bank:/Joni test fmod.strings
+<<<<<<< HEAD
   lastModified: 638003193422541151
+=======
+  lastModified: 638003196065210137
+>>>>>>> main
   FileSizes:
   - Name: 
     Value: 768
@@ -35,7 +39,11 @@ MonoBehaviour:
   Path: Assets/Game/Audio/FMOD Banks/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
+<<<<<<< HEAD
   lastModified: 638003193422546150
+=======
+  lastModified: 638003196065230131
+>>>>>>> main
   FileSizes: []
   Exists: 1
 --- !u!114 &11400000
@@ -61,7 +69,11 @@ MonoBehaviour:
   - {fileID: 4546222588170657885}
   StringsBanks:
   - {fileID: -1317689610331778061}
+<<<<<<< HEAD
   cacheTime: 638003193422546150
+=======
+  cacheTime: 638003196065230131
+>>>>>>> main
   cacheVersion: 131592
 --- !u!114 &4546222588170657885
 MonoBehaviour:
@@ -78,6 +90,10 @@ MonoBehaviour:
   Path: Assets/Game/Audio/FMOD Banks/Desktop/Joni test fmod.bank
   Name: Joni test fmod
   StudioPath: bank:/Joni test fmod
+<<<<<<< HEAD
   lastModified: 638003193422531136
+=======
+  lastModified: 638003196065200024
+>>>>>>> main
   FileSizes: []
   Exists: 1
