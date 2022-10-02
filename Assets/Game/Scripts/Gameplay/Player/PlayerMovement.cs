@@ -88,7 +88,7 @@ namespace TwoPlayersGame
                 hand.transform.RotateAround(transform.position, new Vector3(0, 2, 0), 0);
                // anim.SetBool("isWalking", true);
                 pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
-                SoundToPlay("event:/GameSounds/StepSound");
+                //SoundToPlay("event:/GameSounds/StepSound");
             }
             else
             {
@@ -139,11 +139,11 @@ namespace TwoPlayersGame
                     //rb.AddForce(transform.forward * vertical, ForceMode.Force);
                     rb.velocity = transform.forward * vertical;
                     pV.RPC("AnimMod", RpcTarget.All, "isWalking", true);
-                    SoundToPlay("event:/GameSounds/StepSound");
+                    //SoundToPlay("event:/GameSounds/StepSound");
                 }
                 else
                 {
-                    pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
+                    //pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
                 }
                 //Vector3 movePos=(rb.transform.forward*vertical)*Time.deltaTime;
                 //rb.MovePosition(movePos);
@@ -161,9 +161,9 @@ namespace TwoPlayersGame
         {
             anim.SetBool(boolName, TrueOrFalse);
         }
-        void SoundToPlay(string Path) {
-            FMODUnity.RuntimeManager.PlayOneShot(Path, GetComponent<Transform>().position);
-        }
+        //void SoundToPlay(string Path) {
+        //    FMODUnity.RuntimeManager.PlayOneShot(Path, GetComponent<Transform>().position);
+        //}
 
     }
     
