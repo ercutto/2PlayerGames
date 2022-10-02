@@ -3463,6 +3463,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneCower
       objectReference: {fileID: 0}
+    - target: {fileID: 2582361364529946015, guid: d67b6cd28f800c040996b074aa8af40c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5464761602885450575, guid: d67b6cd28f800c040996b074aa8af40c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -3639,7 +3643,7 @@ Transform:
   m_GameObject: {fileID: 2046745036}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 2.04, y: -1.5900002, z: 5.88}
-  m_LocalScale: {x: 0.3, y: 2, z: 0.3}
+  m_LocalScale: {x: 0.3, y: 2.22, z: 0.3}
   m_Children:
   - {fileID: 864053478}
   m_Father: {fileID: 0}
