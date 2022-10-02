@@ -19,7 +19,7 @@ MonoBehaviour:
     Data3: 793965978
     Data4: 1427219700
   Banks:
-  - {fileID: -1014539632992269137}
+  - {fileID: -5426967386850119988}
   IsStream: 1
   Is3D: 0
   IsOneShot: 0
@@ -27,6 +27,26 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 15157
+--- !u!114 &-5426967386850119988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: bank:/Master.bank
+  m_EditorClassIdentifier: 
+  Path: ../../../../FmodBankers/Desktop/Master.bank
+  Name: Master
+  StudioPath: bank:/Master
+  lastModified: 638003107151450463
+  FileSizes:
+  - Name: Desktop
+    Value: 217920
+  Exists: 1
 --- !u!114 &-2378160908420397481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -51,7 +71,7 @@ MonoBehaviour:
   IsGlobal: 0
   Labels: []
   Exists: 1
---- !u!114 &-1014539632992269137
+--- !u!114 &-1798923481050736187
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -61,17 +81,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
-  m_Name: bank:/Master.bank
+  m_Name: bank:/Joni.bank
   m_EditorClassIdentifier: 
-  Path: Assets/FmodBankers/Desktop/Master.bank
-  Name: Master
-  StudioPath: bank:/Master
-  lastModified: 637997230789582773
+  Path: ../../../../FmodBankers/Desktop/Joni.bank
+  Name: Joni
+  StudioPath: bank:/Joni
+  lastModified: 638003107149677165
   FileSizes:
   - Name: Desktop
-    Value: 217920
+    Value: 494
   Exists: 1
---- !u!114 &-271014277091827022
+--- !u!114 &-169309186576204032
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -83,13 +103,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
   m_Name: bank:/Master.strings.bank
   m_EditorClassIdentifier: 
-  Path: Assets/FmodBankers/Desktop/Master.strings.bank
+  Path: ../../../../FmodBankers/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 637997230789592729
+  lastModified: 638003107151460647
   FileSizes:
   - Name: Desktop
-    Value: 964
+    Value: 1012
   Exists: 1
 --- !u!114 &11400000
 MonoBehaviour:
@@ -104,8 +124,9 @@ MonoBehaviour:
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
   EditorBanks:
-  - {fileID: -271014277091827022}
-  - {fileID: -1014539632992269137}
+  - {fileID: -169309186576204032}
+  - {fileID: -1798923481050736187}
+  - {fileID: -5426967386850119988}
   EditorEvents:
   - {fileID: 9164588037386406208}
   - {fileID: 5880456265353696291}
@@ -113,10 +134,10 @@ MonoBehaviour:
   - {fileID: 316384134396775407}
   EditorParameters: []
   MasterBanks:
-  - {fileID: -1014539632992269137}
+  - {fileID: -5426967386850119988}
   StringsBanks:
-  - {fileID: -271014277091827022}
-  cacheTime: 637997230789592729
+  - {fileID: -169309186576204032}
+  cacheTime: 638003107151460647
   cacheVersion: 131592
 --- !u!114 &316384134396775407
 MonoBehaviour:
@@ -137,7 +158,7 @@ MonoBehaviour:
     Data3: -1528614721
     Data4: 1296760983
   Banks:
-  - {fileID: -1014539632992269137}
+  - {fileID: -5426967386850119988}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -164,7 +185,7 @@ MonoBehaviour:
     Data3: -853173092
     Data4: 1597591144
   Banks:
-  - {fileID: -1014539632992269137}
+  - {fileID: -5426967386850119988}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
@@ -192,7 +213,7 @@ MonoBehaviour:
     Data3: -1901576049
     Data4: -664505466
   Banks:
-  - {fileID: -1014539632992269137}
+  - {fileID: -5426967386850119988}
   IsStream: 0
   Is3D: 0
   IsOneShot: 0
