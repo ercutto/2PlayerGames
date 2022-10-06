@@ -1468,6 +1468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneCower
       objectReference: {fileID: 0}
+    - target: {fileID: 2582361364529946015, guid: d67b6cd28f800c040996b074aa8af40c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5464761602885450575, guid: d67b6cd28f800c040996b074aa8af40c, type: 3}
       propertyPath: m_Pivot.x
       value: 0
