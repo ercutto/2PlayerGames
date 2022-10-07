@@ -77,7 +77,7 @@ namespace TwoPlayersGame
         void GameOne()//Game(futboll),Game3(MouseCatch),game5(Factory)
         {
          
-            float horizontal = Input.GetAxis("Horizontal") * speed* Time.deltaTime;
+            float horizontal = Input.GetAxis("Horizontal") * speed*4* Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed *Time.deltaTime;
             //rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
             rb.velocity = new Vector3(horizontal, 0.0f, vertical);
