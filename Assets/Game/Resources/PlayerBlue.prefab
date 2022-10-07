@@ -543,6 +543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 250
   speedMultiplier: 40
+  speedTopDown: 250
   turnSpeed: 0.1
   PlayerGraphics: {fileID: 2611653871287958989}
   hand: {fileID: 3221466978720546558}

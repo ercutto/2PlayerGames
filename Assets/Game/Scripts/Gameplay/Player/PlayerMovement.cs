@@ -11,6 +11,7 @@ namespace TwoPlayersGame
   
         public float speed = 10f;
         public float speedMultiplier = 50f;
+        public float speedTopDown = 250f;
         public float turnSpeed = 0.1f;
         PhotonView pV;
         private Rigidbody rb;
@@ -77,11 +78,12 @@ namespace TwoPlayersGame
         void GameOne()//Game(futboll),Game3(MouseCatch),game5(Factory)
         {
          
-            float horizontal = Input.GetAxis("Horizontal") * speed*4* Time.deltaTime;
+            float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed *Time.deltaTime;
             //rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
-            rb.velocity = new Vector3(horizontal, 0.0f, vertical);
+            //rb.velocity = new Vector3(horizontal, 0.0f, vertical).normalized;
             Vector3 movement = new Vector3(horizontal, 0.0f, vertical).normalized;
+            rb.velocity = movement * speedTopDown * Time.deltaTime;
             if (movement != Vector3.zero)
             {
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), turnSpeed);
