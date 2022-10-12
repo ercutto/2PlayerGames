@@ -10,6 +10,9 @@ namespace TwoPlayersGame
         public static GameObject localPlayerInstance;
         public  Color myColor;
         public  Color HisColor;
+        public GameObject PlayerAnimContainer;
+        public Vector3 smallSizePlayer = new Vector3(0.5f, 0.5f, 0.5f);
+        public Vector3 normalSizePlayer = new Vector3(1f, 1f, 1f);
         public Text Indicator;
         private int playerLayer=15;
         private int ignoreLayer=20;
@@ -120,6 +123,7 @@ namespace TwoPlayersGame
             //float randx = Random.Range(0, 3);
             //float randy = Random.Range(0, 3);
             //transform.position = new Vector3(randx, 0, randy);
+           
             SwitchPosForGame(level);
         }
 
@@ -134,27 +138,43 @@ namespace TwoPlayersGame
         {
             switch (SceneNumber)
             {
+             
+
                 case 1:
+                    //gameObject.layer = playerLayer;
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, false);
+                    PlayerAnimContainer.transform.localScale = normalSizePlayer;
+
+                    rb.useGravity = true;
+                    if (PhotonNetwork.IsMasterClient) { PosTransform(2, 0, 0); }
+                    else { PosTransform(-2, 0, 0);}
+                    break;
+                case 2:
+                    //empty
+                    break;
+                case 3:
+                    //empty
+                    break;
+                case 4:
+                    //empty
+                    break;
+
+                case 5://futball
                     gameObject.layer = playerLayer;
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, false);
+                    PlayerAnimContainer.transform.localScale = normalSizePlayer;
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
                     else PosTransform(-2, 0, 0);
                     break;
-                case 5:
-                    gameObject.layer = playerLayer;
+                case 6://car
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
-                    VisibleOBjects(2, false);
-                    rb.useGravity = true;
-                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
-                    else PosTransform(-2, 0, 0);
-                    break;
-                case 6:
-                    VisibleOBjects(0, false);
-                    VisibleOBjects(1, false);
+                    PlayerAnimContainer.transform.localScale = smallSizePlayer;
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient)
                     {
@@ -163,11 +183,26 @@ namespace TwoPlayersGame
                     }
                     else { PosTransform(-2, 0, 0); ObjectRotAndIgnoreLayer(); ToSetActiveOrFalse[0].SetActive(true); }
                     break;
-                case 8:
+                case 7://mouse
+                    gameObject.layer = playerLayer;
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, false);
+                    PlayerAnimContainer.transform.localScale = normalSizePlayer;
+
+
+                    rb.useGravity = true;
+                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
+                    else PosTransform(-2, 0, 0);
+                    break;
+                case 8://Dark scene
                     rb.useGravity = true;             
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, true);
+                    PlayerAnimContainer.transform.localScale = normalSizePlayer;
+
+
                     if (PhotonNetwork.IsMasterClient)
                     {
                         PosTransform(2, 0, 0); ObjectRotAndIgnoreLayer();
@@ -177,10 +212,25 @@ namespace TwoPlayersGame
 
                     }
                     break;
-                case 10:
+                case 9://Puzzle
+                    gameObject.layer = playerLayer;
+                    VisibleOBjects(0, false);
+                    VisibleOBjects(1, false);
+                    VisibleOBjects(2, false);
+                    PlayerAnimContainer.transform.localScale = normalSizePlayer;
+
+
+                    rb.useGravity = true;
+                    if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
+                    else PosTransform(-2, 0, 0);
+                    break;
+                case 10://Aircraft
                     rb.useGravity = false;
                     VisibleOBjects(0, false);
-                    VisibleOBjects(1, false);               
+                    VisibleOBjects(1, false); 
+                    PlayerAnimContainer.transform.localScale = smallSizePlayer;
+
+
                     if (PhotonNetwork.IsMasterClient)
                     {   
                         PosTransform(0, 2, 0); ObjectRotAndIgnoreLayer();

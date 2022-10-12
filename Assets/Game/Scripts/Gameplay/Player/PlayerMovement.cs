@@ -20,7 +20,7 @@ namespace TwoPlayersGame
         //ForMoveWithCam
         private Camera cam;
         private Transform myPos;
-      
+        
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
         public Animator anim;
@@ -109,7 +109,7 @@ namespace TwoPlayersGame
             Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f).normalized;
             transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
         }
-        void GameSix()
+        void GameSix()//aircraft
         {
             rb.transform.position = rb.transform.position;
             float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
