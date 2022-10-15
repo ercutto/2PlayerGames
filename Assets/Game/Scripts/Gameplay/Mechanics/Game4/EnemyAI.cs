@@ -12,6 +12,8 @@ namespace TwoPlayersGame {
         bool cooldown;
         private Collider enemyCollider;
         private GameObject[] player;
+        private GameObject firstPlayer, secondPlayer;
+        private GameObject singlePlayer=null;
         float FirstPlayersDistance, SecondPlayersDistance;
 
 
@@ -28,6 +30,8 @@ namespace TwoPlayersGame {
                     nav = GetComponent<NavMeshAgent>();
                     player = GameObject.FindGameObjectsWithTag("Player");
                     enemyCollider = GetComponent<BoxCollider>();
+                    firstPlayer = player[0];
+                    secondPlayer = player[1];
                 }
                
                
@@ -48,36 +52,21 @@ namespace TwoPlayersGame {
                 {
                     if (!cooldown)
                     {
-                        nav.isStopped = false;
-                        if (player[0] != null)
-                        {
-                            FirstPlayersDistance = Vector3.Distance(transform.position, player[0].transform.position);
-                        }
+                        if (firstPlayer != null && secondPlayer != null) 
+                        { EnemeyLogic(); }
                         else
                         {
-                            nav.destination = player[1].transform.position;
-                        }
-
-                        if (player[1] != null)
-                        {
-                            SecondPlayersDistance = Vector3.Distance(transform.position, player[1].transform.position);
-                        }
-                        else
-                        {
-                            nav.destination = player[0].transform.position;
-                        }
-
-
-                        if (FirstPlayersDistance < SecondPlayersDistance)
-                        {
-                            nav.destination = player[0].transform.position;
-                        }
-                        else if (FirstPlayersDistance > SecondPlayersDistance)
-                        {
-                            nav.destination = player[1].transform.position;
+                            
+                            if (singlePlayer == null)
+                            {
+                                singlePlayer = GameObject.FindWithTag("Player");
+                                
+                            }
+                            else { SingleMove(); }
 
                         }
-                        else { nav.destination = transform.position; }
+                       
+                        
                     }
 
 
@@ -110,6 +99,35 @@ namespace TwoPlayersGame {
                 }
             }
             
+        }
+        void EnemeyLogic()
+        {
+            if (nav.isStopped != false) { nav.isStopped = false; }
+
+            FirstPlayersDistance = Vector3.Distance(transform.position,firstPlayer.transform.position);
+            SecondPlayersDistance = Vector3.Distance(transform.position, secondPlayer.transform.position);
+            if (FirstPlayersDistance < SecondPlayersDistance)
+            {
+                MovePos(0);
+
+            }
+            else if (FirstPlayersDistance > SecondPlayersDistance)
+            {
+                MovePos(1);
+
+            }
+            else { nav.destination = transform.position; }
+
+        }
+        void SingleMove()
+        {
+            nav.isStopped = false; 
+
+            nav.destination = singlePlayer.transform.position;
+        }
+        void MovePos(int Who)
+        {
+            nav.destination = player[Who].transform.position;
         }
         void CooldownFinished()
         {

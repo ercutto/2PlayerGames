@@ -12,26 +12,29 @@ namespace TwoPlayersGame
         public float speed = 1f;
         private Rigidbody rb;
         private PhotonView pv;
-        private bool turn, Ended, stop/*, missionComplated*/;
+        private bool /*turn,*/ Ended, stop/*, missionComplated*/;
         private float yAngle;
-        public GameObject Hold;
+
+        private GameObject wayPoint;
         private int objectNumber;
         public int score;
         private TogetherWinScore togetherWinScore;
-         
+        public GameObject carFrame;
+        private int carFrameTimeCount;
         public bool[] allbools = new bool[] { false,false,false,false,false,false,false,false };
-        // Start is called before the first frame update
+        
         void Start()
         {
             pv = GetComponent<PhotonView>();
             rb = GetComponent<Rigidbody>();
-            turn = false;
+            //turn = false;
             stop = false;
             Ended = false;
-            Hold.SetActive(true);
+          
             if (pv.IsMine)
             {
-                yAngle = rb.transform.eulerAngles.y;
+                carFrameTimeCount = 0;
+                carFrame.SetActive(false);
                /* missionComplated = false;*/
                 togetherWinScore = GameObject.Find("Score").GetComponent<TogetherWinScore>();
             }
@@ -50,44 +53,71 @@ namespace TwoPlayersGame
                     }
                 }
 
-                if (!stop)
-                    rb.AddForce(speed * Time.deltaTime * transform.forward);
 
+                //if (!stop)
+                //{
+                    Vector3 movement = speed * Time.deltaTime * rb.transform.forward;
+                    rb.velocity = movement * 1;
+                //}
+                 
+               
 
-                if (turn)
-                {
-                    stop = true;
-                    rb.transform.eulerAngles = new Vector3(0, 90f, 0);
-                    Invoke(nameof(MoveNow), 5);
+                
+                    
+                //if (turn)
+                //{
+                //    stop = true;                   
+                    ////rb.transform.eulerAngles = new Vector3(0, 90f, 0);
+                    //Invoke(nameof(MoveNow), 5);
         
-                }
+                //}
 
 
             }
         }
 
-        private void MoveNow()
-        {
-            turn = false;
-            stop = false;
-            Hold.SetActive(false);
+        //private void MoveNow()
+        //{
+        //    //turn = false;
+        //    stop = false;
+          
 
-        }
+        //}
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("TurnObject"))
+            //if (other.gameObject.CompareTag("TurnObject"))
+            //{
+            //    turn = true;
+            //}
+            //else if (other.gameObject.CompareTag("CollectableParts "))
+            //{   if (!PhotonNetwork.IsMasterClient) { return; }
+            //    else
+            //    {
+            //        objectNumber = other.gameObject.GetComponent<CollectableParts>().objectCount;
+            //        ChangeBool(objectNumber);
+            //    }
+
+            //}
+       
+            if (other.gameObject.CompareTag("WayPoints"))
             {
-                turn = true;
+                wayPoint = other.gameObject;
+                StartCoroutine(CurerentWayPointCollider());
+                carFrameTimeCount++;
+                if (carFrameTimeCount >= 2) { carFrame.SetActive(true); }
+                
+                rb.transform.eulerAngles += new Vector3(0, 90, 0);
             }
             else if (other.gameObject.CompareTag("CollectableParts "))
-            {   if (!PhotonNetwork.IsMasterClient) { return; }
+            {
+                if (!PhotonNetwork.IsMasterClient) { return; }
                 else
                 {
                     objectNumber = other.gameObject.GetComponent<CollectableParts>().objectCount;
                     ChangeBool(objectNumber);
                 }
-               
+
             }
             else if (other.gameObject.CompareTag("EndObject"))
             {
@@ -97,7 +127,8 @@ namespace TwoPlayersGame
                     
             }
         }
-        void ChangeBool(int boolToChange)
+       
+            void ChangeBool(int boolToChange)
         {
             if (!Ended)
             {
@@ -146,6 +177,12 @@ namespace TwoPlayersGame
             //}
            
             
+        }
+        IEnumerator CurerentWayPointCollider()
+        {
+            wayPoint.GetComponent<BoxCollider>().enabled = false;
+            yield return new WaitForSeconds(7);
+            wayPoint.GetComponent<BoxCollider>().enabled = true;
         }
         void DestroyItself()
         {

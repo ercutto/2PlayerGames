@@ -25,15 +25,22 @@ namespace TwoPlayersGame
         private float tilt = 0.1f;
         public Animator anim;
         bool playWalking;
+       //private string sceneName;
+        public int currentSceneNumber;
+
+
         Vector3 offset = new Vector3(0, 2.3f, 0f);
 
   
 
         private void Start()
         {
+            //sceneName = SceneManagerHelper.ActiveSceneName;
+            currentSceneNumber = SceneManagerHelper.ActiveSceneBuildIndex;
             pV = GetComponent<PhotonView>();
             if (pV.IsMine)
             {
+               
                 rb = GetComponent<Rigidbody>();
                 myPos = this.transform;
                 cam = Camera.main;
@@ -48,34 +55,14 @@ namespace TwoPlayersGame
         {
             if (pV.IsMine)
             {
-
-                if (SceneManagerHelper.ActiveSceneName == "Game" || SceneManagerHelper.ActiveSceneName == "Game 3" ||
-                        SceneManagerHelper.ActiveSceneName == "Game 5")
-                {
-                    GameOne();
-                }
-                else if (SceneManagerHelper.ActiveSceneName == "Game2")
-                {
-                    GameTwo();
-                }
-                else if (SceneManagerHelper.ActiveSceneName == "Game 4")
-                {
-                    MoveWithCamera();
-                }
-                else if(SceneManagerHelper.ActiveSceneName == "Game 6")
-                {
-                    GameSix();
-                }
-                else
-                {
-                    WaitingRoom();
-                }
-
+                currentSceneNumber = SceneManagerHelper.ActiveSceneBuildIndex;
+                MovementForScenes(currentSceneNumber);
+              
             }
 
         }
         #region Movements
-        void GameOne()//Game(futboll),Game3(MouseCatch),game5(Factory)
+        void TopDownMovement()//Game(futboll),Game3(MouseCatch),game5(Factory)
         {
          
             float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
@@ -101,7 +88,7 @@ namespace TwoPlayersGame
             //PlayerGraphics.transform.rotation =Quaternion.Slerp(PlayerGraphics.transform.rotation,Quaternion.LookRotation(movement), turnSpeed);
 
         }
-        void GameTwo()//CarRace
+        void LeftAndRigthCar()//CarRace
         {
             rb.transform.position = rb.transform.position;
             float horizontal = Input.GetAxis("Horizontal") * speed* speedMultiplier* Time.deltaTime;
@@ -109,7 +96,7 @@ namespace TwoPlayersGame
             Vector3 movement = new Vector3(horizontal, 0.0f, 0.0f).normalized;
             transform.rotation = Quaternion.Euler(0, horizontal * smallTilt, horizontal * smallTilt).normalized;
         }
-        void GameSix()//aircraft
+        void SideAircraft()//aircraft
         {
             rb.transform.position = rb.transform.position;
             float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
@@ -145,7 +132,7 @@ namespace TwoPlayersGame
                 }
                 else
                 {
-                    //pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
+                    pV.RPC("AnimMod", RpcTarget.All, "isWalking", false);
                 }
                 //Vector3 movePos=(rb.transform.forward*vertical)*Time.deltaTime;
                 //rb.MovePosition(movePos);
@@ -166,7 +153,45 @@ namespace TwoPlayersGame
         //void SoundToPlay(string Path) {
         //    FMODUnity.RuntimeManager.PlayOneShot(Path, GetComponent<Transform>().position);
         //}
+        public void MovementForScenes(int currentSceneName)
+        {
+            switch (currentSceneName)
+            {
+                case 1:
+                    WaitingRoom();
+                    break;
+                case 2:
+                   //
+                    break;
+                case 3:
+                    //
+                    break;
+                case 4:
+                   //
+                    break;
+                case 5:
+                    TopDownMovement();
+                    break;
+                case 6:
+                    LeftAndRigthCar();
+                    break;
+                case 7:
+                    TopDownMovement();
+                    break;
+                case 8:
+                    MoveWithCamera();
+                    break;
+                case 9:
+                    TopDownMovement();
+                    break;
+                case 10:
+                    SideAircraft();
+                    break;
 
+                default:
+                    break;
+            }
+        }
     }
     
 }

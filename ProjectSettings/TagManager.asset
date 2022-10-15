@@ -10,6 +10,7 @@ TagManager:
   - TurnObject
   - EndObject
   - 'CollectableParts '
+  - WayPoints
   layers:
   - Default
   - TransparentFX
