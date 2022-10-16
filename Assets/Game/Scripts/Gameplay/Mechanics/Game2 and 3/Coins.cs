@@ -11,6 +11,7 @@ namespace TwoPlayersGame
         public int scoreValue = 10;
         private GameTwoScore gameTwoScore;
         private Rigidbody rb;
+        public float speed = 100f;
         public bool rotate;
         public byte sceneName;
         // Start is called before the first frame update
@@ -25,7 +26,7 @@ namespace TwoPlayersGame
         // Update is called once per frame
         void Update()
         {
-            if(!rotate)rb.AddForce(100f * Time.deltaTime * transform.forward);
+            if(!rotate)rb.AddForce(speed * Time.deltaTime * transform.forward);
 
             if (SceneManagerHelper.ActiveSceneBuildIndex!=sceneName)
             {

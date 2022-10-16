@@ -34,8 +34,8 @@ namespace TwoPlayersGame
             if (pv.IsMine)
             {
                 carFrameTimeCount = 0;
-                carFrame.SetActive(false);
-               /* missionComplated = false;*/
+                pv.RPC("SettingActiveOrFalse", RpcTarget.All, true);
+                /* missionComplated = false;*/
                 togetherWinScore = GameObject.Find("Score").GetComponent<TogetherWinScore>();
             }
         }
@@ -75,7 +75,11 @@ namespace TwoPlayersGame
 
             }
         }
-
+        [PunRPC]
+        void SettingActiveOrFalse(bool currentValue)
+        {
+            carFrame.SetActive(currentValue);
+        }
         //private void MoveNow()
         //{
         //    //turn = false;
@@ -105,7 +109,7 @@ namespace TwoPlayersGame
                 wayPoint = other.gameObject;
                 StartCoroutine(CurerentWayPointCollider());
                 carFrameTimeCount++;
-                if (carFrameTimeCount >= 2) { carFrame.SetActive(true); }
+                if (carFrameTimeCount >= 2) { pv.RPC("SettingActiveOrFalse", RpcTarget.All, false); }
                 
                 rb.transform.eulerAngles += new Vector3(0, 90, 0);
             }
@@ -188,7 +192,19 @@ namespace TwoPlayersGame
         {
             PhotonNetwork.Destroy(gameObject);
         }
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if (stream.IsWriting)
+            {
+                stream.SendNext(carFrame.activeSelf);
 
+            }
+            else
+            {
+                carFrame.SetActive((bool)stream.ReceiveNext());
+
+            }
+        }
 
 
     }
