@@ -182,7 +182,8 @@ namespace TwoPlayersGame
                     MoveWithCamera();
                     break;
                 case 9:
-                    TopDownMovement();
+                    //TopDownMovement();
+                    MoveWithCamera();
                     break;
                 case 10:
                     SideAircraft();

@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 696131600055136995}
   - component: {fileID: 696131600055136992}
   m_Layer: 0
-  m_Name: CollectableParts  6
+  m_Name: CollectableParts  11
   m_TagString: 'CollectableParts '
-  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -34,7 +34,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children:
-  - {fileID: 7175702706900799639}
+  - {fileID: 1752354176376212328}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45,7 +45,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696131600055136998}
-  m_Mesh: {fileID: 4300000, guid: 320b1c2af77554f99a1658df4a6d3d5c, type: 3}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &696131600055137020
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   sizeOnTable: {x: 1, y: 1, z: 1}
   sizeOnHand: {x: 1, y: 1, z: 1}
   sizeOnAssembled: {x: 0.9, y: 0.9, z: 0.9}
-  objectCount: 5
+  objectCount: 1
 --- !u!114 &696131600055136995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
   m_UseLocal: 1
---- !u!1 &8231031199898584046
+--- !u!1 &4397808978534134112
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -179,45 +179,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7175702706900799639}
-  - component: {fileID: 5458383469846506493}
-  - component: {fileID: 5941126311802046742}
+  - component: {fileID: 1752354176376212328}
+  - component: {fileID: 2712180853767738581}
+  - component: {fileID: 6644180354860108345}
   m_Layer: 0
-  m_Name: Left bumper
+  m_Name: Front left tire cover.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7175702706900799639
+--- !u!4 &1752354176376212328
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231031199898584046}
+  m_GameObject: {fileID: 4397808978534134112}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.8, y: 1.1, z: 0}
+  m_LocalPosition: {x: -1.434, y: 1.023, z: -1.414}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children: []
   m_Father: {fileID: 696131600055137022}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5458383469846506493
+--- !u!33 &2712180853767738581
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231031199898584046}
-  m_Mesh: {fileID: 6105673070276869373, guid: 4e8aed9d8c6f88d4a9c17805bc8b584b, type: 3}
---- !u!23 &5941126311802046742
+  m_GameObject: {fileID: 4397808978534134112}
+  m_Mesh: {fileID: -7206782594929546314, guid: e077a281d8edd3046b4e0899df66065c, type: 3}
+--- !u!23 &6644180354860108345
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8231031199898584046}
+  m_GameObject: {fileID: 4397808978534134112}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -230,7 +230,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -3846018093981099296, guid: 5081a7490d595a54e84142b5fecd6f3c, type: 3}
+  - {fileID: 6308719816281457800, guid: e077a281d8edd3046b4e0899df66065c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -6,6 +6,9 @@ namespace TwoPlayersGame
 {
     public class CollectableParts : MonoBehaviour
     {
+        public Vector3 sizeOnTable = new Vector3(0.5f, 0.5f, 0.5f);
+        public Vector3 sizeOnHand = new Vector3(0.5f, 0.5f, 0.5f);
+        public Vector3 sizeOnAssembled = new Vector3(1.5f, 1.5f, 1.5f);
         private PhotonView Pview;
         private Rigidbody rb;
         public int objectCount;
@@ -26,7 +29,7 @@ namespace TwoPlayersGame
                 rb = GetComponent<Rigidbody>();
                 onHand = false;
                 assembled = false;
-              
+                transform.localScale = sizeOnTable;
             }
         }
 
@@ -52,13 +55,13 @@ namespace TwoPlayersGame
                                 transform.SetPositionAndRotation(player.transform.GetChild(1).transform.position, player.transform.GetChild(1).transform.rotation);
                                 //transform.position = player.transform.GetChild(1).transform.position;
                                 //transform.rotation = player.transform.GetChild(1).transform.rotation;
-                                transform.localScale = new Vector3(1f, 1f, 1f);
+                                transform.localScale = sizeOnHand;
                             }
                             else
                             {
                                 onHand = false;
                                 transform.position = transform.position;
-                                transform.localScale = new Vector3(3, 3, 3);
+                                transform.localScale = sizeOnTable;
                             }
                            
                            
@@ -69,7 +72,7 @@ namespace TwoPlayersGame
                             //transform.position = AssemblePlace.position;
                             //transform.rotation = AssemblePlace.rotation;
                             transform.SetPositionAndRotation(AssemblePlace.position, AssemblePlace.rotation);
-                            transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                            transform.localScale = sizeOnAssembled;
                         }
                         else
                         {

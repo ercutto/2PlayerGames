@@ -21,7 +21,7 @@ namespace TwoPlayersGame
         {
 
             //Vector3 movement = new Vector3(0.0f, 0.0f, speed * Time.deltaTime).normalized;
-            Vector3 movement = rb.transform.forward * speed * Time.deltaTime;
+            Vector3 movement = speed * Time.deltaTime * rb.transform.forward;
             rb.velocity = movement * 1;
         }
         private void OnTriggerEnter(Collider other)
