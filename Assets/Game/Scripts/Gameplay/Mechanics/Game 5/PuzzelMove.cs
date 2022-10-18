@@ -34,7 +34,7 @@ namespace TwoPlayersGame
             if (pv.IsMine)
             {
                 carFrameTimeCount = 0;
-                pv.RPC("SettingActiveOrFalse", RpcTarget.All, true);
+                pv.RPC("SettingActiveOrFalse", RpcTarget.All, false);
                 /* missionComplated = false;*/
                 togetherWinScore = GameObject.Find("Score").GetComponent<TogetherWinScore>();
             }
@@ -109,7 +109,7 @@ namespace TwoPlayersGame
                 wayPoint = other.gameObject;
                 StartCoroutine(CurerentWayPointCollider());
                 carFrameTimeCount++;
-                if (carFrameTimeCount >= 2) { pv.RPC("SettingActiveOrFalse", RpcTarget.All, false); }
+                if (carFrameTimeCount >= 2) { pv.RPC("SettingActiveOrFalse", RpcTarget.All, true); }
                 
                 rb.transform.eulerAngles += new Vector3(0, 90, 0);
             }
