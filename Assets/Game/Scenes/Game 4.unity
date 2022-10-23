@@ -582,6 +582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &236376963
@@ -1551,6 +1552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &707011240
@@ -1720,6 +1722,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &746033858
@@ -1889,6 +1892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &784104679
@@ -2153,6 +2157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &920984411
@@ -2322,6 +2327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &940595522
@@ -2777,6 +2783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &1041251953
@@ -3830,6 +3837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: -40
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &1431629130
@@ -4102,6 +4110,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4511841977504297058, guid: 7ba6f49f8b7b74f45903e035a07fe5c9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cda158227dd9d8844987389265b27145, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ba6f49f8b7b74f45903e035a07fe5c9, type: 3}
 --- !u!1 &1474278567
@@ -4789,6 +4801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &1708614521
@@ -5490,6 +5503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 1
   sceneName: 8
 --- !u!65 &1950781701
