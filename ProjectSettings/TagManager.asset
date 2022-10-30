@@ -11,6 +11,8 @@ TagManager:
   - EndObject
   - 'CollectableParts '
   - WayPoints
+  - aPos
+  - bPos
   layers:
   - Default
   - TransparentFX
