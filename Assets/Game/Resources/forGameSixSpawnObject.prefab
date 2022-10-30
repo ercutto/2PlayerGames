@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreValue: 10
+  speed: 100
   rotate: 0
   sceneName: 10
 --- !u!54 &4253940247732501695
