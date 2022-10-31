@@ -6,7 +6,6 @@ namespace TwoPlayersGame
 
     public class BlindCollidercheck : MonoBehaviour
     {
-
         private BoxCollider coll;
         private Vector3 aPos, bPos;
         public GameObject[] points;
@@ -22,27 +21,29 @@ namespace TwoPlayersGame
         }
         private void Update()
         {
-
-            Vector3 MovePos = Vector3.Lerp(bPos, aPos, Mathf.PingPong(Time.time * startTime,distance));
+            Move();
+        }
+        private void Move()
+        {
+            Vector3 MovePos = Vector3.Lerp(bPos, aPos, Mathf.PingPong(Time.time * startTime, distance));
             rb.MovePosition(MovePos);
-
         }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("aPos"))
             {
 
-                transform.rotation = Quaternion.Euler(0,180,0);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             if (other.gameObject.CompareTag("bPos"))
             {
 
 
-                transform.rotation = Quaternion.Euler(0,0,0);
+                transform.rotation = Quaternion.Euler(0, 0, 0);
             }
 
         }
-       
+
     }
 }
 

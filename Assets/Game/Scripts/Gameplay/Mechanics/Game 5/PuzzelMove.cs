@@ -12,7 +12,7 @@ namespace TwoPlayersGame
         public float speed = 1f;
         private Rigidbody rb;
         private PhotonView pv;
-        private bool /*turn,*/ Ended, stop/*, missionComplated*/;
+        private bool /*turn,*/ Ended /*stop, missionComplated*/;
         private float yAngle;
 
         private GameObject wayPoint;
@@ -28,7 +28,7 @@ namespace TwoPlayersGame
             pv = GetComponent<PhotonView>();
             rb = GetComponent<Rigidbody>();
             //turn = false;
-            stop = false;
+            //stop = false;
             Ended = false;
           
             if (pv.IsMine)
