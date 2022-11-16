@@ -10,6 +10,8 @@ namespace TwoPlayersGame
     {
   
         public float speed = 10f;
+        public float speedFP = 500f;
+        public float tunrFP = 300f;
         public float speedMultiplier = 50f;
         public float speedTopDown = 250f;
         public float turnSpeed = 0.1f;
@@ -29,7 +31,7 @@ namespace TwoPlayersGame
         public int currentSceneNumber;
 
 
-        Vector3 offset = new Vector3(0, 2.3f, 0f);
+        Vector3 offset = new Vector3(0, 2.3f, 0.3f);
 
   
 
@@ -121,8 +123,8 @@ namespace TwoPlayersGame
                 else { cam = Camera.main; }
 
                 
-                float horizontal = Input.GetAxis("Horizontal") * 150f * Time.deltaTime;
-                float vertical = Input.GetAxis("Vertical") * speed * Time.deltaTime;
+                float horizontal = Input.GetAxis("Horizontal") * tunrFP * Time.deltaTime;
+                float vertical = Input.GetAxis("Vertical") * speedFP * Time.deltaTime;
                 Vector3 movement = new Vector3(0.0f, 0.0f, vertical).normalized;
                 if (movement != Vector3.zero) {
                     //rb.AddForce(transform.forward * vertical, ForceMode.Force);

@@ -524,6 +524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 250
+  speedFP: 500
+  tunrFP: 300
   speedMultiplier: 40
   speedTopDown: 250
   turnSpeed: 0.5
