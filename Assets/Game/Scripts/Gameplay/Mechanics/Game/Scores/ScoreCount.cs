@@ -29,6 +29,9 @@ namespace TwoPlayersGame
         public Button ContinueButton;
         public string LevelName;
         public GameObject OtherScore;
+        public AudioClip goal;
+        public AudioSource audioSource;
+        private GameObject ball;
 
         // Start is called before the first frame update
         void Start()
@@ -40,7 +43,8 @@ namespace TwoPlayersGame
             score = 0;
             //ScoreReset();
             pView = GetComponent<PhotonView>();
-            ballStartPos = new Vector3(0, 0.5f, 0);
+            ballStartPos = new Vector3(0, 3f, 0);
+
             if (PhotonNetwork.IsMasterClient)
             {
          
@@ -113,6 +117,7 @@ namespace TwoPlayersGame
         {
             if (other.gameObject.CompareTag("Ball"))
             {
+                ball = other.gameObject;
                 if (pView.IsMine)
                 {
                     if (PhotonNetwork.IsMasterClient)
@@ -120,7 +125,15 @@ namespace TwoPlayersGame
                         //ScoreChange();
                     
                 }
+                ball.SetActive(false);
+                ball.transform.position = ballStartPos;
+                StartCoroutine(nameof(KeepBall));
             }
+        }
+        IEnumerator KeepBall()
+        {
+            yield return new WaitForSeconds(2);
+            ball.SetActive(true);
         }
         [PunRPC]
         void ScoreChange()
@@ -134,6 +147,7 @@ namespace TwoPlayersGame
                 //score++;
                 pView.RPC("ToScore", RpcTarget.All);
                 count = 0;
+
             }
             
             if (score > 4)
@@ -178,6 +192,7 @@ namespace TwoPlayersGame
         {
             score++;
             ScoreBoard.text = score.ToString();
+            PlayFx();
         }
         void CallReset()
         {
@@ -221,6 +236,14 @@ namespace TwoPlayersGame
 
 
             }
+        }
+        void PlayFx()
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(goal);
+            }
+            
         }
     }
 }

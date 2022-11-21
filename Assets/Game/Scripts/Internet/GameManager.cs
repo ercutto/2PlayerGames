@@ -15,6 +15,8 @@ namespace TwoPlayersGame
         public static GameManager gameManagerInstance;
         public GameObject playerPrefab;
         public GameObject[] buttons;
+        public AudioClip clickSounds;
+       
         
        
         public float xPos, yPos;
@@ -114,7 +116,10 @@ namespace TwoPlayersGame
                 return;
             }
         }
+
+     
        
     }
+
 }
 

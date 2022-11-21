@@ -14,6 +14,8 @@ namespace TwoPlayersGame
         public float speed = 100f;
         public bool rotate;
         public byte sceneName;
+        public AudioClip Coin;
+        public AudioSource audioSource;
         // Start is called before the first frame update
         void Start()
         {
@@ -49,7 +51,7 @@ namespace TwoPlayersGame
 
                         //gameTwoScore.BlueName(PlayerName);
                         //gameTwoScore.AddScoreBlue(scoreValue);
-
+                        PlayAudio();
 
                     }
                     else if (other.gameObject.GetComponent<PlayerManager>().FirstOrSecond == 2)
@@ -60,7 +62,7 @@ namespace TwoPlayersGame
                         //Destroy(gameObject);
                         //gameTwoScore.AddScoreRed(scoreValue);
                         //gameTwoScore.RedName(PlayerNameOther);
-
+                        PlayAudio();
                     }
                     else { return; }
                 }
@@ -80,7 +82,10 @@ namespace TwoPlayersGame
 
 
         }
-
+        void PlayAudio()
+        {
+            audioSource.PlayOneShot(Coin);
+        }
         //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         //{
         //    if (stream.IsWriting)
@@ -98,6 +103,7 @@ namespace TwoPlayersGame
         //}
         //}
     }
+    
 
 }
 

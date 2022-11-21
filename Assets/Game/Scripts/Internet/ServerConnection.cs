@@ -12,6 +12,7 @@ namespace TwoPlayersGame
          " it can't be joined by new players, and so new room will be created")]
         [SerializeField]
         public byte maxPlayer = 2;
+       
 
         public GameObject playButtonCanvas;
         private void Awake()
@@ -71,12 +72,8 @@ namespace TwoPlayersGame
             }
             
         }
-        public void Onclick()
-        { /*PlaySound("event:/GameSounds/ButtonClick");*/ }
-        void PlaySound(string Path)
-        {
-           /* FMODUnity.RuntimeManager.PlayOneShot(Path,GetComponent<Transform>().position);*/
-        }
+       
+       
     }
 }
 

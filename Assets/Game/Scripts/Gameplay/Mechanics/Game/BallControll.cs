@@ -13,6 +13,8 @@ namespace TwoPlayersGame
         Rigidbody _rb;
         private float kickForce = 1f;
         private PhotonView photonView;
+        public AudioSource audioSource;
+        public AudioClip bounceClip;
 
 
 
@@ -47,6 +49,14 @@ namespace TwoPlayersGame
                 }
                 
             }
+            if (!audioSource.isPlaying)
+            {
+                PlayFx();
+            }
+        }
+        void PlayFx()
+        {
+            audioSource.PlayOneShot(bounceClip);
         }
         //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
         //{

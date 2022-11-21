@@ -114,6 +114,8 @@ MonoBehaviour:
   speed: 100
   rotate: 0
   sceneName: 10
+  Coin: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!54 &4253940247732501695
 Rigidbody:
   m_ObjectHideFlags: 0
