@@ -20,6 +20,8 @@ namespace TwoPlayersGame
         private Rigidbody rb;
         public GameObject[] myGarphics;
         public GameObject[] ToSetActiveOrFalse;
+       
+       
 
         // Start is called before the first frame update
         public void Awake()
@@ -145,6 +147,7 @@ namespace TwoPlayersGame
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, false);
+                    
                     PlayerAnimContainer.transform.localScale = normalSizePlayer;
 
                     rb.useGravity = true;
@@ -166,6 +169,7 @@ namespace TwoPlayersGame
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, false);
+                   
                     PlayerAnimContainer.transform.localScale = normalSizePlayer;
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient) PosTransform(2, 0, 0);
@@ -174,6 +178,7 @@ namespace TwoPlayersGame
                 case 6://car
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
+                    
                     PlayerAnimContainer.transform.localScale = smallSizePlayer;
                     rb.useGravity = true;
                     if (PhotonNetwork.IsMasterClient)
@@ -188,6 +193,7 @@ namespace TwoPlayersGame
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, false);
+                  
                     PlayerAnimContainer.transform.localScale = normalSizePlayer;
 
 
@@ -200,16 +206,18 @@ namespace TwoPlayersGame
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, true);
+                   
                     PlayerAnimContainer.transform.localScale = normalSizePlayer;
-
+                  
 
                     if (PhotonNetwork.IsMasterClient)
                     {
-                        PosTransform(2, 0, 0); ObjectRotAndIgnoreLayer();
+                        PosTransform(2, 0, 0); //ObjectRotAndIgnoreLayer();
+                       
 
                     }
-                    else { PosTransform(-2, 0, 0); ObjectRotAndIgnoreLayer();
-
+                    else { PosTransform(-2, 0, 0); //ObjectRotAndIgnoreLayer();
+                      
                     }
                     break;
                 case 9://Puzzle
@@ -217,6 +225,7 @@ namespace TwoPlayersGame
                     VisibleOBjects(0, false);
                     VisibleOBjects(1, false);
                     VisibleOBjects(2, false);
+                    
                     PlayerAnimContainer.transform.localScale = normalSizePlayer;
 
 

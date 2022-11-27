@@ -6,7 +6,7 @@ using Photon.Pun;
 
 namespace TwoPlayersGame
 {
-    public class PlayerMovement : MonoBehaviourPun     
+    public class PlayerMovement : MonoBehaviourPunCallbacks     
     {
   
         public float speed = 10f;
@@ -20,8 +20,9 @@ namespace TwoPlayersGame
         public GameObject PlayerGraphics;
         public GameObject hand;
         //ForMoveWithCam
-        private Camera cam;
+        public Camera cam;
         private Transform myPos;
+        public LayerMask mylayer, yourlayer;
         
         private float smallTilt = 0.02f;
         private float tilt = 0.1f;
@@ -31,7 +32,8 @@ namespace TwoPlayersGame
         public int currentSceneNumber;
 
 
-        Vector3 offset = new Vector3(0, 2.3f, 0.3f);
+        Vector3 offset = new Vector3(0, 3f, 0f);
+       
 
   
 
@@ -45,7 +47,7 @@ namespace TwoPlayersGame
                
                 rb = GetComponent<Rigidbody>();
                 myPos = this.transform;
-                cam = Camera.main;
+               
 
             }
             
@@ -66,7 +68,7 @@ namespace TwoPlayersGame
         #region Movements
         void TopDownMovement()//Game(futboll),Game3(MouseCatch),game5(Factory)
         {
-         
+            cam.enabled = false;
             float horizontal = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed *Time.deltaTime;
             //rb.AddForce(horizontal, 0, vertical,ForceMode.Force);//Player is sliding if we use this!
@@ -92,6 +94,7 @@ namespace TwoPlayersGame
         }
         void LeftAndRigthCar()//CarRace
         {
+            cam.enabled = false;
             rb.transform.position = rb.transform.position;
             float horizontal = Input.GetAxis("Horizontal") * speed* speedMultiplier* Time.deltaTime;
             rb.AddForce(horizontal, 0, 0,ForceMode.Force);// Player is sliding if we use
@@ -100,6 +103,7 @@ namespace TwoPlayersGame
         }
         void SideAircraft()//aircraft
         {
+            cam.enabled = false;
             rb.transform.position = rb.transform.position;
             float horizontal = Input.GetAxis("Horizontal") * speed *speedMultiplier* Time.deltaTime;
             float vertical = Input.GetAxis("Vertical") * speed * speedMultiplier* Time.deltaTime;
@@ -119,8 +123,9 @@ namespace TwoPlayersGame
         {
             if (pV.IsMine)
             {
-                if (cam) { cam.transform.SetPositionAndRotation(myPos.position+offset, myPos.transform.rotation); }
-                else { cam = Camera.main; }
+                cam.enabled = true;
+                //if (cam) { cam.transform.SetPositionAndRotation(myPos.position+offset, myPos.transform.rotation); }
+                //else { cam = Camera.main; }
 
                 
                 float horizontal = Input.GetAxis("Horizontal") * tunrFP * Time.deltaTime;
@@ -139,11 +144,22 @@ namespace TwoPlayersGame
                 //Vector3 movePos=(rb.transform.forward*vertical)*Time.deltaTime;
                 //rb.MovePosition(movePos);
                 transform.Rotate(0, horizontal, 0);
+               
+
             }
+            else
+            {
+               
+               
+
+            }
+
+            
         }
         void WaitingRoom()
         {
-          //Player is in waiting room and Can not move yet
+            cam.enabled = false;
+            //Player is in waiting room and Can not move yet
         }
         #endregion
 
@@ -195,6 +211,7 @@ namespace TwoPlayersGame
                     break;
             }
         }
+      
     }
     
 }
