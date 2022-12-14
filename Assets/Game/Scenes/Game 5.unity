@@ -3022,7 +3022,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.038000003, y: 0.1296842}
   m_AnchorMax: {x: 0.9620001, y: 0.90523076}
-  m_AnchoredPosition: {x: -1.8669739, y: -1.6310196}
+  m_AnchoredPosition: {x: -1.8670044, y: -1.6310196}
   m_SizeDelta: {x: 2.6619987, y: -3.5830002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1587536304
@@ -3805,11 +3805,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3415525229153319115, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.652344
+      value: 9.652466
       objectReference: {fileID: 0}
     - target: {fileID: 3415525229153319115, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 5.4628296
+      value: 5.4628906
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415525229153319116, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: FxToPlay
       objectReference: {fileID: 0}
     - target: {fileID: 3415525229278899134, guid: 6ef9a9549239fb04ea5ac5d58c554cb3, type: 3}
       propertyPath: buttons.Array.size

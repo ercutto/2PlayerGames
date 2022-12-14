@@ -46,13 +46,16 @@ namespace TwoPlayersGame
                 {
                     Vector3 direction = (other.transform.position - transform.position).normalized;
                     _rb.AddForce(-direction * kickForce, ForceMode.Impulse);
+                   
                 }
-                
+
+
+                if (!audioSource.isPlaying)
+                {
+                    PlayFx();
+                }
             }
-            if (!audioSource.isPlaying)
-            {
-                PlayFx();
-            }
+            
         }
         void PlayFx()
         {

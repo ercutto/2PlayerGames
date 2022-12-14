@@ -201,7 +201,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5014395850343462274}
         m_TargetAssemblyTypeName: TwoPlayersGame.SoundsController, Assembly-CSharp
-        m_MethodName: fxToPlay
+        m_MethodName: FxToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.65
+  m_fontSize: 63.25
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -528,7 +528,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 5014395850343462274}
         m_TargetAssemblyTypeName: TwoPlayersGame.SoundsController, Assembly-CSharp
-        m_MethodName: fxToPlay
+        m_MethodName: FxToPlay
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -572,7 +572,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.6654968, y: -0.55620193}
+  m_AnchoredPosition: {x: 1.6654968, y: -0.5561981}
   m_SizeDelta: {x: -42.4045, y: 1.1123009}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3415525230038099090
@@ -630,7 +630,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 61.05
   m_fontSizeBase: 0
   m_fontWeight: 400
   m_enableAutoSizing: 1

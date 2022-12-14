@@ -31,7 +31,7 @@ namespace TwoPlayersGame
 
            
         }
-        public void fxToPlay()
+        public void FxToPlay()
         {
             PlayFx(clickSound);
         }
